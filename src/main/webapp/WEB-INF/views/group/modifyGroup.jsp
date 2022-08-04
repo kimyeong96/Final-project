@@ -44,7 +44,7 @@ $(document).ready(function() {
            maxHeight: 550, // 최대 높이
            focus: true, // 에디터 로딩후 포커스를 맞출지 여부
            lang: "ko-KR", // 한글 설정
-           placeholder: '최대 1750자까지 작성 가능합니다.', //placeholder 설정
+           placeholder: '최대 2500byte까지 작성 가능합니다', //placeholder 설정
            toolbar: [
                // [groupName, [list of button]]
                ['fontname', ['fontname']], // 글꼴
@@ -710,7 +710,7 @@ footer.footer {
                   <textarea id="summernote" name="group_info" class="group_info">
                      ${tbl_group_dto.group_info}
                   </textarea>
-                  <sup>(<span id="nowByte">0</span>/3000bytes)</sup>
+                  <sup>(<span id="nowByte">0</span>/2500bytes)</sup>
                </div>
             </div>
          </div>
@@ -1048,7 +1048,7 @@ footer.footer {
 
   //textarea 바이트 수 체크하는 함수
    function fn_checkByte(obj){
-       const maxByte = 3000; //최대 100바이트
+       const maxByte = 2500; //최대 100바이트
        const text_val = obj.value; //입력한 문자
        const text_len = text_val.length; //입력한 문자수
        let totalByte=0;
@@ -1065,7 +1065,7 @@ footer.footer {
            }
        }
        if(totalByte>maxByte){
-             alert('3000byte를 넘어갈 수 없습니다.');
+             alert('2500byte를 넘어갈 수 없습니다.');
               document.getElementById("nowByte").innerText = totalByte;
                document.getElementById("nowByte").style.color = "red";
            }else{
@@ -1089,8 +1089,8 @@ footer.footer {
      }else if($(".group_info").val() == "") {
         Swal.fire("모임 내용을 적어주세요");
         return;
-     }else if(groupInfoByteCnt >= 3000) {
-         Swal.fire('모임 내용은 3000byte를 넘어갈 수 없습니다.');
+     }else if(groupInfoByteCnt >= 2500) {
+         Swal.fire('모임 내용은 2500byte를 넘어갈 수 없습니다.');
          return;
      }else if($("#group_site").val() == "" || $("#sido1Input").val() == "") {
         Swal.fire('지역 선택을 완료를 눌러주세요');
