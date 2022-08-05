@@ -844,7 +844,7 @@ footer.footer {
                       <div class="hostImg">
                         <c:choose>
                           <c:when test="${list.user_image ne null}">
-                            <img src="/profile/${list.user_image}"
+                            <img src="/p	rofile/${list.user_image}"
                               id="profile_image">
                           </c:when>
                           <c:otherwise>

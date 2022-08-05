@@ -1065,7 +1065,6 @@ footer.footer {
            }
        }
        if(totalByte>maxByte){
-             alert('2500byte를 넘어갈 수 없습니다.');
               document.getElementById("nowByte").innerText = totalByte;
                document.getElementById("nowByte").style.color = "red";
            }else{
