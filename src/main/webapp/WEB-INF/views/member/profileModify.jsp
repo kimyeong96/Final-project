@@ -5,36 +5,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	crossorigin="anonymous"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <!-- fontAwessome-->
-<script src="https://kit.fontawesome.com/241134516c.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/241134516c.js" crossorigin="anonymous"></script>
 <!-- Bootstrap icons-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <title>개인정보 수정</title>
 <style>
 /* 눈누 폰트 */
 @font-face {
-   font-family: 'MICEGothic Bold';
-   src:
-       url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-   font-weight: 700;
-   font-style: normal;
+	font-family: 'MICEGothic Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
 }
+
 * {
 	box-sizing: border-box;
 	font-family: 'MICEGothic Bold';
@@ -184,7 +174,7 @@ button {
 	height: 30%;
 }
 
-.row {
+.row:not(#menu .row) {
 	margin-top: 10px;
 }
 
@@ -196,8 +186,9 @@ span {
 input {
 	margin: 5px;
 }
-.swal2-styled{
-	padding:0px;
+
+.swal2-styled {
+	padding: 0px;
 }
 /* 회원단계 1*/
 #signup-1 {
@@ -256,6 +247,16 @@ h1 {
 }
 
 /*풋터 영역*/
+.footer-imgBox img {
+	max-width: 100%;
+}
+
+.footerWrapper {
+	background-color: white;
+	font-family: "MICEGothic Bold";
+	font-size: 15px;
+}
+
 .footerBox {
 	height: 0px;
 }
@@ -263,7 +264,6 @@ h1 {
 footer.footer {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background-color: white;
 }
 
 .footer a {
@@ -273,13 +273,14 @@ footer.footer {
 	font-weight: bold;
 }
 
-.footer-imgBox {
-	overflow: hidden;
+.footer-imgBox>img {
+	height: 100%;
+	text-align: center;
 }
 
-.footer-imgBox>img {
-	width: 100%;
+.footer-imgBox {
 	height: 100%;
+	text-align: center;
 }
 </style>
 </head>
@@ -327,7 +328,8 @@ footer.footer {
 </script>
 <body>
 	<!--네비바-->
-	<header class="mb-3 border-bottom" style="box-shadow: 2px 1px 6px 1px #bfbfbf;">
+	<header class="mb-3 border-bottom"
+		style="box-shadow: 2px 1px 6px 1px #bfbfbf;">
 		<div class="container">
 			<!-- 접혔을 때 nav -->
 			<nav id="navibar" class="navbar navbar-expand-md navbar-light"
@@ -398,17 +400,17 @@ footer.footer {
 								<ul class="navbar-nav mb-2 mb-lg-0 me-2">
 									<c:if test="${empty loginSession}">
 										<li class="nav-item"><a class="nav-link"
-											href="/toLogin.mem">로그인</a></li>
+											href="/login/toLogin">로그인</a></li>
 										<li class="nav-item"><a class="nav-link"
-											href="/toSignUp.mem">회원가입</a></li>
+											href="/signup/toSignupAgree">회원가입</a></li>
 									</c:if>
 								</ul>
 							</div>
-
 							<div class="col-auto user">
-								<c:if test="${not empty loginSession}">
+								<c:if
+									test="${not empty loginSession && loginSession.user_email eq 'admin'}">
 									<div class="dropdown text-end">
-										<a href="#"
+										<a href="/"
 											class="d-block link-dark text-decoration-none dropdown-toggle"
 											id="dropdownUser1" data-bs-toggle="dropdown"
 											aria-expanded="false"> <img
@@ -418,7 +420,44 @@ footer.footer {
 										<ul class="dropdown-menu text-small"
 											aria-labelledby="dropdownUser1">
 											<li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
-											<li><a class="dropdown-item" href="#">로그아웃</a></li>
+											<li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a></li>
+											<li><hr class="dropdown-divider"></li>
+											<li><a class="dropdown-item" href="/admin/toAdmin">관리자
+													페이지이동</a></li>
+											<li><a class="dropdown-item" href="/login/toLogout">로그아웃</a></li>
+										</ul>
+									</div>
+								</c:if>
+								<c:if
+									test="${not empty loginSession && loginSession.user_email ne 'admin'}">
+									<div class="dropdown text-end">
+										<a href="/"
+											class="d-block link-dark text-decoration-none dropdown-toggle"
+											id="dropdownUser1" data-bs-toggle="dropdown"
+											aria-expanded="false"> <c:if
+												test="${loginSession.user_image eq null}">
+												<img src="/resources/images/profile.jpg" alt="mdo"
+													width="40" height="40" class="rounded-circle">
+											</c:if> <c:if test="${loginSession.user_image ne null}">
+												<img src="/profile/${loginSession.user_image }" alt="mdo"
+													width="40" height="40" class="rounded-circle">
+											</c:if>
+										</a>
+										<ul class="dropdown-menu text-small"
+											aria-labelledby="dropdownUser1">
+											<li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
+											<li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a>
+											</li>
+											<li>
+												<hr class="dropdown-divider" style="margin: 0px;">
+											</li>
+											<c:if test="${loginType ne 'kakao'}">
+												<li><a class="dropdown-item mt-2"
+													href="/login/toLogout">로그아웃</a></li>
+											</c:if>
+											<c:if test="${loginType eq 'kakao'}">
+												<li><a class="dropdown-item mt-2" href="${kakaoLogout}">로그아웃</a></li>
+											</c:if>
 										</ul>
 									</div>
 								</c:if>
@@ -439,16 +478,18 @@ footer.footer {
 		<!-- info 영역-->
 		<form action="/mem/profileModify" method="post" id="profileModifyForm">
 			<div id="userInfoBox">
-				<div class="row p-3">
-				</div>
+				<div class="row p-3"></div>
 				<div class="row">
 					<div class="col-md-3">
 						<p id="nameTitle">이름</p>
 					</div>
 					<div class="col-md-7">
-						<input type="text" id="name" name="user_name" class="form-control" value="${memberdto.user_name}" readonly>
-						<div style="text-align:start;">
-							<span class="d-none" id="nameText" style="color:red; font-size:0.8rem; margin-left:8px;">** 이름은 수정할 수 없습니다. **</span>					
+						<input type="text" id="name" name="user_name" class="form-control"
+							value="${memberdto.user_name}" readonly>
+						<div style="text-align: start;">
+							<span class="d-none" id="nameText"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								이름은 수정할 수 없습니다. **</span>
 						</div>
 					</div>
 					<div class="col-2"></div>
@@ -459,12 +500,16 @@ footer.footer {
 					</div>
 					<div class="col-md-5">
 						<input type="text" id="nickname" name="user_nickname"
-							class="form-control user_nickname" value="${memberdto.user_nickname}" placeholder="닉네임은 12자까지 가능합니다" maxlength="12">
+							class="form-control user_nickname"
+							value="${memberdto.user_nickname}" placeholder="닉네임은 12자까지 가능합니다"
+							maxlength="12">
 					</div>
 					<div class="col-md-2">
-						<button type="button" class="btn btn-secondary" id="nicknameCheck" disabled>중복확인</button>
+						<button type="button" class="btn btn-secondary" id="nicknameCheck"
+							disabled>중복확인</button>
 					</div>
-					<input type="text" class="checkNickname d-none" value="${memberdto.user_nickname}">
+					<input type="text" class="checkNickname d-none"
+						value="${memberdto.user_nickname}">
 					<div class="col-2"></div>
 				</div>
 				<script>
@@ -571,34 +616,42 @@ footer.footer {
 						}
 					})
 				</script>
-				<div class="row">					
+				<div class="row">
 					<div class="col-md-3">
 						<p>생년월일</p>
 					</div>
 					<div class="col-md-7">
-						<input type="text" name="year" class="form-control bthday" maxlength="4" value="${date.get(0)}" style="width:140px;" readonly>
-						<label for="year">년</label> 
-						<input type="text" name="month" class="form-control bthday" maxlength="2" value="${date.get(1)}" style="width:130px;" readonly>
-						<label for="month">월</label> 
-						<input type="text" name="day" class="form-control bthday" maxlength="2" value="${date.get(2)}" style="width:130px;" readonly>
-						<label for="day">일</label> 
-						<input type="text" id="user_bd" name="user_bd" class="form-control d-none" value="${memberdto.user_bd}">
-						
-						<div style="text-align:start;">
-							<span class="d-none" id="birthText" style="color:red; font-size:0.8rem; margin-left:8px;">** 생년월일은 수정할 수 없습니다. **</span>					
+						<input type="text" name="year" class="form-control bthday"
+							maxlength="4" value="${date.get(0)}" style="width: 140px;"
+							readonly> <label for="year">년</label> <input type="text"
+							name="month" class="form-control bthday" maxlength="2"
+							value="${date.get(1)}" style="width: 130px;" readonly> <label
+							for="month">월</label> <input type="text" name="day"
+							class="form-control bthday" maxlength="2" value="${date.get(2)}"
+							style="width: 130px;" readonly> <label for="day">일</label>
+						<input type="text" id="user_bd" name="user_bd"
+							class="form-control d-none" value="${memberdto.user_bd}">
+
+						<div style="text-align: start;">
+							<span class="d-none" id="birthText"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								생년월일은 수정할 수 없습니다. **</span>
 						</div>
 					</div>
 					<div class="col-md-2"></div>
 				</div>
-				
+
 				<c:if test="${loginType eq 'general'}">
 					<div class="row">
 						<div class="col-md-3">
 							<p>비밀번호</p>
 						</div>
 						<div class="col-md-7" style="text-align: left;">
-							<input type="password" id="password" name="user_pw" class="form-control" style="font-family:none;">
-							<span class="d-none" id="wrong-password-regex" style="color:red; font-size:0.8rem; margin-left:8px;">** 비밀번호의 형식에 맞지 않습니다. **</span>
+							<input type="password" id="password" name="user_pw"
+								class="form-control" style="font-family: none;"> <span
+								class="d-none" id="wrong-password-regex"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								비밀번호의 형식에 맞지 않습니다. **</span>
 							<ul class="desc" style="font-size: 0.8rem; padding: 10px">
 								<li>영문, 숫자, 특수문자를 혼합하여 최소 8자리 이상 20자리 이하로 설정해 주세요.</li>
 								<li>기타 일반 정보 등으로부터 추측이 용이한 비밀번호는 피해주세요.</li>
@@ -607,32 +660,73 @@ footer.footer {
 							</ul>
 						</div>
 						<div class="col-2"></div>
-					</div>		
+					</div>
 					<div class="row">
 						<div class="col-md-3">
 							<p>비밀번호 확인</p>
 						</div>
 						<div class="col-md-7" style="text-align: left;">
-							<input type="password" id="password-check" class="form-control" style="font-family:none;">
-							<span class="d-none" id="wrong-password-check" style="color:red; font-size:0.8rem; margin-left:8px;">** 비밀번호와 맞지 않습니다. **</span>
-							<span class="d-none" id="right-password-check" style="color:green; font-size:0.8rem; margin-left:8px;">** 비밀번호와 일치합니다. **</span>
+							<input type="password" id="password-check" class="form-control"
+								style="font-family: none;"> <span class="d-none"
+								id="wrong-password-check"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								비밀번호와 맞지 않습니다. **</span> <span class="d-none" id="right-password-check"
+								style="color: green; font-size: 0.8rem; margin-left: 8px;">**
+								비밀번호와 일치합니다. **</span>
 						</div>
 						<div class="col-2"></div>
-					</div>					
+					</div>
 				</c:if>
-				<input type="text" class='d-none' value="${memberdto.user_pw}" name="data_password">
+
+				<c:if test="${loginType ne 'general'}">
+					<div class="row d-none">
+						<div class="col-md-3">
+							<p>비밀번호</p>
+						</div>
+						<div class="col-md-7" style="text-align: left;">
+							<input type="password" id="password" name="user_pw"
+								class="form-control" style="font-family: none;" disabled>
+							<span class="d-none" id="wrong-password-regex"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								비밀번호의 형식에 맞지 않습니다. **</span> <span
+								style="color: red; font-size: 0.8rem; padding: 10px">**
+								소셜로 로그인하시면 비밀번호 수정이 안됩니다 ** </span>
+						</div>
+						<div class="col-2"></div>
+					</div>
+					<div class="row d-none">
+						<div class="col-md-3">
+							<p>비밀번호 확인</p>
+						</div>
+						<div class="col-md-7" style="text-align: left;">
+							<input type="password" id="password-check"
+								class="form-control d-none" style="font-family: none;" disabled>
+							<span class="d-none" id="wrong-password-check"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								비밀번호와 맞지 않습니다. **</span> <span class="d-none" id="right-password-check"
+								style="color: green; font-size: 0.8rem; margin-left: 8px;">**
+								비밀번호와 일치합니다. **</span>
+						</div>
+						<div class="col-2"></div>
+					</div>
+				</c:if>
+				<input type="text" class='d-none' value="${memberdto.user_pw}"
+					name="data_password">
 				<div class="row">
 					<div class="col-md-3">
 						<p>이메일</p>
 					</div>
 					<div class="col-md-7">
 						<input type="text" id="email-id" class="form-control email"
-							style="text-align: center; width:100%;" value="${memberdto.user_email}" readonly>
-						<input type="text" id="email-domain" name="user_email"
+							style="text-align: center; width: 100%;"
+							value="${memberdto.user_email}" readonly> <input
+							type="text" id="email-domain" name="user_email"
 							class="form-control d-none" value="${memberdto.user_email}"
 							readonly>
-						<div style="text-align:start;">
-							<span class="d-none" id="emailText" style="color:red; font-size:0.8rem; margin-left:8px;">** 이메일은 수정할 수 없습니다. **</span>					
+						<div style="text-align: start;">
+							<span class="d-none" id="emailText"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								이메일은 수정할 수 없습니다. **</span>
 						</div>
 					</div>
 					<div class="col-2"></div>
@@ -650,17 +744,21 @@ footer.footer {
 							<option value="017">017</option>
 							<option value="018">018</option>
 							<option value="019">019</option>
-						</select> 
-						<input type="text" id="phone2" class="form-control" style="text-align:center;" maxlength="4" value="${phone.get(1)}" > 
-						<input type="text" id="phone3" class="form-control" style="text-align:center;"  maxlength="4"  value="${phone.get(2)}" >
-						<input type="text" class="checkPhone1 d-none" value="${phone.get(0)}" >
-						<input type="text" class="checkPhone2 d-none" value="${phone.get(1)}" >
-						<input type="text" class="checkPhone3 d-none" value="${phone.get(2)}" >
-						<input type="text" class="checkPhone d-none" value="${memberdto.user_phone}">
-						<input type="text" class="d-none" name="user_phone">
+						</select> <input type="text" id="phone2" class="form-control"
+							style="text-align: center;" maxlength="4" value="${phone.get(1)}">
+						<input type="text" id="phone3" class="form-control"
+							style="text-align: center;" maxlength="4" value="${phone.get(2)}">
+						<input type="text" class="checkPhone1 d-none"
+							value="${phone.get(0)}"> <input type="text"
+							class="checkPhone2 d-none" value="${phone.get(1)}"> <input
+							type="text" class="checkPhone3 d-none" value="${phone.get(2)}">
+						<input type="text" class="checkPhone d-none"
+							value="${memberdto.user_phone}"> <input type="text"
+							class="d-none" name="user_phone">
 					</div>
 					<div class="col-md-2">
-						<button type="button" class="btn btn-secondary" id="phoneCheck" disabled>중복확인</button>
+						<button type="button" class="btn btn-secondary" id="phoneCheck"
+							disabled>중복확인</button>
 					</div>
 					<div class="col-md-2"></div>
 				</div>
@@ -774,8 +872,10 @@ footer.footer {
 						<input type="text" id="gender" name="user_gender"
 							class="form-control gender" style="text-align: center;"
 							value="${memberdto.user_gender}" readonly>
-						<div style="text-align:start;">
-							<span class="d-none" id="genderText" style="color:red; font-size:0.8rem; margin-left:8px;">** 성별은 수정할 수 없습니다. **</span>					
+						<div style="text-align: start;">
+							<span class="d-none" id="genderText"
+								style="color: red; font-size: 0.8rem; margin-left: 8px;">**
+								성별은 수정할 수 없습니다. **</span>
 						</div>
 					</div>
 					<div class="col-2"></div>
@@ -785,17 +885,16 @@ footer.footer {
 						<p style="margin-top: 50px;">자기소개</p>
 					</div>
 					<div class="col-md-7" style="height: 120px;">
-						<textarea class="form-control" name="user_intro" id="introMessage" maxlength="29">${memberdto.user_intro}</textarea>
+						<textarea class="form-control" name="user_intro" id="introMessage"
+							maxlength="29">${memberdto.user_intro}</textarea>
 					</div>
 					<div class="col-2"></div>
 				</div>
 				<div class="row">
 					<div class="col-3"></div>
-					<div class="col-7" id="user_intro_cnt">
-						0/30
-					</div>
-				<div class="col-2"></div>
-			</div>
+					<div class="col-7" id="user_intro_cnt">0/30</div>
+					<div class="col-2"></div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col">
@@ -950,43 +1049,71 @@ footer.footer {
 	</div>
 
 	<!-- Footer-->
-	<footer class="footer">
+	<div class="footerWrapper mt-5" style="border-top: 1px solid #e0e3e8;">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 footer-imgBox">
-					<img src="/resources/images/kirilogo.png" alt="오류가 발생했습니다.">
+			<footer class="footer">
+				<div class="row">
+					<div class="col-lg-3 footer-imgBox">
+						<img src="/resources/images/kirilogo.png" alt="오류가 발생했습니다." />
+					</div>
+					<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+						<ul class="list-inline mb-2">
+							<li class="list-inline-item"><a
+								href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
+							<li class="list-inline-item">⋅</li>
+							<c:choose>
+								<c:when test="${not empty loginSession}">
+									<li class="list-inline-item"><a href="/mem/myPage">마이페이지</a></li>
+									<li class="list-inline-item">⋅</li>
+									<c:if test="${loginType ne 'kakao'}">
+										<li class="list-inline-item"><a href="/login/toLogout">로그아웃</a></li>
+									</c:if>
+									<c:if test="${loginType eq 'kakao'}">
+										<li class="list-inline-item"><a href="${kakaoLogout}">로그아웃</a></li>
+									</c:if>
+								</c:when>
+								<c:otherwise>
+									<li class="list-inline-item"><a
+										href="/signup/toSignupAgree">회원가입</a></li>
+									<li class="list-inline-item">⋅</li>
+									<li class="list-inline-item"><a href="/login/toLogin">로그인</a></li>
+								</c:otherwise>
+							</c:choose>
+							<li class="list-inline-item">⋅</li>
+							<li class="list-inline-item"><c:choose>
+									<c:when test="${not empty loginSession}">
+										<a href="/group/toCreateGroup">모임 만들기</a>
+									</c:when>
+									<c:otherwise>
+										<a href="/login/toLogin">모임 만들기</a>
+									</c:otherwise>
+								</c:choose></li>
+							<li class="list-inline-item">⋅</li>
+							<li class="list-inline-item"><a href="/privacy"
+								style="color: red; font-weight: bold;">개인정보처리방침</a></li>
+						</ul>
+						<p class="text-muted small mb-4 mb-lg-0">끼리끼리(주) 대표 : 이호준 |
+							개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
+						<p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로
+							57 이레빌딩</p>
+						<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website
+							2022. All Rights Reserved.</p>
+					</div>
+					<div class="col-lg-3 h-100 text-center text-lg-start my-auto">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item me-4"><a
+								href="https://ko-kr.facebook.com"><i
+									class="bi-facebook fs-3"></i></a></li>
+							<li class="list-inline-item me-4"><a
+								href="https://twitter.com/?lang=ko"><i
+									class="bi-twitter fs-3"></i></a></li>
+							<li class="list-inline-item"><a
+								href="https://www.instagram.com/"><i
+									class="bi-instagram fs-3"></i></a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-					<ul class="list-inline mb-2">
-						<li class="list-inline-item"><a href="#!">공지사항</a></li>
-						<li class="list-inline-item">⋅</li>
-						<li class="list-inline-item"><a href="#!">회원가입</a></li>
-						<li class="list-inline-item">⋅</li>
-						<li class="list-inline-item"><a href="#!">로그인</a></li>
-						<li class="list-inline-item">⋅</li>
-						<li class="list-inline-item"><a href="#!">책임의 한계 및 법적고지</a></li>
-						<li class="list-inline-item">⋅</li>
-						<li class="list-inline-item"><a href="#!"
-							style="color: red; font-weight: bold;">개인정보처리방침</a></li>
-					</ul>
-					<p class="text-muted small mb-4 mb-lg-0">끼리끼리(주) 대표 : 이호준 |
-						개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
-					<p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로
-						57 이레빌딩</p>
-					<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website
-						2022. All Rights Reserved.</p>
-				</div>
-				<div class="col-lg-3 h-100 text-center text-lg-end my-auto">
-					<ul class="list-inline mb-0">
-						<li class="list-inline-item me-4"><a href="#!"><i
-								class="bi-facebook fs-3"></i></a></li>
-						<li class="list-inline-item me-4"><a href="#!"><i
-								class="bi-twitter fs-3"></i></a></li>
-						<li class="list-inline-item"><a href="#!"><i
-								class="bi-instagram fs-3"></i></a></li>
-					</ul>
-				</div>
-			</div>
+			</footer>
 		</div>
-	</footer>
+	</div>
 </html>

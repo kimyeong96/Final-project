@@ -1,226 +1,246 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<script
-	  src="https://code.jquery.com/jquery-3.6.0.js"
-	  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	  crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/f9358a6ceb.js" crossorigin="anonymous"></script>
-    <!-- swal -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<script src="sweetalert2.min.js"></script>
-	<!-- Bootstrap icons-->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f9358a6ceb.js" crossorigin="anonymous"></script>
+<!-- swal -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<!-- Bootstrap icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>그룹 게시글 상세보기</title>
 
-    <style>
-    	/* header */
-		header {
-		   font-family: 'MICEGothic Bold';
-		   background-color: white;
-		}
-		
-		@media ( max-width : 768px) {
-		   #navLogo {
-		      display: none;
-		   }
-		   #myPageIcon {
-		      display: none;
-		   }
-		   #cartIcon {
-		      display: none;
-		   }
-		   #menu {
-		      display: none;
-		   }
-		}
-		
-		/* header */
-		#navLogo {
-		   width: 150px;
-		   height: 100px;
-		}
-		
-		#logoImgs {
-		   width: 100%;
-		   height: 100%;
-		}
-		
-		@media ( min-width : 768px) {
-		   #navibar {
-		      display: none;
-		   }
-		}
-		
-		#logoImg {
-		   width: 50%;
-		}
-		/* header 반응형 끝 */
-		
-		
-		/* 네비바 드롭다운 */
-		.dropdown-toggle:hover {
-		   color: #83bf7b;
-		   border-color: aliceblue;
-		}
-		
-		.dropdown:hover .dropdown-menu {
-		   display: block;
-		   margin-top: 0;
-		   font-weight: bold;
-		}
-		
-		.groupHeaderInfo {
-		   height: 480px;
-		}
-		
-		/* 컨텐츠 영역 */
-		body {
-            background-color: #EEEEEE;
-        }
+<style>
+/* header */
+header {
+	font-family: 'MICEGothic Bold';
+	background-color: white;
+}
 
-        header+.container {
-            background-color: white;
-            padding-left: 80px;
-            padding-right: 80px;
-        }
-        
-		#detail{
-			border-radius: 30px;
-		}
-		#detail{
-        	font-family: 'InfinitySans-RegularA1';
-        }
+@media ( max-width : 768px) {
+	#navLogo {
+		display: none;
+	}
+	#myPageIcon {
+		display: none;
+	}
+	#cartIcon {
+		display: none;
+	}
+	#menu {
+		display: none;
+	}
+}
 
-        #category {
-            background-color: #fce2e1;
-            border-radius: 60px;
-            color: black;
-        }
+/* header */
+#navLogo {
+	width: 150px;
+	height: 100px;
+}
 
-        #title {
-            font-weight: bold;
-        }
+#logoImgs {
+	width: 100%;
+	height: 100%;
+}
 
-        hr {
-            opacity: 1;
-        }
-		#content{
-        	font-family: initial;
-        	word-wrap: break-word;
-        }
-       	#content img{
-       		max-width: 100%;
-       		height: auto;
-       	}
-       	.likeBtn{
-       		border: none;
-       		background-color: transparent;
-       	}
-       	.likeBtn img{
-       		width: 100px;
-       	}
+@media ( min-width : 768px) {
+	#navibar {
+		display: none;
+	}
+}
 
-		/* 좋아요 영역 */
-		/* #body-like .col-auto{
+#logoImg {
+	width: 50%;
+}
+/* header 반응형 끝 */
+
+/* 네비바 드롭다운 */
+.dropdown-toggle:hover {
+	color: #83bf7b;
+	border-color: aliceblue;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+	margin-top: 0;
+	font-weight: bold;
+}
+
+.groupHeaderInfo {
+	height: 480px;
+}
+
+/* 컨텐츠 영역 */
+body {
+	background-color: #EEEEEE;
+}
+
+header+.container {
+	background-color: white;
+	padding-left: 80px;
+	padding-right: 80px;
+}
+
+#detail {
+	border-radius: 30px;
+}
+
+#detail {
+	font-family: 'InfinitySans-RegularA1';
+}
+
+#category {
+	background-color: #fce2e1;
+	border-radius: 60px;
+	color: black;
+}
+
+#title {
+	font-weight: bold;
+}
+
+hr {
+	opacity: 1;
+}
+
+#content {
+	font-family: initial;
+	word-wrap: break-word;
+}
+
+#content img {
+	max-width: 100%;
+	height: auto;
+}
+
+.likeBtn {
+	border: none;
+	background-color: transparent;
+}
+
+.likeBtn img {
+	width: 100px;
+}
+
+/* 좋아요 영역 */
+/* #body-like .col-auto{
 			background-color: #fce2e1;
 			border-radius: 50px;
 		} */
 
-		/* 댓글 영역 */
-		/* #Commenttab .col-auto{
+/* 댓글 영역 */
+/* #Commenttab .col-auto{
 			background-color: #d2e3ec;
 			border-top-left-radius: 5px;
 			border-top-right-radius: 5px;
 		} */
+#commentWrapper {
+	background-color: #EEEEEE;
+	border-radius: 10px;
+}
 
-		#commentWrapper{
-			background-color: #EEEEEE;
-			border-radius: 10px;
-		}
+.profileBox {
+	/* background-color: gray; */
+	width: 100px;
+	height: 100px;
+}
 
-        .profileBox{
-            /* background-color: gray; */
-            width: 100px;
-            height: 100px;
-        }
-        .profileBox img{
-           border-radius: 50%;
-            width: 100%;
-            height: 100%;
-        }
-        .comment{
-            border: none;
-        }
-        .defaultComment button, .afterComment button{
-             border: none;
-             background-color: transparent;
-          }
+.profileBox img {
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+}
 
-		/* footer */
-		/*풋터 영역*/
-		.footer-imgBox img{
-		   max-width: 100%;
-		}
-		
-		.footerWrapper{
-		   background-color: white;
-		   font-family: "MICEGothic Bold";
-		   font-size: 15px;
-		}
-		.footerBox {
-		   height: 0px;
-		}
-		
-		footer.footer {
-		   padding-top: 2rem;
-		   padding-bottom: 2rem;
-		}
-		
-		.footer a {
-		   text-decoration: none;
-		   color: black;
-		   font-weight: 40px;
-		   font-weight: bold;
-		}
-		
-		.footer-imgBox>img {
-		   height: 100%;
-		   text-align:center;
-		}
-		.footer-imgBox {
-		   height: 100%;
-		   text-align:center;
-		}
+.comment {
+	border: none;
+}
 
-        /* 눈누 폰트 */
-        @font-face {
-            font-family: 'MICEGothic Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
+.defaultComment button, .afterComment button {
+	border: none;
+	background-color: transparent;
+}
 
-        @font-face {
-		    font-family: 'InfinitySans-RegularA1';
-		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
-		    font-weight: normal;
-		    font-style: normal;
-		}
+/* footer */
+/*풋터 영역*/
+.footer-imgBox img {
+	max-width: 100%;
+}
 
-        @font-face {
-            font-family: '양진체';
-            src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-    </style>
+.footerWrapper {
+	background-color: white;
+	font-family: "MICEGothic Bold";
+	font-size: 15px;
+}
+
+.footerBox {
+	height: 0px;
+}
+
+footer.footer {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.footer a {
+	text-decoration: none;
+	color: black;
+	font-weight: 40px;
+	font-weight: bold;
+}
+
+.footer-imgBox>img {
+	height: 100%;
+	text-align: center;
+}
+
+.footer-imgBox {
+	height: 100%;
+	text-align: center;
+}
+
+/* 눈누 폰트 */
+@font-face {
+	font-family: 'MICEGothic Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'InfinitySans-RegularA1';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: '양진체';
+	src:
+		url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'EarlyFontDiary';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+</style>
 </head>
 <body>
 	<!--네비바-->
@@ -252,7 +272,8 @@
 						<div class="collapse navbar-collapse justify-content-end"
 							id="navbarNavDropdown">
 							<ul class="navbar-nav mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link" href="/board/toBoard">자유게시판</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/board/toBoard">자유게시판</a></li>
 								<c:if test="${empty loginSession}">
 									<li class="nav-item"><a class="nav-link"
 										href="/login/toLogin">로그인</a></li>
@@ -376,82 +397,81 @@
 	</header>
 
 	<!-- 디테일 뷰 -->
-    <div id="detail" class="container my-5 py-5">
-        <div class="row text-center">
-            <div class="col-auto my-3 fs-5 py-1" id="category">${detail.boardDTO.gboard_category}</div>
-        </div>
+	<div id="detail" class="container my-5 py-5">
+		<div class="row text-center">
+			<div class="col-auto my-3 fs-5 py-1" id="category">${detail.boardDTO.gboard_category}</div>
+		</div>
 
-        <div class="row mt-3 mb-0">
-            <h2 id="title" name="gboard_title">${detail.boardDTO.gboard_title}</h2>
-        </div>
+		<div class="row mt-3 mb-0">
+			<h2 id="title" name="gboard_title">${detail.boardDTO.gboard_title}</h2>
+		</div>
 
-        <div class="row mt-4 justify-content-between align-items-center">
-            <div class="col-auto" id="board-head-col">
-                <i class="fa-regular fa-clock me-3"></i>
-                <span class="me-3">${detail.boardDTO.written_date}</span>
-                <i class="fa-regular fa-font-awesome me-3"></i>
-                <span class="me-3">${detail.boardDTO.view_count}</span>
-                <i class="fa-regular fa-comment-dots"></i>
-                <span class="me-3">${detail.commentCnt}</span>
-                <i class="fa-regular fa-heart"></i>
-                <span>${like.likeHit}</span>
-            </div>
-            <div class="col-auto d-flex justify-content-end">
-                <div class="fw-bold fs-4 me-2">작성자</div>
-                <div class="fw-bold fs-4 me-3">|</div>
-                <div class="fw-bold fs-4">${detail.boardDTO.user_nickname}</div>
-            </div>
-        </div>
-        <hr size="4px;">
+		<div class="row mt-4 justify-content-between align-items-center">
+			<div class="col-auto" id="board-head-col">
+				<i class="fa-regular fa-clock"></i> <span class="me-3">${detail.boardDTO.written_date}</span>
+				<i class="fa-regular fa-font-awesome"></i> <span class="me-3">${detail.boardDTO.view_count}</span>
+				<i class="fa-regular fa-comment-dots"></i> <span class="me-3">${detail.commentCnt}</span>
+				<i class="fa-regular fa-heart"></i> <span>${like.likeHit}</span>
+			</div>
+			<div class="col-auto d-flex justify-content-end">
+				<div class="fw-bold fs-4 me-2">작성자</div>
+				<div class="fw-bold fs-4 me-3">|</div>
+				<div class="fw-bold fs-4">${detail.boardDTO.user_nickname}</div>
+			</div>
+		</div>
+		<hr size="4px;">
 
-      <!-- 내용 -->
-        <div class="row my-3">
-            <div id="content">
-                <p>${detail.boardDTO.gboard_content}</p>
-            </div>
-        </div>
+		<!-- 내용 -->
+		<div class="row my-3">
+			<div id="content">
+				<p>${detail.boardDTO.gboard_content}</p>
+			</div>
+		</div>
 
-        <!-- 좋아요 영역 -->
-        <div class="row justify-content-center mb-3" id="body-like">
-        	<c:choose>
-        		<%-- 로그인 상태일 때 --%>
-        		<c:when test="${not empty loginSession.user_email}">
-	        		<c:choose>
-	        			<%-- 추천 안누름 --%>
-	        			<c:when test="${like.likeCheck == 0}">
-	        				<div class="col-auto">
-			        			<button class="likeBtn" id="likeBefore" value="${detail.boardDTO.seq_group_board}">
-			        				<img src="/resources/images/board/likeText.png" alt="좋아요"><br>
-			        				<img src="/resources/images/board/like.png" alt="좋아요">
-			        			</button>
-			        		</div>
-			        		<span class="text-center">게시글에 좋아요를 눌러보세요!</span>
-	        			</c:when>
-	        			<%-- 추천 누름 --%>
-	        			<c:otherwise>
-	        				<div class="col-auto">
-			        			<button class="likeBtn" id="likeAfter" value="${detail.boardDTO.seq_group_board}">
-			        				<img src="/resources/images/board/notLikeText.png" alt="좋아요"><br>
-			        				<img src="/resources/images/board/notLike.png" alt="좋아요취소">
-			        			</button>
-			        		</div>
-			        		<span class="text-center">좋아요를 취소할 수 있어요.</span>
-	        			</c:otherwise>
-	        		</c:choose>
-	        	</c:when>
+		<!-- 좋아요 영역 -->
+		<div class="row justify-content-center mb-3" id="body-like">
+			<c:choose>
+				<%-- 로그인 상태일 때 --%>
+				<c:when test="${not empty loginSession.user_email}">
+					<c:choose>
+						<%-- 추천 안누름 --%>
+						<c:when test="${like.likeCheck == 0}">
+							<div class="col-auto">
+								<button class="likeBtn" id="likeBefore"
+									value="${detail.boardDTO.seq_group_board}">
+									<img src="/resources/images/board/likeText.png" alt="좋아요"><br>
+									<img src="/resources/images/board/like.png" alt="좋아요">
+								</button>
+							</div>
+							<span class="text-center">게시글에 좋아요를 눌러보세요!</span>
+						</c:when>
+						<%-- 추천 누름 --%>
+						<c:otherwise>
+							<div class="col-auto">
+								<button class="likeBtn" id="likeAfter"
+									value="${detail.boardDTO.seq_group_board}">
+									<img src="/resources/images/board/notLikeText.png" alt="좋아요"><br>
+									<img src="/resources/images/board/notLike.png" alt="좋아요취소">
+								</button>
+							</div>
+							<span class="text-center">좋아요를 취소할 수 있어요.</span>
+						</c:otherwise>
+					</c:choose>
+				</c:when>
 
-	        	<%-- 로그인 x일 때 --%>
-	        	<c:otherwise>
-		        	<div class="col-auto">
-				        <button id="like-notLoginBtn" value="${detail.boardDTO.seq_group_board}">
-				        	<img src="/resources/images/board/likeText.png" alt="좋아요"><br>
-			        		<img src="/resources/images/board/like.png" alt="좋아요">
-				        </button>
-				        <span class="text-center">로그인 후 좋아요를 눌러보세요!</span>
+				<%-- 로그인 x일 때 --%>
+				<c:otherwise>
+					<div class="col-auto">
+						<button id="like-notLoginBtn"
+							value="${detail.boardDTO.seq_group_board}">
+							<img src="/resources/images/board/likeText.png" alt="좋아요"><br>
+							<img src="/resources/images/board/like.png" alt="좋아요">
+						</button>
+						<span class="text-center">로그인 후 좋아요를 눌러보세요!</span>
 					</div>
-	        	</c:otherwise>
-	        </c:choose>
-        </div>
+				</c:otherwise>
+			</c:choose>
+		</div>
 
 		<!-- 댓글 탭 -->
 		<%-- <div class="row" id="Commenttab">
@@ -460,116 +480,133 @@
 		</div> --%>
 
 		<!-- 댓글 영역 -->
-        <div class="row" id="commentWrapper">
-            <div class="col-12" id="body-comment">
-                <!-- 댓글 출력 -->
-                <c:choose>
-	                <c:when test="${detail.commentList.size() == 0}">
-	                	<!-- 댓글 없으면 -->
-	                	<div class="col-12 my-3 text-center">
-	                		<p class="fs-4">등록된 댓글이 없습니다.</p>
-	                	</div>
-	                </c:when>
-	                <c:otherwise>
-	                	<c:forEach items="${detail.commentList}" var="comment">
-	                		<div class="row align-items-center py-3" style="border-bottom: 3px solid white;">
-	                			<!-- 프로필 이미지 -->
-			                    <div class="col-2 d-flex justify-content-center">
-			                        <div class="profileBox">
-			                            <c:if test="${comment.user_image eq null}">
-			                        		<!-- 기본이미지 -->
-			                        		<img src="/resources/images/profile.jpg">
-			                        	</c:if>
-			                            <c:if test="${comment.user_image ne null}">
-			                        		<img src="/profile/${comment.user_image}">
-			                        	</c:if>
-			                        </div>
-			                    </div>
+		<div class="row" id="commentWrapper">
+			<div class="col-12" id="body-comment">
+				<!-- 댓글 출력 -->
+				<c:choose>
+					<c:when test="${detail.commentList.size() == 0}">
+						<!-- 댓글 없으면 -->
+						<div class="col-12 my-3 text-center">
+							<p class="fs-4">등록된 댓글이 없습니다.</p>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${detail.commentList}" var="comment">
+							<div class="row align-items-center py-3"
+								style="border-bottom: 3px solid white;">
+								<!-- 프로필 이미지 -->
+								<div class="col-2 d-flex justify-content-center">
+									<div class="profileBox">
+										<c:if test="${comment.user_image eq null}">
+											<!-- 기본이미지 -->
+											<img src="/resources/images/profile.jpg">
+										</c:if>
+										<c:if test="${comment.user_image ne null}">
+											<img src="/profile/${comment.user_image}">
+										</c:if>
+									</div>
+								</div>
 
 								<!-- 내용 -->
-			                    <div class="col-10">
-			                        <div class="row mb-1 commentHead">
-			                            <div class="col-auto ms-2">${comment.user_nickname}</div>
-			                            <div class="col-auto ms-2">${comment.comment_date}</div>
+								<div class="col-10">
+									<div class="row mb-1 commentHead">
+										<div class="col-auto ms-2">${comment.user_nickname}</div>
+										<div class="col-auto ms-2">${comment.comment_date}</div>
 
-			                            <!-- 댓글 수정/삭제 버튼 -->
-					                	<c:if test="${comment.user_email eq loginSession.user_email}">
-						                	<%-- 수정/삭제 --%>
-						                	<div class="col-auto defaultComment">
-						                		<button type="button" class="mod-commentBtn me-2" value="${comment.seq_group_comment}">
-						                			<i class="fa-solid fa-eraser"></i>
-						                		</button>
-						                		<button type="button" class="del-commentBtn" value="${comment.seq_group_comment}">
-						                			<i class="fa-solid fa-trash-can"></i>
-						                		</button>
-						                	</div>
-						                	<%-- 완료/취소 --%>
-						                	<div class="col-auto afterComment d-none">
-						                		<button type="button" class="mod-completeBtn" value="${comment.seq_group_comment}">
-						                			<i class="fa-solid fa-circle-check"></i>
-						                		</button>
-						                		<button type="button" class="mod-cancelBtn me-2">
-						                			<i class="fa-solid fa-xmark"></i>
-						                		</button>
-						                	</div>
-					                	</c:if>
-			                        </div>
+										<!-- 댓글 수정/삭제 버튼 -->
+										<c:if test="${comment.user_email eq loginSession.user_email}">
+											<%-- 수정/삭제 --%>
+											<div class="col-auto defaultComment">
+												<button type="button" class="mod-commentBtn me-2"
+													value="${comment.seq_group_comment}">
+													<i class="fa-solid fa-eraser"></i>
+												</button>
+												<button type="button" class="del-commentBtn"
+													value="${comment.seq_group_comment}">
+													<i class="fa-solid fa-trash-can"></i>
+												</button>
+											</div>
+											<%-- 완료/취소 --%>
+											<div class="col-auto afterComment d-none">
+												<button type="button" class="mod-completeBtn"
+													value="${comment.seq_group_comment}">
+													<i class="fa-solid fa-circle-check"></i>
+												</button>
+												<button type="button" class="mod-cancelBtn me-2">
+													<i class="fa-solid fa-xmark"></i>
+												</button>
+											</div>
+										</c:if>
+									</div>
 
-			                        <div class="row">
-			                            <div class="col-12">
-			                                <textarea class="form-control comment" style="resize: none; background-color: transparent;" readonly>${comment.comment_content}</textarea>
-			                            </div>
-			                        </div>
-			                    </div>
-			                </div>
+									<div class="row">
+										<div class="col-12">
+											<textarea class="form-control comment"
+												style="resize: none; background-color: transparent;"
+												readonly>${comment.comment_content}</textarea>
+										</div>
+									</div>
+								</div>
+							</div>
 
-	                	</c:forEach>
-	                </c:otherwise>
-                </c:choose>
-            </div>
-        </div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
 
-        <!-- 댓글 등록 -->
-        <form id="commentForm" action="/comment/writeG" method="post">
-	        <div class="row mt-4 p-0 py-3" style="background-color: #ECECEC; border-radius: 10px">
-	       		<input class="d-none" id="seq_group" name="seq_group" value="${detail.boardDTO.seq_group}">
-	        	<input class="d-none" id="seq_board" name="seq_group_board" value="${detail.boardDTO.seq_group_board}">
+		<!-- 댓글 등록 -->
+		<form id="commentForm" action="/comment/writeG" method="post">
+			<div class="row mt-4 p-0 py-3"
+				style="background-color: #ECECEC; border-radius: 10px">
+				<input class="d-none" id="seq_group" name="seq_group"
+					value="${detail.boardDTO.seq_group}"> <input class="d-none"
+					id="seq_board" name="seq_group_board"
+					value="${detail.boardDTO.seq_group_board}">
 				<div class="col-10">
-					<textarea id="inputComment" name="comment_content" style="resize: none;" class="form-control" placeholder="댓글을 입력하세요"></textarea>
+					<textarea id="inputComment" name="comment_content"
+						style="resize: none;" class="form-control" placeholder="댓글을 입력하세요"></textarea>
 				</div>
 				<div class="col-2">
-					<button type="button" id="write-commentBtn" class="btn w-100 h-100" style="background-color: #d2e3ec;">등록</button>
+					<button type="button" id="write-commentBtn" class="btn w-100 h-100"
+						style="background-color: #d2e3ec;">등록</button>
 				</div>
-	        </div>
-        </form>
+			</div>
+		</form>
 
 
-        <!-- 게시글 수정 / 삭제 버튼 -->
-        <div class="row mt-4 justify-content-center">
-           <c:if test="${loginSession.user_email eq detail.boardDTO.user_email}">
-               <div class="col-auto">
-                   <button type="button" id="modifyBtn" class="btn" style="background-color: #d2e3ec;">수정</button>
-               </div>
-               <div class="col-auto">
-                   <button type="button" id="deleteBtn" class="btn" style="background-color: #fce2e1;">삭제</button>
-               </div>
-           </c:if>
-           <div class="col-auto">
-              <button type="button" id="toListBtn" class="btn" style="background-color: #cfe4d8">목록으로</button>
-           </div>
-        </div>
-      <form id="infoForm" method="get">
-         <input type="hidden" id="seq_group" name="seq_group" value="${detail.boardDTO.seq_group}">
-         <input type="hidden" id="seq_group_board" name="seq_group_board" value="${detail.boardDTO.seq_group_board}">
-         <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
-         <input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-         <input type="hidden" name="type" value="${cri.type}">
-         <input type="hidden" name="keyword" value="${cri.keyword}">
-      </form>
-    </div>
+		<!-- 게시글 수정 / 삭제 버튼 -->
+		<div class="row mt-4 justify-content-center">
+			<c:if test="${loginSession.user_email eq detail.boardDTO.user_email}">
+				<div class="col-auto">
+					<button type="button" id="modifyBtn" class="btn"
+						style="background-color: #d2e3ec;">수정</button>
+				</div>
+				<div class="col-auto">
+					<button type="button" id="deleteBtn" class="btn"
+						style="background-color: #fce2e1;">삭제</button>
+				</div>
+			</c:if>
+			<div class="col-auto">
+				<button type="button" id="toListBtn" class="btn"
+					style="background-color: #cfe4d8">목록으로</button>
+			</div>
+		</div>
+		<form id="infoForm" method="get">
+			<input type="hidden" id="seq_group" name="seq_group"
+				value="${detail.boardDTO.seq_group}"> <input type="hidden"
+				id="seq_group_board" name="seq_group_board"
+				value="${detail.boardDTO.seq_group_board}"> <input
+				type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+			<input type="hidden" name="amount"
+				value='<c:out value="${cri.amount}"/>'> <input type="hidden"
+				name="type" value="${cri.type}"> <input type="hidden"
+				name="keyword" value="${cri.keyword}">
+		</form>
+	</div>
 
 	<!-- Footer-->
-	<div class="footerWrapper mt-5" style="border-top:1px solid #e0e3e8;">
+	<div class="footerWrapper mt-5" style="border-top: 1px solid #e0e3e8;">
 		<div class="container">
 			<footer class="footer">
 				<div class="row">
@@ -578,7 +615,8 @@
 					</div>
 					<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
 						<ul class="list-inline mb-2">
-							<li class="list-inline-item"><a href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
+							<li class="list-inline-item"><a
+								href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
 							<li class="list-inline-item">⋅</li>
 							<c:choose>
 								<c:when test="${not empty loginSession}">
@@ -599,16 +637,14 @@
 								</c:otherwise>
 							</c:choose>
 							<li class="list-inline-item">⋅</li>
-							<li class="list-inline-item">
-								<c:choose>
+							<li class="list-inline-item"><c:choose>
 									<c:when test="${not empty loginSession}">
 										<a href="/group/toCreateGroup">모임 만들기</a>
 									</c:when>
 									<c:otherwise>
 										<a href="/login/toLogin">모임 만들기</a>
 									</c:otherwise>
-								</c:choose>
-							</li>
+								</c:choose></li>
 							<li class="list-inline-item">⋅</li>
 							<li class="list-inline-item"><a href="/privacy"
 								style="color: red; font-weight: bold;">개인정보처리방침</a></li>
@@ -638,7 +674,7 @@
 		</div>
 	</div>
 
-    <script>
+	<script>
     	// 목록으로 돌아가기
     	$("#toListBtn").on("click", function(){
     		$("#infoForm").find("#seq_group_board").remove();
@@ -697,7 +733,6 @@
     				"seq_group_board" : seq_group_board
     				, "user_email" : user_email
     			}, success : function(likeCheck){
-    				console.log("ajax의 체크: " + likeCheck);
     				if(likeCheck == 0){
     					Swal.fire({
 	    					icon: 'success',
@@ -719,7 +754,6 @@
     					$("#board-head-col").load(location.href + " #board-head-col");
     				}
     			}, error : function(e){
-    				console.log(e);
     			}
     		});
     	}
@@ -763,7 +797,6 @@
     					})
     				}
     			}, error : function(e){
-    				console.log(e);
     			}
     		})
     	})
@@ -790,7 +823,6 @@
 
     		let comment = $(e.target).parents(".commentHead").next().find("textarea").val();
     		let seq_group_comment = $(e.target).parent().val();
-    		console.log(seq_group_comment);
 
     		Swal.fire({
     			title: '댓글을 수정하시겠어요?',
@@ -814,7 +846,6 @@
     	    					Swal.fire('수정 실패', '', 'error');
     	    				}
     	    			}, error : function(e){
-    	    				console.log(e);
     	    			}
     	    		});
     			}
@@ -849,7 +880,6 @@
     	    					Swal.fire('삭제 실패', '', 'error');
     	    				}
     	    			}, error : function(e){
-    	    				console.log(e);
     	    			}
     	    		});
     			}

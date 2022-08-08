@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 <!-- swal -->
@@ -29,7 +31,7 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<title>모임 생성</title>
+<title>그룹 생성</title>
 <script>
 // 썸머노트
 $(document).ready(function() {
@@ -41,7 +43,7 @@ $(document).ready(function() {
            maxHeight: 550, // 최대 높이
            focus: false, // 에디터 로딩후 포커스를 맞출지 여부
            lang: "ko-KR", // 한글 설정
-           placeholder: '최대 2500byte까지 작성 가능합니다', //placeholder 설정
+           placeholder: '최대 2500byte까지 작성 가능합니다.', //placeholder 설정
            toolbar: [
                // [groupName, [list of button]]
                ['fontname', ['fontname']], // 글꼴
@@ -148,771 +150,804 @@ function uploadSummernoteImageFile(file, editor){
 <style>
 
 /* 썸머노트 제약 */
-.note-group-image-url{
-            display: none;
-        }
-
-
-@font-face {
-   font-family: 'Katuri';
-   src:
-      url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff')
-      format('woff');
-   font-weight: normal;
-   font-style: normal;
+.note-group-image-url {
+	display: none;
 }
 
 @font-face {
-   font-family: 'InfinitySans-RegularA1';
-   src:
-      url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff')
-      format('woff');
-   font-weight: normal;
-   font-style: normal;
+	font-family: 'Katuri';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'MICEGothic Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
+	font-family: 'InfinitySans-RegularA1';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'MICEGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'MICEGothic Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MICEGothic';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2')
+		format('woff2');
+	font-weight: 400;
+	font-style: normal;
 }
 
 body {
-   background-color: white;
+	background-color: white;
 }
 
 * {
-   box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* header */
 header {
-   font-family : 'MICEGothic Bold';
- }
+	font-family: 'MICEGothic Bold';
+}
 
 @media ( max-width : 768px) {
-   #navLogo {
-      display: none;
-   }
-   #myPageIcon {
-      display: none;
-   }
-   #cartIcon {
-      display: none;
-   }
-   #menu {
-      display: none;
-   }
+	#navLogo {
+		display: none;
+	}
+	#myPageIcon {
+		display: none;
+	}
+	#cartIcon {
+		display: none;
+	}
+	#menu {
+		display: none;
+	}
 }
 
 /* header */
 #navLogo {
-   width: 150px;
-   height: 100px;
+	width: 150px;
+	height: 100px;
 }
 
 #logoImgs {
-   width: 100%;
-   height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 @media ( min-width : 768px) {
-   #navibar {
-      display: none;
-   }
+	#navibar {
+		display: none;
+	}
 }
 
 /* header 반응형 끝 */
 #logoImg {
-   width: 50%;
+	width: 50%;
 }
 
 /* 네비바 드롭다운 */
 .dropdown-toggle:hover {
-   color: #83bf7b;
-   border-color: aliceblue;
+	color: #83bf7b;
+	border-color: aliceblue;
 }
 
 .dropdown:hover .dropdown-menu {
-   display: block;
-   margin-top: 0;
-   font-weight: bold;
+	display: block;
+	margin-top: 0;
+	font-weight: bold;
 }
 
 /* 썸머노트 드롭다운 */
 .note-editor .dropdown-toggle::after {
-            display: none;
-        }
+	display: none;
+}
 
 /*타이틀*/
 .create-title {
-   font-family: katuri;
-   font-size: 60px;
-   font-weight: bold;
-   text-align: center;
-   background: linear-gradient(to top, #FFE400 20%, transparent 30%)
+	font-family: katuri;
+	font-size: 60px;
+	font-weight: bold;
+	text-align: center;
+	background: linear-gradient(to top, #FFE400 20%, transparent 30%)
 }
 
 .title-image {
-   margin-bottom: 35px;
-   width: 70px;
-   height: 70px;
+	margin-bottom: 35px;
+	width: 70px;
+	height: 70px;
 }
 /*row 영역*/
 .style {
-    border: 2px solid #ff8f00;
-    border-radius: 50px;
-    padding: 50px;
-    background-color: #fffeea8a;
-    box-shadow: 3px 3px 5px 5px rgb(195 145 27);
+	border: 2px solid #ff8f00;
+	border-radius: 50px;
+	padding: 50px;
+	background-color: #fffeea8a;
+	box-shadow: 3px 3px 5px 5px rgb(195, 145, 27);
 }
 /*Interest 버튼 영역*/
 .categoryBtn {
-   font-family: InfinitySans-RegularA1;
+	font-family: InfinitySans-RegularA1;
 }
 
-.btn-outline-primary{
-   color: #ffb526;
-    border: 3px solid #ffcd70;
+.btn-outline-primary {
+	color: #ffb526;
+	border: 3px solid #ffcd70;
 }
 
 .btn-outline-primary:hover {
-    color: #fff;
-    background-color: #fcab4e;
-    border-color: #e27500;
-    }
+	color: #fff;
+	background-color: #fcab4e;
+	border-color: #e27500;
+}
 
-.btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
-   color: #fff;
-    background-color: #fcab4e;
-    border-color: #e27500;
+.btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary,
+	.btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show,
+	.btn-outline-primary:active {
+	color: #fff;
+	background-color: #fcab4e;
+	border-color: #e27500;
 }
 
 .btn-check:active+.btn-outline-primary:focus, .btn-check:checked+.btn-outline-primary:focus,
-   .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus,
-   .btn-outline-primary:active:focus {
-   box-shadow: 0 0 0 0.25rem rgb(130 133 137/ 50%);
+	.btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus,
+	.btn-outline-primary:active:focus {
+	box-shadow: 0 0 0 0.25rem rgb(130 133 137/ 50%);
 }
 
 .btn-check:active+.btn-outline-primary:focus, .btn-check:checked+.btn-outline-primary:focus,
-   .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus,
-   .btn-outline-primary:active:focus {
-   box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
+	.btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus,
+	.btn-outline-primary:active:focus {
+	box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
 }
 
-.btn-outline-warning{
-   color: #ffb526;
-    border: 3px solid #ffcd70;
+.btn-outline-warning {
+	color: #ffb526;
+	border: 3px solid #ffcd70;
 }
 
 .btn-outline-warning:hover {
-    color: #fff;
-    background-color: #fcab4e;
-    border-color: #e27500;
-    }
+	color: #fff;
+	background-color: #fcab4e;
+	border-color: #e27500;
+}
 
-.btn-check:active+.btn-outline-warning, .btn-check:checked+.btn-outline-warning, .btn-outline-warning.active, .btn-outline-warning.dropdown-toggle.show, .btn-outline-warning, .btn-outline-warning:active {
-   color: #fff;
-    background-color: #fcab4e;
-    border-color: #e27500;
+.btn-check:active+.btn-outline-warning, .btn-check:checked+.btn-outline-warning,
+	.btn-outline-warning.active, .btn-outline-warning.dropdown-toggle.show,
+	.btn-outline-warning, .btn-outline-warning:active {
+	color: #fff;
+	background-color: #fcab4e;
+	border-color: #e27500;
 }
 
 /*Basic Info*/
 .note-editable {
-   background-color: white;
+	background-color: white;
 }
 
 /*지역선택 버튼*/
 .btn-primary:hover {
-   color: #fff;
-   background-color: #b5a8a8;
-   border-color: #b5a8a8;
+	color: #fff;
+	background-color: #b5a8a8;
+	border-color: #b5a8a8;
 }
 
 .btn-primary {
-   color: #fff;
-   background-color: #b5a8a8;
-   border-color: #fff;
+	color: #fff;
+	background-color: #b5a8a8;
+	border-color: #fff;
 }
 
 .btn-check:focus+.btn-primary, .btn-primary:focus {
-   color: #fff;
-   background-color: #b5a8a8;
-   border-color: #b5a8a8;
-   box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
+	color: #fff;
+	background-color: #b5a8a8;
+	border-color: #b5a8a8;
+	box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
 }
 
 .btn-check:focus+.btn, .btn:focus {
-   outline: 0;
-   box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
+	outline: 0;
+	box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
 }
 
 .btn-check:focus+.btn-primary, .btn-primary:focus {
-   color: #fff;
-   background-color: #b5a8a8;
-   border-color: #b5a8a8;
-   box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
+	color: #fff;
+	background-color: #b5a8a8;
+	border-color: #b5a8a8;
+	box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
 }
 
 .btn-check:focus+.btn, .btn:focus {
-   outline: 0;
-   box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
+	outline: 0;
+	box-shadow: 0 0 0 0.25rem rgb(218 222 229/ 50%);
 }
 /*아이콘 크기*/
 .fa-solid, .fas {
-   font-size: 30px;
+	font-size: 30px;
 }
 /* 네비바 드롭다운 */
 .dropdown-toggle:hover {
-   color: #83bf7b;
-   border-color: aliceblue;
+	color: #83bf7b;
+	border-color: aliceblue;
 }
 
 .dropdown:hover .dropdown-menu {
-   display: block;
-   margin-top: 0;
-   font-weight: bold;
+	display: block;
+	margin-top: 0;
+	font-weight: bold;
 }
 
 a {
-   text-decoration: none;
-   color: black;
+	text-decoration: none;
+	color: black;
 }
 
 .mainContainer {
-   margin-top: 40px;
+	margin-top: 40px;
 }
 
 .mainIcon i {
-   color: #aa6565;
+	color: #aa6565;
 }
 
 .mainFooter {
-   height: 70px;
+	height: 70px;
 }
 
 #search-addon {
-   cursor: pointer;
+	cursor: pointer;
 }
 
 ul {
-   list-style: none;
-   padding: 0;
+	list-style: none;
+	padding: 0;
 }
 
 .mainFooterBtnBox {
-   margin-left: 30%;
+	margin-left: 30%;
 }
 
 .memberCntBox {
-   background-color: #fcab4e;
-    border-color: #e27500;
-   width: 140px;
-   border-radius: 10px;
-   height: 30px;
+	background-color: #fcab4e;
+	border-color: #e27500;
+	width: 140px;
+	border-radius: 10px;
+	height: 30px;
 }
 
 .plusBtn, .minusBtn {
-   width: 35px;
-   color: #fff;
+	width: 35px;
+	color: #fff;
 }
 
 .plusBtn, .minusBtn:hover {
-   cursor: pointer;
+	cursor: pointer;
 }
 
 .memberCnt {
-   width: 70px;
-   color: #fff;
+	width: 70px;
+	color: #fff;
 }
 
 /* footer */
 .footer-imgBox img {
-   max-width: 100%;
+	max-width: 100%;
 }
 
 .footerWrapper {
-   background-color: white;
-   font-family: "MICEGothic Bold";
-   font-size: 15px;
+	background-color: white;
+	font-family: "MICEGothic Bold";
+	font-size: 15px;
 }
 
 .footerBox {
-   height: 0px;
+	height: 0px;
 }
 
 footer.footer {
-   padding-top: 2rem;
-   padding-bottom: 2rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 
 .footer a {
-   text-decoration: none;
-   color: black;
-   font-weight: 40px;
-   font-weight: bold;
+	text-decoration: none;
+	color: black;
+	font-weight: 40px;
+	font-weight: bold;
 }
 
 .footer-imgBox>img {
-   height: 100%;
-   text-align: center;
+	height: 100%;
+	text-align: center;
 }
 
 .footer-imgBox {
-   height: 100%;
-   text-align: center;
+	height: 100%;
+	text-align: center;
 }
-
 </style>
 </head>
 <body>
-   <!--네비바-->
-   <header class="mb-3 border-bottom" style="box-shadow: 2px 1px 6px 1px #bfbfbf;">
-      <div class="container">
-         <!-- 접혔을 때 nav -->
-         <nav id="navibar" class="navbar navbar-expand-md navbar-light"
-            aria-label="Main navigation">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-10">
-                     <a class="navbar-brand mb-2 mb-lg-0" href="/">
-                        <div class="title-box">
-                           <img id="logoImg" src="/resources/images/kiri.jpg">
-                        </div>
-                     </a>
-                  </div>
-                  <!-- toggle button -->
-                  <div class="col-2 d-flex align-items-center">
-                     <button class="navbar-toggler" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                     </button>
-                  </div>
-                  <!-- 메뉴 -->
-                  <div class="collapse navbar-collapse justify-content-end"
-                     id="navbarNavDropdown">
-                     <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/board/toBoard">자유게시판</a></li>
-                        <c:if test="${empty loginSession}">
-                           <li class="nav-item"><a class="nav-link"
-                              href="/login/toLogin">로그인</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="/signup/toSignupAgree">회원가입</a></li>
-                        </c:if>
-                        <c:if
-                           test="${not empty loginSession && loginSession.user_email eq 'admin'}">
-                           <li class="nav-item"><a class="nav-link"
-                              href="/mem/myPage">마이페이지</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="/admin/toAdmin">관리자페이지 이동</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="/login/toLogout">로그아웃</a></li>
-                        </c:if>
-                        <c:if
-                           test="${not empty loginSession && loginSession.user_email ne 'admin'}">
-                           <li class="nav-item"><a class="nav-link"
-                              href="/mem/myPage">마이페이지</a></li>
-                           <li class="nav-item"><a class="nav-link"
-                              href="/login/toLogout">로그아웃</a></li>
-                        </c:if>
-                     </ul>
-                  </div>
-               </div>
+	<!--네비바-->
+	<header class="mb-3 border-bottom"
+		style="box-shadow: 2px 1px 6px 1px #bfbfbf;">
+		<div class="container">
+			<!-- 접혔을 때 nav -->
+			<nav id="navibar" class="navbar navbar-expand-md navbar-light"
+				aria-label="Main navigation">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-10">
+							<a class="navbar-brand mb-2 mb-lg-0" href="/">
+								<div class="title-box">
+									<img id="logoImg" src="/resources/images/kiri.jpg">
+								</div>
+							</a>
+						</div>
+						<!-- toggle button -->
+						<div class="col-2 d-flex align-items-center">
+							<button class="navbar-toggler" type="button"
+								data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+								aria-controls="navbarNavDropdown" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+						</div>
+						<!-- 메뉴 -->
+						<div class="collapse navbar-collapse justify-content-end"
+							id="navbarNavDropdown">
+							<ul class="navbar-nav mb-2 mb-lg-0">
+								<li class="nav-item"><a class="nav-link"
+									href="/board/toBoard">자유게시판</a></li>
+								<c:if test="${empty loginSession}">
+									<li class="nav-item"><a class="nav-link"
+										href="/login/toLogin">로그인</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/signup/toSignupAgree">회원가입</a></li>
+								</c:if>
+								<c:if
+									test="${not empty loginSession && loginSession.user_email eq 'admin'}">
+									<li class="nav-item"><a class="nav-link"
+										href="/mem/myPage">마이페이지</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/admin/toAdmin">관리자페이지 이동</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/login/toLogout">로그아웃</a></li>
+								</c:if>
+								<c:if
+									test="${not empty loginSession && loginSession.user_email ne 'admin'}">
+									<li class="nav-item"><a class="nav-link"
+										href="/mem/myPage">마이페이지</a></li>
+									<li class="nav-item"><a class="nav-link"
+										href="/login/toLogout">로그아웃</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
 
-            </div>
-         </nav>
-         <!-- 펼쳐졌을 때 nav -->
-         <nav id="menu" class="navbar navbar-expand-md w-100 navbar-light"
-            aria-label="Main navigation">
-            <div class="row w-100 align-items-center">
-               <div class="col-5 d-flex justify-content-center">
-                  <ul class="navbar-nav mb-2 mb-lg-0">
-                     <li class="nav-item"><a class="nav-link mx-2"
-                        href="/board/toBoard" style="font-size:18px;">자유 게시판</a></li>
-                  </ul>
-               </div>
+				</div>
+			</nav>
+			<!-- 펼쳐졌을 때 nav -->
+			<nav id="menu" class="navbar navbar-expand-md w-100 navbar-light"
+				aria-label="Main navigation">
+				<div class="row w-100 align-items-center">
+					<div class="col-5 d-flex justify-content-center">
+						<ul class="navbar-nav mb-2 mb-lg-0">
+							<li class="nav-item"><a class="nav-link mx-2"
+								href="/board/toBoard" style="font-size: 18px;">자유 게시판</a></li>
+						</ul>
+					</div>
 
-               <!-- logo -->
-               <div class="col-2">
-                  <a href="/" id="navLogo" class="mb-2 mb-lg-0"> <img
-                     id="logoImgs" src="/resources/images/kiri.jpg">
+					<!-- logo -->
+					<div class="col-2">
+						<a href="/" id="navLogo" class="mb-2 mb-lg-0"> <img
+							id="logoImgs" src="/resources/images/kiri.jpg">
 
-                  </a>
-               </div>
+						</a>
+					</div>
 
-               <div class="col-5">
-                  <div class="row align-items-center justify-content-center">
-                     <div class="col-auto">
-                        <ul class="navbar-nav mb-2 mb-lg-0 me-2">
-                           <c:if test="${empty loginSession}">
-                              <li class="nav-item"><a class="nav-link"
-                                 href="/login/toLogin">로그인</a></li>
-                              <li class="nav-item"><a class="nav-link"
-                                 href="/signup/toSignupAgree">회원가입</a></li>
-                           </c:if>
-                        </ul>
-                     </div>
-                     <div class="col-auto user">
-               <c:if test = "${not empty loginSession && loginSession.user_email eq 'admin'}">
-                         <div class="dropdown text-end">
-                           <a href="/" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                           <img src="/resources/images/profile.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
-                           </a>
-                           <ul class="dropdown-menu text-small"
-                              aria-labelledby="dropdownUser1">
-                              <li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
-                              <li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="/admin/toAdmin">관리자 페이지이동</a></li>
-                              <li><a class="dropdown-item" href="/login/toLogout">로그아웃</a></li>
-                           </ul>
-                        </div>
-                     </c:if>
-                        <c:if
-                           test="${not empty loginSession && loginSession.user_email ne 'admin'}">
-                           <div class="dropdown text-end">
-                              <a href="/"
-                                 class="d-block link-dark text-decoration-none dropdown-toggle"
-                                 id="dropdownUser1" data-bs-toggle="dropdown"
-                                 aria-expanded="false">
-                                 <c:if test="${loginSession.user_image eq null}">
-                                    <img src="/resources/images/profile.jpg" alt="mdo" width="40" height="40" class="rounded-circle">
-                                 </c:if>
-                                 <c:if test="${loginSession.user_image ne null}">
-                                    <img src="/profile/${loginSession.user_image }" alt="mdo" width="40" height="40" class="rounded-circle">
-                                 </c:if>
-                              </a>
-                              <ul class="dropdown-menu text-small"
-                                 aria-labelledby="dropdownUser1">
-                                 <li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
-                                 <li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a>
-                                 </li>
-                                 <li>
-                                    <hr class="dropdown-divider" style="margin:0px;">
-                                 </li>
-                                  <c:if test="${loginType ne 'kakao'}">
-                                      <li><a class="dropdown-item mt-2" href="/login/toLogout">로그아웃</a></li>
-                                  </c:if>
-                                 <c:if test="${loginType eq 'kakao'}">
-                                    <li><a class="dropdown-item mt-2" href="${kakaoLogout}">로그아웃</a></li>
-                                 </c:if>
-                              </ul>
-                           </div>
-                        </c:if>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </nav>
-      </div>
-   </header>
+					<div class="col-5">
+						<div class="row align-items-center justify-content-center">
+							<div class="col-auto">
+								<ul class="navbar-nav mb-2 mb-lg-0 me-2">
+									<c:if test="${empty loginSession}">
+										<li class="nav-item"><a class="nav-link"
+											href="/login/toLogin">로그인</a></li>
+										<li class="nav-item"><a class="nav-link"
+											href="/signup/toSignupAgree">회원가입</a></li>
+									</c:if>
+								</ul>
+							</div>
+							<div class="col-auto user">
+								<c:if
+									test="${not empty loginSession && loginSession.user_email eq 'admin'}">
+									<div class="dropdown text-end">
+										<a href="/"
+											class="d-block link-dark text-decoration-none dropdown-toggle"
+											id="dropdownUser1" data-bs-toggle="dropdown"
+											aria-expanded="false"> <img
+											src="/resources/images/profile.jpg" alt="mdo" width="32"
+											height="32" class="rounded-circle">
+										</a>
+										<ul class="dropdown-menu text-small"
+											aria-labelledby="dropdownUser1">
+											<li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
+											<li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a></li>
+											<li><hr class="dropdown-divider"></li>
+											<li><a class="dropdown-item" href="/admin/toAdmin">관리자
+													페이지이동</a></li>
+											<li><a class="dropdown-item" href="/login/toLogout">로그아웃</a></li>
+										</ul>
+									</div>
+								</c:if>
+								<c:if
+									test="${not empty loginSession && loginSession.user_email ne 'admin'}">
+									<div class="dropdown text-end">
+										<a href="/"
+											class="d-block link-dark text-decoration-none dropdown-toggle"
+											id="dropdownUser1" data-bs-toggle="dropdown"
+											aria-expanded="false"> <c:if
+												test="${loginSession.user_image eq null}">
+												<img src="/resources/images/profile.jpg" alt="mdo"
+													width="40" height="40" class="rounded-circle">
+											</c:if> <c:if test="${loginSession.user_image ne null}">
+												<img src="/profile/${loginSession.user_image }" alt="mdo"
+													width="40" height="40" class="rounded-circle">
+											</c:if>
+										</a>
+										<ul class="dropdown-menu text-small"
+											aria-labelledby="dropdownUser1">
+											<li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
+											<li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a>
+											</li>
+											<li>
+												<hr class="dropdown-divider" style="margin: 0px;">
+											</li>
+											<c:if test="${loginType ne 'kakao'}">
+												<li><a class="dropdown-item mt-2"
+													href="/login/toLogout">로그아웃</a></li>
+											</c:if>
+											<c:if test="${loginType eq 'kakao'}">
+												<li><a class="dropdown-item mt-2" href="${kakaoLogout}">로그아웃</a></li>
+											</c:if>
+										</ul>
+									</div>
+								</c:if>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
 
-      <div style = "text-align:center;">
-         <span class = "create-title">Create Group</span><span><img class = "title-image" src = "/resources/images/Create_Group.png"></span>
-      </div>
-   <div class="container w-75 mainContainer">
-      <form action="/group/createGroup" method="post"
-         enctype="multipart/form-data" id="groupForm">
-         <!--관심사 -->
-         <div class="row style mt-4">
-            <!--관심사 아이콘-->
-            <div class="col-3 mainIcon text-center">
-               <h4>
-                  <i class="fa-solid fa-tags"></i>
-               </h4>
-            </div>
-            <!--관심사 버튼  -->
-            <div class="col-md-9 mainTextInterest d-flex flex-column justify-content-start">
-               <h4 style = "font-family:katuri;">Interests</h4>
-               <span style="font-family:InfinitySans-RegularA1; font-size: 14px;">주제가 구체적일수록 비슷한 관심사를 가진 사람들에게
-                  그룹을 <br>홍보하기가 더 쉬워집니다. 주제는 1개만 선택 가능합니다.
-               </span>
-               <div class="row mt-4">
-                  <div class="col-md">
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="아웃도어/여행">아웃도어/여행</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="운동/스포츠">운동/스포츠</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="외국어/언어">외국어/언어</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="반려동물">반려동물</button>
-                  </div>
-               </div>
-               <div class="row mt-2">
-                  <div class="col-md">
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="음악/악기">음악/악기</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="공예/만들기">공예/만들기</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="댄스/무용">댄스/무용</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="인문학/책/글">인문학/책/글</button>
-                  </div>
-               </div>
-               <div class="row mt-2">
-                  <div class="col-md">
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="사진/영상">사진/영상</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="게임/오락">게임/오락</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="요리/제조">요리/제조</button>
-                     <button type="button"
-                        class="btn btn-outline-primary rounded-pill categoryBtn"
-                        value="문화/공연/축제">문화/공연/축제</button>
-                     <input type="text" name="group_category" id="group_category"
-                        hidden>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <!--Basic Info-->
-         <div class="row style  mt-5">
-            <!--아이콘-->
-            <div class="col-3 mainIcon text-center">
-               <h4>
-                  <i class="fa-solid fa-pen-to-square"></i>
-               </h4>
-            </div>
-            <!--기본 글쓰기 -->
-            <div
-               class="col-md-9 mainTextBasicInfo d-flex flex-column justify-content-start">
-               <h4 style = "font-family:katuri;">Basic Info</h4>
-               <strong class="mt-2" style = "font-family:InfinitySans-RegularA1;">모임 이름</strong> <span style="font-size: 14px; font-family:InfinitySans-RegularA1;"
-                  class="mt-2">사람들이 그룹의 성격과 내용을 파악할 수 있는 이름을 지어주세요. 떠오르는 기발한
-                  이름이 있나요? <br> 마음이 바뀌면 나중에 다시 변경할 수 있습니다.
-               </span>
-               <div class="mb-3 mt-2">
-                  <input type="text" class="form-control" id="group_title"
-                     placeholder="최대 24자까지 작성 가능합니다." name="group_title" maxlength='24'>
-               </div>
-               <strong style = "font-family:InfinitySans-RegularA1;"class="mt-2">모집 내용</strong> <span style="font-size: 14px; font-family:InfinitySans-RegularA1;"
-                  class="mt-2">모집내용은 회원들에게 그룹을 홍보할 때 표시됩니다. <br>변경사항이
-                  있다면 나중에 언제든지 업데이트가 가능합니다. 내용은 최대 1750자까지 입력 가능합니다.
-               </span>
-               <div class="form-floating mb-3 mt-2">
-                  <textarea id="summernote" name="group_info" class="group_info"></textarea>
-                  <sup>(<span id="nowByte">0</span>/2500bytes)</sup>
-               </div>
-            </div>
-         </div>
-         <!--위치 -->
-         <div class="row style  mt-5">
-            <!--위치 아이콘-->
-            <div class="col-3 mainIcon text-center">
-               <h4>
-                  <i class="fa-solid fa-location-dot"></i>
-               </h4>
-            </div>
-            <!--위치 설정  -->
-            <div
-               class="col-md-9 mainText mainTextMap d-flex flex-column justify-content-start">
-               <h4 style = "font-family:katuri;">Location</h4>
-               <span style="font-size: 14px; font-family:InfinitySans-RegularA1;">해당 지역의 사람들이 귀하의 이벤트를 발견하도록 돕고
-                  <br> 참석자들에게 위치를 제공해주세요.
-               </span> <span class="mt-2" style = "font-family:InfinitySans-RegularA1;"><strong>지역 설정</strong></span>
-               <div class="selectBox d-flex">
-                  <select class="form-select mt-2 w-25 me-2" name="sido1" id="sido1"
-                     onchange="selectBoxChange1(this.value);"></select> <select
-                     class="form-select mt-2 w-25" name="gugun1" id="gugun1"
-                     onchange="selectBoxChange2(this.value);"></select>
-                  <button type="button"
-                     class="btn btn-primary mt-2 group_siteBtn ms-3">지역 선택 완료</button>
-               </div>
-               <!--모임 지역-->
-               <input type="text" id="group_site" name="group_site" hidden>
-               <input type="text" id="sido1Input" name="sido1Input" hidden>
-               <input type="text" id="gugun1Input" name="gugun1Input" hidden>
-            </div>
-         </div>
-         <!--메인 이미지-->
-         <div class="row style  mt-5">
-            <!--메인 이미지 아이콘-->
-            <div class="col-3 mainIcon text-center">
-               <h4>
-                  <i class="fa-solid fa-images"></i>
-               </h4>
-            </div>
-            <!--이미지 올리기 -->
-            <div
-               class="col-md-9 mainTextFile d-flex flex-column justify-content-start">
-               <h4 style ="font-family:katuri;">Main Image</h4>
-               <span style="font-size: 14px;font-family:InfinitySans-RegularA1;">썸네일로 보여질 이미지입니다. <br>본인이
-                  생각하는 최고의 사진을 넣어주세요!
-               </span>
-               <div class = "row">
-                  <div class=" col-md-9 imgBox mt-4">
-                     <img style = "width:100%; height:400px;" src="/resources/images/메인사진2(배경).png" id="groupDefaultImg">
-                  </div>
-                  <input type="file" class="form-control mt-3 w-75" name="groupFile"
-                     id="groupFile" accept='image/jpeg,image/gif,image/png' />
-               </div>
-            </div>
-         </div>
-         <!--인원수-->
-         <div class="row style  mt-5">
-            <!--위치 아이콘-->
-            <div class="col-3 mainIcon text-center">
-               <h4>
-                  <i class="fa-solid fa-user-group"></i>
-               </h4>
-            </div>
-            <!--위치설정-->
-            <div
-               class="col-md-9 mainText mainTextMap d-flex flex-column justify-content-start">
-               <h4 style = "font-family:katuri;">Member</h4>
-               <span style="font-size: 14px;font-family:InfinitySans-RegularA1;">인원수를 조정을 통해 유동적인 모임을 생성하세요!<br>
-                  인원은 최소 2명부터 최대 10명까지 가능합니다.
-               </span> <strong class="mt-2">인원 설정</strong>
-               <div class="memberCntBox d-flex mt-2 ">
-                  <div
-                     class="calBtn minusBtn d-flex justify-content-center align-items-center"
-                     id="minusBtn">
-                     <i class="fa-solid fa-minus" style="font-size:14px;"></i>
-                  </div>
-                  <div
-                     class="memberCnt d-flex justify-content-center align-items-center">2</div>
-                  <div
-                     class="calBtn plusBtn d-flex justify-content-center align-items-center"
-                     id="plusBtn">
-                     <i class="fa-solid fa-plus" style="font-size:14px;"></i>
-                  </div>
-               </div>
-               <input type="text" name="group_people" id="group_people" value="2"
-                  hidden>
-            </div>
-         </div>
-         <!--이미지-->
-         <div class="row style  mt-5">
-            <!--이미지 아이콘-->
-            <div class="col-3 mainIcon text-center">
-               <h4>
-                  <i class="fa-solid fa-circle-info"></i>
-               </h4>
-            </div>
-            <!--이미지 올리기 -->
-            <div
-               class="col-md-9 mainTextFile d-flex flex-column justify-content-start">
-               <h4 style = "font-family:katuri;">Guideline</h4>
-               <span>
-                  <h5 style = "font-family:InfinitySans-RegularA1;">거의 다왔습니다! 잠시 시간을 내어 가이드라인을 읽어주세요.</h5>
-               </span> <span style="font-size: 14px;font-family:InfinitySans-RegularA1;" class="mt-2">끼리끼리는 끈끈한 커뮤니티를
-                  통해 사람들이 더욱 풍요롭고 행복한 삶을 <br>살 수 있도록 합니다. 따라서 모든 그룹은 다음 사항을
-                  충족해야 합니다.
-               </span>
-               <ul class="mt-2" style="font-size: 14px;">
-                  <li><i class="fa-solid fa-check"></i><span class="ms-3" style = "font-family:InfinitySans-RegularA1;">회원에게
-                        성장의 기회 제공</span></li>
-                  <li><i class="fa-solid fa-check"></i><span class="ms-3" style = "font-family:InfinitySans-RegularA1;">모든
-                        이벤트에 주최자 참석</span></li>
-                  <li><i class="fa-solid fa-check"></i><span class="ms-3" style = "font-family:InfinitySans-RegularA1;">그룹의
-                        목적은 투명하게 공개</span></li>
-               </ul>
-            </div>
-      </form>
-   </div>
-   </div>
-   <!--뒤로가기 , 동의 후 등록-->
-   <div class="mainFooter d-flex justify-content-center align-items-center mt-3">
-      <span class="mainFooterBtnBox">
-         <button class="btn btn-outline-secondary" id="backBtn">뒤로 가기</button>
-         <button class="btn btn-warning ms-4" id="registerGroupBtn">동의후 등록</button>
-      </span>
-   </div>
-   <!-- Footer-->
-   <div class="footerWrapper mt-5" style="border-top:1px solid #e0e3e8;">
-      <div class="container">
-         <footer class="footer">
-            <div class="row">
-               <div class="col-lg-3 footer-imgBox">
-                  <img src="/resources/images/kirilogo.png" alt="오류가 발생했습니다." />
-               </div>
-               <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                  <ul class="list-inline mb-2">
-                     <li class="list-inline-item"><a href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
-                     <li class="list-inline-item">⋅</li>
-                     <c:choose>
-                        <c:when test="${not empty loginSession}">
-                           <li class="list-inline-item"><a href="/mem/myPage">마이페이지</a></li>
-                           <li class="list-inline-item">⋅</li>
-                           <c:if test="${loginType ne 'kakao'}">
-                              <li class="list-inline-item"><a href="/login/toLogout">로그아웃</a></li>
-                           </c:if>
-                           <c:if test="${loginType eq 'kakao'}">
-                              <li class="list-inline-item"><a href="${kakaoLogout}">로그아웃</a></li>
-                           </c:if>
-                        </c:when>
-                        <c:otherwise>
-                           <li class="list-inline-item"><a
-                              href="/signup/toSignupAgree">회원가입</a></li>
-                           <li class="list-inline-item">⋅</li>
-                           <li class="list-inline-item"><a href="/login/toLogin">로그인</a></li>
-                        </c:otherwise>
-                     </c:choose>
-                     <li class="list-inline-item">⋅</li>
-                     <li class="list-inline-item">
-                        <c:choose>
-                           <c:when test="${not empty loginSession}">
-                              <a href="/group/toCreateGroup">모임 만들기</a>
-                           </c:when>
-                           <c:otherwise>
-                              <a href="/login/toLogin">모임 만들기</a>
-                           </c:otherwise>
-                        </c:choose>
-                     </li>
-                     <li class="list-inline-item">⋅</li>
-                     <li class="list-inline-item"><a href="/privacy"
-                        style="color: red; font-weight: bold;">개인정보처리방침</a></li>
-                  </ul>
-                  <p class="text-muted small mb-4 mb-lg-0">끼리끼리(주) 대표 : 이호준 |
-                     개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
-                  <p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로
-                     57 이레빌딩</p>
-                  <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website
-                     2022. All Rights Reserved.</p>
-               </div>
-               <div class="col-lg-3 h-100 text-center text-lg-start my-auto">
-                  <ul class="list-inline mb-0">
-                     <li class="list-inline-item me-4"><a
-                        href="https://ko-kr.facebook.com"><i
-                           class="bi-facebook fs-3"></i></a></li>
-                     <li class="list-inline-item me-4"><a
-                        href="https://twitter.com/?lang=ko"><i
-                           class="bi-twitter fs-3"></i></a></li>
-                     <li class="list-inline-item"><a
-                        href="https://www.instagram.com/"><i
-                           class="bi-instagram fs-3"></i></a></li>
-                  </ul>
-               </div>
-            </div>
-         </footer>
-      </div>
-   </div>
+	<div style="text-align: center;">
+		<span class="create-title">Create Group</span><span><img
+			class="title-image" src="/resources/images/Create_Group.png"></span>
+	</div>
+	<div class="container w-75 mainContainer">
+		<form action="/group/createGroup" method="post"
+			enctype="multipart/form-data" id="groupForm">
+			<!--관심사 -->
+			<div class="row style mt-4">
+				<!--관심사 아이콘-->
+				<div class="col-3 mainIcon text-center">
+					<h4>
+						<i class="fa-solid fa-tags"></i>
+					</h4>
+				</div>
+				<!--관심사 버튼  -->
+				<div
+					class="col-md-9 mainTextInterest d-flex flex-column justify-content-start">
+					<h4 style="font-family: katuri;">Interests</h4>
+					<span style="font-family: InfinitySans-RegularA1; font-size: 14px;">주제가
+						구체적일수록 비슷한 관심사를 가진 사람들에게 그룹을 <br>홍보하기가 더 쉬워집니다. 주제는 1개만 선택
+						가능합니다.
+					</span>
+					<div class="row mt-4">
+						<div class="col-md">
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="아웃도어/여행">아웃도어/여행</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="운동/스포츠">운동/스포츠</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="외국어/언어">외국어/언어</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="반려동물">반려동물</button>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="col-md">
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="음악/악기">음악/악기</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="공예/만들기">공예/만들기</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="댄스/무용">댄스/무용</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="인문학/책/글">인문학/책/글</button>
+						</div>
+					</div>
+					<div class="row mt-2">
+						<div class="col-md">
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="사진/영상">사진/영상</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="게임/오락">게임/오락</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="요리/제조">요리/제조</button>
+							<button type="button"
+								class="btn btn-outline-primary rounded-pill categoryBtn"
+								value="문화/공연/축제">문화/공연/축제</button>
+							<input type="text" name="group_category" id="group_category"
+								hidden>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Basic Info-->
+			<div class="row style  mt-5">
+				<!--아이콘-->
+				<div class="col-3 mainIcon text-center">
+					<h4>
+						<i class="fa-solid fa-pen-to-square"></i>
+					</h4>
+				</div>
+				<!--기본 글쓰기 -->
+				<div
+					class="col-md-9 mainTextBasicInfo d-flex flex-column justify-content-start">
+					<h4 style="font-family: katuri;">Basic Info</h4>
+					<strong class="mt-2" style="font-family: InfinitySans-RegularA1;">모임
+						이름</strong> <span
+						style="font-size: 14px; font-family: InfinitySans-RegularA1;"
+						class="mt-2">사람들이 그룹의 성격과 내용을 파악할 수 있는 이름을 지어주세요. 떠오르는 기발한
+						이름이 있나요? <br> 마음이 바뀌면 나중에 다시 변경할 수 있습니다.
+					</span>
+					<div class="mb-3 mt-2">
+						<input type="text" class="form-control" id="group_title"
+							placeholder="최대 24자까지 작성 가능합니다." name="group_title"
+							maxlength='24'>
+					</div>
+					<strong style="font-family: InfinitySans-RegularA1;" class="mt-2">모집
+						내용</strong> <span
+						style="font-size: 14px; font-family: InfinitySans-RegularA1;"
+						class="mt-2">모집내용은 회원들에게 그룹을 홍보할 때 표시됩니다. <br>변경사항이
+						있다면 나중에 언제든지 업데이트가 가능합니다.
+					</span>
+					<div class="form-floating mb-3 mt-2">
+						<textarea id="summernote" name="group_info" class="group_info"></textarea>
+						<sup>(<span id="nowByte">0</span>/2500bytes)
+						</sup>
+					</div>
+				</div>
+			</div>
+			<!--위치 -->
+			<div class="row style  mt-5">
+				<!--위치 아이콘-->
+				<div class="col-3 mainIcon text-center">
+					<h4>
+						<i class="fa-solid fa-location-dot"></i>
+					</h4>
+				</div>
+				<!--위치 설정  -->
+				<div
+					class="col-md-9 mainText mainTextMap d-flex flex-column justify-content-start">
+					<h4 style="font-family: katuri;">Location</h4>
+					<span style="font-size: 14px; font-family: InfinitySans-RegularA1;">해당
+						지역의 사람들이 귀하의 이벤트를 발견하도록 돕고 <br> 참석자들에게 위치를 제공해주세요.
+					</span> <span class="mt-2" style="font-family: InfinitySans-RegularA1;"><strong>지역
+							설정</strong></span>
+					<div class="selectBox d-flex">
+						<select class="form-select mt-2 w-25 me-2" name="sido1" id="sido1"
+							onchange="selectBoxChange1(this.value);"></select> <select
+							class="form-select mt-2 w-25" name="gugun1" id="gugun1"
+							onchange="selectBoxChange2(this.value);"></select>
+						<button type="button"
+							class="btn btn-primary mt-2 group_siteBtn ms-3">지역 선택 완료</button>
+					</div>
+					<!--모임 지역-->
+					<input type="text" id="group_site" name="group_site" hidden>
+					<input type="text" id="sido1Input" name="sido1Input" hidden>
+					<input type="text" id="gugun1Input" name="gugun1Input" hidden>
+				</div>
+			</div>
+			<!--메인 이미지-->
+			<div class="row style  mt-5">
+				<!--메인 이미지 아이콘-->
+				<div class="col-3 mainIcon text-center">
+					<h4>
+						<i class="fa-solid fa-images"></i>
+					</h4>
+				</div>
+				<!--이미지 올리기 -->
+				<div
+					class="col-md-9 mainTextFile d-flex flex-column justify-content-start">
+					<h4 style="font-family: katuri;">Main Image</h4>
+					<span style="font-size: 14px; font-family: InfinitySans-RegularA1;">썸네일로
+						보여질 이미지입니다. <br>본인이 생각하는 최고의 사진을 넣어주세요!
+					</span>
+					<div class="row">
+						<div class=" col-md-9 imgBox mt-4">
+							<img style="width: 100%; height: 400px;"
+								src="/resources/images/메인사진2(배경).png" id="groupDefaultImg">
+						</div>
+						<input type="file" class="form-control mt-3 w-75" name="groupFile"
+							id="groupFile" accept='image/jpeg,image/gif,image/png' />
+					</div>
+				</div>
+			</div>
+			<!--인원수-->
+			<div class="row style  mt-5">
+				<!--위치 아이콘-->
+				<div class="col-3 mainIcon text-center">
+					<h4>
+						<i class="fa-solid fa-user-group"></i>
+					</h4>
+				</div>
+				<!--위치설정-->
+				<div
+					class="col-md-9 mainText mainTextMap d-flex flex-column justify-content-start">
+					<h4 style="font-family: katuri;">Member</h4>
+					<span style="font-size: 14px; font-family: InfinitySans-RegularA1;">인원수를
+						조정을 통해 유동적인 모임을 생성하세요!<br> 인원은 최소 2명부터 최대 10명까지 가능합니다.
+					</span> <strong class="mt-2">인원 설정</strong>
+					<div class="memberCntBox d-flex mt-2 ">
+						<div
+							class="calBtn minusBtn d-flex justify-content-center align-items-center"
+							id="minusBtn">
+							<i class="fa-solid fa-minus" style="font-size: 14px;"></i>
+						</div>
+						<div
+							class="memberCnt d-flex justify-content-center align-items-center">2</div>
+						<div
+							class="calBtn plusBtn d-flex justify-content-center align-items-center"
+							id="plusBtn">
+							<i class="fa-solid fa-plus" style="font-size: 14px;"></i>
+						</div>
+					</div>
+					<input type="text" name="group_people" id="group_people" value="2"
+						hidden>
+				</div>
+			</div>
+			<!--이미지-->
+			<div class="row style  mt-5">
+				<!--이미지 아이콘-->
+				<div class="col-3 mainIcon text-center">
+					<h4>
+						<i class="fa-solid fa-circle-info"></i>
+					</h4>
+				</div>
+				<!--이미지 올리기 -->
+				<div
+					class="col-md-9 mainTextFile d-flex flex-column justify-content-start">
+					<h4 style="font-family: katuri;">Guideline</h4>
+					<span>
+						<h5 style="font-family: InfinitySans-RegularA1;">거의 다왔습니다! 잠시
+							시간을 내어 가이드라인을 읽어주세요.</h5>
+					</span> <span
+						style="font-size: 14px; font-family: InfinitySans-RegularA1;"
+						class="mt-2">끼리끼리는 끈끈한 커뮤니티를 통해 사람들이 더욱 풍요롭고 행복한 삶을 <br>살
+						수 있도록 합니다. 따라서 모든 그룹은 다음 사항을 충족해야 합니다.
+					</span>
+					<ul class="mt-2" style="font-size: 14px;">
+						<li><i class="fa-solid fa-check"></i><span class="ms-3"
+							style="font-family: InfinitySans-RegularA1;">회원에게 성장의 기회
+								제공</span></li>
+						<li><i class="fa-solid fa-check"></i><span class="ms-3"
+							style="font-family: InfinitySans-RegularA1;">모든 이벤트에 주최자
+								참석</span></li>
+						<li><i class="fa-solid fa-check"></i><span class="ms-3"
+							style="font-family: InfinitySans-RegularA1;">그룹의 목적은 투명하게
+								공개</span></li>
+					</ul>
+				</div>
+		</form>
+	</div>
+	</div>
+	<!--뒤로가기 , 동의 후 등록-->
+	<div
+		class="mainFooter d-flex justify-content-center align-items-center mt-3">
+		<span class="mainFooterBtnBox">
+			<button class="btn btn-outline-secondary" id="backBtn">뒤로 가기</button>
+			<button class="btn btn-warning ms-4" id="registerGroupBtn">동의후
+				등록</button>
+		</span>
+	</div>
+	<!-- Footer-->
+	<div class="footerWrapper mt-5" style="border-top: 1px solid #e0e3e8;">
+		<div class="container">
+			<footer class="footer">
+				<div class="row">
+					<div class="col-lg-3 footer-imgBox">
+						<img src="/resources/images/kirilogo.png" alt="오류가 발생했습니다." />
+					</div>
+					<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+						<ul class="list-inline mb-2">
+							<li class="list-inline-item"><a
+								href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
+							<li class="list-inline-item">⋅</li>
+							<c:choose>
+								<c:when test="${not empty loginSession}">
+									<li class="list-inline-item"><a href="/mem/myPage">마이페이지</a></li>
+									<li class="list-inline-item">⋅</li>
+									<c:if test="${loginType ne 'kakao'}">
+										<li class="list-inline-item"><a href="/login/toLogout">로그아웃</a></li>
+									</c:if>
+									<c:if test="${loginType eq 'kakao'}">
+										<li class="list-inline-item"><a href="${kakaoLogout}">로그아웃</a></li>
+									</c:if>
+								</c:when>
+								<c:otherwise>
+									<li class="list-inline-item"><a
+										href="/signup/toSignupAgree">회원가입</a></li>
+									<li class="list-inline-item">⋅</li>
+									<li class="list-inline-item"><a href="/login/toLogin">로그인</a></li>
+								</c:otherwise>
+							</c:choose>
+							<li class="list-inline-item">⋅</li>
+							<li class="list-inline-item"><c:choose>
+									<c:when test="${not empty loginSession}">
+										<a href="/group/toCreateGroup">모임 만들기</a>
+									</c:when>
+									<c:otherwise>
+										<a href="/login/toLogin">모임 만들기</a>
+									</c:otherwise>
+								</c:choose></li>
+							<li class="list-inline-item">⋅</li>
+							<li class="list-inline-item"><a href="/privacy"
+								style="color: red; font-weight: bold;">개인정보처리방침</a></li>
+						</ul>
+						<p class="text-muted small mb-4 mb-lg-0">끼리끼리(주) 대표 : 이호준 |
+							개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
+						<p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로
+							57 이레빌딩</p>
+						<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website
+							2022. All Rights Reserved.</p>
+					</div>
+					<div class="col-lg-3 h-100 text-center text-lg-start my-auto">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item me-4"><a
+								href="https://ko-kr.facebook.com"><i
+									class="bi-facebook fs-3"></i></a></li>
+							<li class="list-inline-item me-4"><a
+								href="https://twitter.com/?lang=ko"><i
+									class="bi-twitter fs-3"></i></a></li>
+							<li class="list-inline-item"><a
+								href="https://www.instagram.com/"><i
+									class="bi-instagram fs-3"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
 
-   <script>
+	<script>
   // 지역 설정
   $('document').ready(function() {
         var area0 = ["시/도 선택","서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"];
@@ -1222,6 +1257,7 @@ footer.footer {
     }
   }
 
+  // 뒤로가기 버튼
    $("#backBtn").on("click",function() {
       location.href = "/";
    })

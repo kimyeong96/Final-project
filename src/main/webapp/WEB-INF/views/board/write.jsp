@@ -5,28 +5,18 @@
 <html>
 <head>
 <!-- summernote -->
-<script type="text/javascript"
-	src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet"
-	href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
-<script type="text/javascript"
-	src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+<script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- include summernote css/js-->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <!-- swal -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
 <!-- Bootstrap icons-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>글 작성</title>
 <style>
@@ -401,21 +391,24 @@ footer.footer {
 
 				<div class="row mt-4">
 					<textarea id="summernote" name="board_content"></textarea>
-					
-		        </div>
-		        <sup>(<span id="nowByte">0</span>/3000bytes)</sup>
-	        
-	        </div>
-	        
-	        <div class="row my-4 justify-content-center align-items-center" id="bottom">
-	            <div class="col-auto">
-	                <button type="button" id="cancelBtn" class="btn btn-light">취소</button>
-	            </div>
-	            <div class="col-auto">
-	                <button type="button" id="submitBtn" class="btn" style="background-color: #e6f6ff;">작성 완료</button>
-	            </div>
-	        </div>
-        </form>
+
+				</div>
+				<sup>(<span id="nowByte">0</span>/2500bytes)
+				</sup>
+
+			</div>
+
+			<div class="row my-4 justify-content-center align-items-center"
+				id="bottom">
+				<div class="col-auto">
+					<button type="button" id="cancelBtn" class="btn btn-light">취소</button>
+				</div>
+				<div class="col-auto">
+					<button type="button" id="submitBtn" class="btn"
+						style="background-color: #e6f6ff;">작성 완료</button>
+				</div>
+			</div>
+		</form>
 	</div>
 
 	<!-- Footer-->
@@ -498,7 +491,7 @@ footer.footer {
 				  maxHeight: 550, // 최대 높이
 				  focus: true, // 에디터 로딩후 포커스를 맞출지 여부
 				  lang: "ko-KR", // 한글 설정
-				  placeholder: '최대 1000자까지 작성 가능합니다.', //placeholder 설정
+				  placeholder: '최대 2500byte까지 작성 가능합니다.', //placeholder 설정
 				  toolbar: [
 						// [groupName, [list of button]]
 						['fontname', ['fontname']], // 글꼴
@@ -529,24 +522,10 @@ footer.footer {
 						  for (var i = files.length - 1; i >= 0; i--) {
 							  uploadSummernoteImageFile(files[i], this);
 						  }
-					  }/* , onChange : function(contents, $editable){
-						 if($(".note-editable").html().length >= 10){
-							 alert("넘침!");
-						 }
-						 setContentsLength(contents, 0);
-					  } */
+					  }
 					  , onKeyup : function(e){
-						  /* let length = $(".note-editable").text().length;
-						  console.log(length);
-						  if(length >= 10){
-							  e.preventDefault();
-						  } */
 						  fn_checkByte(this); // 글자수 바이트 체크
-					  }, onKeydown : function(e){
-						  /* let length = $(".note-editable").text().length;
-						  if(length >= 10){
-							  e.preventDefault();
-						  } */
+					  }, onKeydown : function(e){ 
 						  fn_checkByte(this); // 글자수 바이트 체크
 					  }
 				  }
@@ -564,15 +543,11 @@ footer.footer {
 			
 			// 옵저버 인스턴스 생성, 콜백함수 설정
 			let observer = new MutationObserver(function(mutationList){ // 타겟에 변화가 일어나면 콜백함수를 실행하게 된다.
-				//console.log(mutationList);
 				for(let mutation of mutationList){
 					if(mutation.removedNodes.length == 1){
 						if(mutation.removedNodes[0].src != null) {
 							let img = mutation.removedNodes[0].src;
-							//console.log("img" + img);
-							//console.log("src : " + src);
 							let src = decodeURIComponent(img.replace("http://localhost/boardFile/", ""));
-							console.log(src);
 							$.ajax({
 								url : "/board/delImg"
 								, type : "post"
@@ -593,7 +568,7 @@ footer.footer {
 		
 		//textarea 바이트 수 체크하는 함수
 		function fn_checkByte(obj){
-			const maxByte = 3000; //최대 100바이트
+			const maxByte = 2500; //최대 100바이트
 			const text_val = obj.value; //입력한 문자
 			const text_len = text_val.length; //입력한 문자수
 			let totalByte=0;
@@ -610,7 +585,6 @@ footer.footer {
 				}
 			}
 			if(totalByte>maxByte){
-				alert('3000byte를 넘어갈 수 없습니다.');
 				document.getElementById("nowByte").innerText = totalByte;
 				document.getElementById("nowByte").style.color = "red";
 			}else{
@@ -618,39 +592,6 @@ footer.footer {
 				document.getElementById("nowByte").style.color = "green";
 			}
 		}
-		
-/* 		// 태그 / 줄바꿈 / 공백을 제거하고 텍스트 글자수만 가져옴
-		function setContentsLength(str, index){
-			let status = false;
-			let textCnt = 0; // 총 글자수
-			let maxCnt = 50; // 최대 글자수
-			let editorText = f_SkipTags_html(str); // 에디터에서 태그를 삭제하고 내용만 가져오기
-			editorText = editorText.replace(/\s/gi, ""); // 줄바꿈 제거
-			editorText = editorText.replace(/&nbsp;/gi, ""); // 공백 제거
-			
-			textCnt = editorText.length;
-			if(maxCnt > 0){
-				if(textCnt > maxCnt){
-					status = true;
-				}
-			}
-			if(status){
-				let msg = "등록 오류: 글자수는 최대" + maxCnt + "까지 등록이 가능합니다. 현재 글자수 : " + textCnt + " 자";
-				console.log(msg);
-			}
-		}
-		
-		// 에디터 내용 텍스트 제거
-		function f_SkipTags_html(input, allowed) {
-			// 허용할 태그는 다음과 같이 소문자로 넘겨받습니다. (<a><b><c>)
-			allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
-			let tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
-			let commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
-			return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
-		        return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
-		    });
-		} */
-		
 		
 		// summernote 이미지 업로드 function
 		function uploadSummernoteImageFile(file, editor){
@@ -674,7 +615,7 @@ footer.footer {
 		let imgArr = new Array();
 		// 작성 완료 버튼
 		$("#submitBtn").on("click", function(){
-			if($("#nowByte").html() >= 3000){
+			if($("#nowByte").html() >= 2500){
 				alert("최대 바이트 허용 수를 초과하여 글을 등록할 수 없습니다.");
 				return;
 			}
@@ -712,9 +653,7 @@ footer.footer {
 				src = RegExp.$2.replace("/boardFile/", "");
 				imgArr.push(src);
 			}
-			console.log(imgArr);
-			console.log(imgArr.length);
-			
+
 			if(imgArr.length !== 0){
 				for(let i = 0; i < imgArr.length; i++){
 					let inputImg = $("<input>").attr({

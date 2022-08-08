@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -24,17 +24,20 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
 <style>
-body,html{
-	height : 1100px;
+body, html {
+	height: 1100px;
 }
+
 .container {
-   max-width: -webkit-fill-available;
-   height: 100%;
-   padding: 0px;
+	max-width: -webkit-fill-available;
+	height: 100%;
+	padding: 0px;
 }
-.table > tbody > tr > td {
-     vertical-align: middle;
+
+.table>tbody>tr>td {
+	vertical-align: middle;
 }
+
 * {
 	box-sizing: border-box;
 	font-family: 'MICEGothic Bold';
@@ -80,7 +83,6 @@ body,html{
 .sidebar a:hover {
 	color: white;
 }
-
 
 .logoHome span {
 	color: white;
@@ -180,7 +182,7 @@ a {
 	margin: auto;
 	width: 75%;
 	height: max-content;
-	max-height : 550px;
+	max-height: 550px;
 	background-color: white;
 }
 
@@ -198,8 +200,8 @@ tbody tr {
 	text-align: center;
 }
 
-td{
-	font-size : 12px;
+td {
+	font-size: 12px;
 }
 
 td>a {
@@ -209,7 +211,7 @@ td>a {
 </style>
 </head>
 <body>
-<div class="container">
+	<div class="container">
 		<div class="sidebar">
 			<ul class="p-2">
 				<li class="logoHome sidemenu"><a href="/admin/toAdmin"> <img
@@ -224,13 +226,14 @@ td>a {
 				<li class="sidemenu"><a href="/admin/toBoard?curPage=1"> <i
 						class="fa-solid fa-table"></i><br> <span>게시물 관리</span>
 				</a></li>
-				<li class="sidemenu groupMenu"><a href="/admin/toGroupAdmin?curPage=1"> <i
+				<li class="sidemenu groupMenu"><a
+					href="/admin/toGroupAdmin?curPage=1"> <i
 						class="fa-solid fa-house-user"></i><br> <span>모임 관리</span>
 				</a></li>
 			</ul>
 		</div>
 		<div class="navbar">
-		<div class="userName">| &nbsp&nbsp admin</div>
+			<div class="userName">| &nbsp&nbsp admin</div>
 			<div class="user">
 				<img src="/resources/images/해삐루피.png" id="user_img">
 			</div>
@@ -241,29 +244,30 @@ td>a {
 		<div class="contents">
 			<div class="row title mt-2">
 				<div class="col mt-4">
-					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue; margin-left : 75px;">
+					<h4
+						style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue; margin-left: 75px;">
 						모임 관리</h4>
 				</div>
 			</div>
-                <div class="row searchBox">
-                    <div class="d-flex align-items-center m-auto w-75">
-                    <select name="searchGroup" class="form-select w-25 me-3">
+			<div class="row searchBox">
+				<div class="d-flex align-items-center m-auto w-75">
+					<select name="searchGroup" class="form-select w-25 me-3">
 						<option value="all" selected>전체</option>
 						<option value="group_title">모임명</option>
 						<option value="group_category">카테고리</option>
-					</select>
-                        <input class="form-control me-2" name="searchKeyword"
-                            id="searchKeyword" type="search" placeholder="모임 검색"
-                            aria-label="Search">
-                        <button class="btn btn-outline-primary" type="button"
-                            id="searchBtn">Search</button>
-                    </div>
-                </div>
+					</select> <input class="form-control me-2" name="searchKeyword"
+						id="searchKeyword" type="search" placeholder="모임 검색"
+						aria-label="Search">
+					<button class="btn btn-outline-primary" type="button"
+						id="searchBtn">Search</button>
+				</div>
+			</div>
 			<div class="row resultBox mt-3">
-				<span style = "font-size:20px;">총 모임<span id="groupCnt" style="color: navy">${groupCnt}</span>개
+				<span style="font-size: 20px;">총 모임<span id="groupCnt"
+					style="color: navy">${groupCnt}</span>개
 				</span>
 				<table class="table table-bordered">
-					<thead style="text-align: center; background-color : gainsboro;">
+					<thead style="text-align: center; background-color: gainsboro;">
 						<tr>
 							<td>모임장</td>
 							<td>모임명</td>
@@ -282,13 +286,16 @@ td>a {
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${groupList}" var="groupList">
-									<tr>		
+									<tr>
 										<td>${groupList.user_email}</td>
-										<td><a href = "/group/toGroupDetail?seq_group=${groupList.seq_group}">${groupList.group_title}</a></td>
+										<td><a
+											href="/group/toGroupDetail?seq_group=${groupList.seq_group}">${groupList.group_title}</a></td>
 										<td>${groupList.group_category}</td>
 										<td>${groupList.group_people}</td>
 										<td>${groupList.group_site}</td>
-										<td><a href ="/admin/toDeleteGroup?seq_group=${groupList.seq_group}"><i class="fa-solid fa-trash"></i></a></td>
+										<td><a
+											href="/admin/toDeleteGroup?seq_group=${groupList.seq_group}"><i
+												class="fa-solid fa-trash"></i></a></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -297,7 +304,7 @@ td>a {
 				</table>
 			</div>
 
- 			<!-- 검색전 pagination -->
+			<!-- 검색전 pagination -->
 			<div class="pagination mt-4 justify-content-center" id="page">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
@@ -318,7 +325,7 @@ td>a {
 						</c:if>
 					</ul>
 				</nav>
-			</div> 
+			</div>
 		</div>
 	</div>
 </body>

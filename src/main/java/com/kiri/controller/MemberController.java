@@ -49,7 +49,6 @@ public class MemberController {
 
 	@RequestMapping(value = "/myPage")
 	public String myPage(MessageDTO MessageDTO, Model model) throws Exception { // myPage 로 이동
-		System.out.println("myPage 이동");
 		String user_email = ((MemberDTO)session.getAttribute("loginSession")).getUser_email();
 		String user_nickname = ((MemberDTO)session.getAttribute("loginSession")).getUser_nickname();
 		
@@ -97,7 +96,6 @@ public class MemberController {
 
 	@RequestMapping(value = "/modifyProfilePic")
 	public String modifyProfilePic(MultipartFile user_image) throws Exception { // 사진 수정
-		System.out.println("user_image : "+user_image.getOriginalFilename());
 		MemberDTO dto = ((MemberDTO)session.getAttribute("loginSession"));
 		String user_email = dto.getUser_email();
 		
@@ -110,8 +108,6 @@ public class MemberController {
 			String realPath = session.getServletContext().getRealPath("profile");
 			String profile_image = service.uploadProfile(user_image, realPath);
 			((MemberDTO)session.getAttribute("loginSession")).setUser_image(profile_image);
-			System.out.println(realPath);
-			System.out.println("profile_image : "+profile_image);
 			service.modifyProfilePic(user_email,profile_image);
 		}
 		return "redirect:myPage";
@@ -151,9 +147,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/profileModifyPage")
 	public String profileModify(String user_email, Model model) throws Exception { // profileModify 페이지 이동
-		System.out.println(user_email);
 		MemberDTO selectMember = service.selectMember(user_email);
-		System.out.println(selectMember);
 
 		// 생년월일 잘라주기
 		String birth_date = selectMember.getUser_bd().substring(0, 4);
@@ -184,9 +178,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/profileModify") // 개인정보 수정
 	public String profileModify(MemberDTO dto, String data_password) throws Exception {
-		System.out.println("data_password" + data_password);
-		System.out.println(dto.getUser_pw());
-		
+
 		if(dto.getUser_pw()== null) {
 			dto.setUser_pw(data_password);
 		}else {
@@ -198,24 +190,18 @@ public class MemberController {
 			}
 		}
 		
-		System.out.println("update Dto : " +dto);
-		System.out.println("User_email : " + dto.getUser_email());
-		
 		service.groupChatmodify(dto.getUser_email(), dto.getUser_nickname());
 		service.groupMemmodify(dto.getUser_email(), dto.getUser_nickname());
 		service.groupApplymodify(dto.getUser_email(), dto.getUser_nickname());
 		service.groupreportmodify(dto.getUser_email(), dto.getUser_nickname());
 		service.groupreport2modify(dto.getUser_email(), dto.getUser_nickname());
 		service.profileModify(dto);
-		session.setAttribute("loginSession", dto);
 		return "redirect:myPage";
 	}
 	
 	@RequestMapping(value="/nicknameCheck") // 닉네임 중복확인
 	@ResponseBody
-	public int nicknameCheck(String user_nickname) throws Exception{
-		System.out.println("nickname : " + user_nickname);
-		
+	public int nicknameCheck(String user_nickname) throws Exception{		
 		int result = service.nicknameCheck(user_nickname);
 		return result;
 	}
@@ -223,10 +209,7 @@ public class MemberController {
 	@RequestMapping(value="/phoneCheck") // phone 중복확인
 	@ResponseBody
 	public int phoneCheck(String user_phone) throws Exception{
-		System.out.println("user_phone : " + user_phone);
-		
-		 int result = service.phoneCheck(user_phone);
-		 System.out.println(result);
+		int result = service.phoneCheck(user_phone);
 		return result;
 	}
 	
@@ -252,8 +235,6 @@ public class MemberController {
 	@RequestMapping(value = "/hobbyModal") // 취미 모달
 	@ResponseBody
 	public void hobbyModal(String user_email,HttpServletResponse response, @RequestParam(value = "checkBoxArr[]") String[] checkBoxArr) throws Exception {
-		System.out.println(user_email);
-
 		service.deleteHobby(user_email);
 		service.insertHobby(user_email, checkBoxArr);
 		response.getWriter().write("success");
@@ -262,7 +243,6 @@ public class MemberController {
 	@RequestMapping(value = "/wishDelete") // 희망 모임 삭제
 	@ResponseBody
 	public String wishDelete(int seq_group) throws Exception {
-		System.out.println(seq_group);
 		service.wishDelete(seq_group);
 		return "success";
 	}
@@ -278,7 +258,6 @@ public class MemberController {
 	@RequestMapping(value = "/normalSearch") // 일반 게시판 검색
 	@ResponseBody
 	public List<BoardDTO> genalSearch(String category, String keyword, String user_email) throws Exception {
-		System.out.println("일반 게시판 검색 : "+category +" : "+ keyword + user_email);
 		List<BoardDTO> boardlist = service.genalSearchList(category, keyword, user_email);
 		return boardlist;
 	}
@@ -293,7 +272,6 @@ public class MemberController {
 	@RequestMapping(value = "/meetingSearch") // 모임 게시판 검색
 	@ResponseBody
 	public List<Group_BoardDTO> meetingSearch(String category, String keyword, String user_email) throws Exception {
-		System.out.println(category + " : "+ keyword);
 		if(category.equals("board_title")) {
 			category = "gboard_title";			
 		}else if(category.equals("board_category")) {
@@ -307,7 +285,6 @@ public class MemberController {
 	@RequestMapping(value="/boardDelete") // 일반 게시판 삭제
 	@ResponseBody
 	public String boardDelete(int seq_board) throws Exception{
-		System.out.println("seq_board: " + seq_board);
 		service.boardDelete(seq_board);
 		return "success";
 	}
@@ -315,7 +292,6 @@ public class MemberController {
 	@RequestMapping(value="/groupBoardDelete") // 모임 게시판 삭제
 	@ResponseBody
 	public String groupBoardDelete(int seq_group_board) throws Exception{
-		System.out.println("sesqesa");
 		service.groupBoardDelete(seq_group_board);
 		return "success";
 	}
@@ -328,7 +304,6 @@ public class MemberController {
 		Map<String, String> memberdto = new HashMap<String, String>();
 		memberdto.put("user_email", user_email);
 		memberdto.put("user_delete", user_delete);
-		System.out.println(memberdto);
 		service.profileDelete(memberdto);
 		return "/login/toLogout";
 	}

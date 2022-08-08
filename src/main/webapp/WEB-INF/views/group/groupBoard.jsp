@@ -4,242 +4,253 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<script
-	  src="https://code.jquery.com/jquery-3.6.0.js"
-	  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	  crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/f9358a6ceb.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap icons-->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f9358a6ceb.js" crossorigin="anonymous"></script>
+<!-- Bootstrap icons-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>그룹 게시판</title>
 
-	<style>
-    	/* header */
-		header {
-		   font-family: 'MICEGothic Bold';
-		}
-		
-		@media ( max-width : 768px) {
-		   #navLogo {
-		      display: none;
-		   }
-		   #myPageIcon {
-		      display: none;
-		   }
-		   #cartIcon {
-		      display: none;
-		   }
-		   #menu {
-		      display: none;
-		   }
-		}
-		
-		/* header */
-		#navLogo {
-		   width: 150px;
-		   height: 100px;
-		}
-		
-		#logoImgs {
-		   width: 100%;
-		   height: 100%;
-		}
-		
-		@media ( min-width : 768px) {
-		   #navibar {
-		      display: none;
-		   }
-		}
-		
-		#logoImg {
-		   width: 50%;
-		}
-		/* header 반응형 끝 */
-		
-		
-		/* 네비바 드롭다운 */
-		.dropdown-toggle:hover {
-		   color: #83bf7b;
-		   border-color: aliceblue;
-		}
-		
-		.dropdown:hover .dropdown-menu {
-		   display: block;
-		   margin-top: 0;
-		   font-weight: bold;
-		}
-		
-		.groupHeaderInfo {
-		   height: 480px;
-		}
+<style>
+/* header */
+header {
+	font-family: 'MICEGothic Bold';
+}
 
-		/* 게시글 영역 */
-		.contentWrapper{
-			font-family: 'InfinitySans-RegularA1';
-		}
+@media ( max-width : 768px) {
+	#navLogo {
+		display: none;
+	}
+	#myPageIcon {
+		display: none;
+	}
+	#cartIcon {
+		display: none;
+	}
+	#menu {
+		display: none;
+	}
+}
 
-		/* 코끼리 머리*/
-		#headWrapper{
-			position: relative;
-			padding-top: 120px;
-		}
-		#boardHead-img{
-        	position: absolute;
-        	left: 50%;
-        	transform: translate(-40%, -60%);
-        	width: 400px;
-        }
-        #head{
-        	font-family: 'MICEGothic Bold';
-            background-color: #EEEEEE;
-            height: 150px;
-            border: 5px solid black;
-            border-top-left-radius: 80px;
-            border-top-right-radius: 80px;
-        }
-        /* 코끼리 다리 */
-        #footWrapper{
-        	position: relative;
-        	padding-bottom: 120px;
-        }
-        #boardFoot-img{
-        	position: absolute;
-        	left: 50%;
-        	transform: translate(-40%, 100%);
-        	width: 400px;
-        }
-        #foot{
-            background-color: #EEEEEE;
-            height: 100px;
-            border: 5px solid black;
-            border-bottom-left-radius: 80px;
-            border-bottom-right-radius: 80px;
-        }
+/* header */
+#navLogo {
+	width: 150px;
+	height: 100px;
+}
 
-        .form-control{
-            display: inline-block;
+#logoImgs {
+	width: 100%;
+	height: 100%;
+}
 
-        }
-        /* #searchBtn img{
+@media ( min-width : 768px) {
+	#navibar {
+		display: none;
+	}
+}
+
+#logoImg {
+	width: 50%;
+}
+/* header 반응형 끝 */
+
+/* 네비바 드롭다운 */
+.dropdown-toggle:hover {
+	color: #83bf7b;
+	border-color: aliceblue;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+	margin-top: 0;
+	font-weight: bold;
+}
+
+.groupHeaderInfo {
+	height: 480px;
+}
+
+/* 게시글 영역 */
+.contentWrapper {
+	font-family: 'InfinitySans-RegularA1';
+}
+
+/* 코끼리 머리*/
+#headWrapper {
+	position: relative;
+	padding-top: 120px;
+}
+
+#boardHead-img {
+	position: absolute;
+	left: 50%;
+	transform: translate(-40%, -60%);
+	width: 400px;
+}
+
+#head {
+	font-family: 'MICEGothic Bold';
+	background-color: #EEEEEE;
+	height: 150px;
+	border: 5px solid black;
+	border-top-left-radius: 80px;
+	border-top-right-radius: 80px;
+}
+/* 코끼리 다리 */
+#footWrapper {
+	position: relative;
+	padding-bottom: 120px;
+}
+
+#boardFoot-img {
+	position: absolute;
+	left: 50%;
+	transform: translate(-40%, 100%);
+	width: 400px;
+}
+
+#foot {
+	background-color: #EEEEEE;
+	height: 100px;
+	border: 5px solid black;
+	border-bottom-left-radius: 80px;
+	border-bottom-right-radius: 80px;
+}
+
+.form-control {
+	display: inline-block;
+}
+/* #searchBtn img{
         	width: 23px;
         	height: 24px;
         } */
+#boardList a {
+	text-decoration: none;
+	color: black;
+}
+/* 컨텐츠 container */
+#contentRow {
+	border-left: 5px solid black;
+	border-right: 5px solid black;
+}
 
-        #boardList a{
-           text-decoration: none;
-           color: black;
-        }
-        /* 컨텐츠 container */
-		#contentRow{
-			border-left: 5px solid black;
-			border-right: 5px solid black;
-		}
+/* 사이드바 */
+#aside {
+	margin-top: 150px;
+	padding: 20px;
+	height: 650px;
+}
 
-		/* 사이드바 */
-        #aside{
-        	margin-top: 150px;
-        	padding: 20px;
-        	height: 650px;
-        }
-        .sortBox{
-        	line-height: 50px;
-        	list-style: none;
-        	margin: 0;
-        	padding: 0;
-        }
-        .sortBox li{
-        	border: 2px solid black;
-        	border-radius: 10px;
-        	margin-bottom: 15px;
-        	background-color: #EEEEEE;
-        	text-align: center;
-        }
-        .sortBox li:hover{
-           background-color: #d2e3ec9e;
-        }
-        .sortBox a{
-           color: black;
-           text-decoration: none;
-        }
+.sortBox {
+	line-height: 50px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
 
-        /* 컨텐츠 속 */
-        #content-body{
-        	padding: 30px;
-        }
+.sortBox li {
+	border: 2px solid black;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	background-color: #EEEEEE;
+	text-align: center;
+}
 
-        /* breadcrumb */
-        .breadcrumb a{
-           text-decoration: none;
-           color: #a6a6a6;
-        }
-        .breadcrumb a:hover{
-           text-decoration: underline;
-        }
+.sortBox li:hover {
+	background-color: #d2e3ec9e;
+}
 
-        /* 페이징 */
-		.page-item.active .page-link{
-			background-color: #EEEEEE;
-			border-color: #bfced6;
-			color: black;
-		}
-		.page-link{
-			color: black;
-			border: 0px;
-		}
+.sortBox a {
+	color: black;
+	text-decoration: none;
+}
 
-		/* footer */
-		/*풋터 영역*/
-		.footer-imgBox img{
-		   max-width: 100%;
-		}
-		
-		.footerWrapper{
-		   background-color: white;
-		   font-family: "MICEGothic Bold";
-		   font-size: 15px;
-		}
-		.footerBox {
-		   height: 0px;
-		}
-		
-		footer.footer {
-		   padding-top: 2rem;
-		   padding-bottom: 2rem;
-		}
-		
-		.footer a {
-		   text-decoration: none;
-		   color: black;
-		   font-weight: 40px;
-		   font-weight: bold;
-		}
-		
-		.footer-imgBox>img {
-		   height: 100%;
-		   text-align:center;
-		}
-		.footer-imgBox {
-		   height: 100%;
-		   text-align:center;
-		}
+/* 컨텐츠 속 */
+#content-body {
+	padding: 30px;
+}
 
-		/* 폰트 */
-		@font-face {
-            font-family: 'MICEGothic Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-        @font-face {
-		    font-family: 'InfinitySans-RegularA1';
-		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
-		    font-weight: normal;
-		    font-style: normal;
-		}
-	</style>
+/* breadcrumb */
+.breadcrumb a {
+	text-decoration: none;
+	color: #a6a6a6;
+}
+
+.breadcrumb a:hover {
+	text-decoration: underline;
+}
+
+/* 페이징 */
+.page-item.active .page-link {
+	background-color: #EEEEEE;
+	border-color: #bfced6;
+	color: black;
+}
+
+.page-link {
+	color: black;
+	border: 0px;
+}
+
+/* footer */
+/*풋터 영역*/
+.footer-imgBox img {
+	max-width: 100%;
+}
+
+.footerWrapper {
+	background-color: white;
+	font-family: "MICEGothic Bold";
+	font-size: 15px;
+}
+
+.footerBox {
+	height: 0px;
+}
+
+footer.footer {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.footer a {
+	text-decoration: none;
+	color: black;
+	font-weight: 40px;
+	font-weight: bold;
+}
+
+.footer-imgBox>img {
+	height: 100%;
+	text-align: center;
+}
+
+.footer-imgBox {
+	height: 100%;
+	text-align: center;
+}
+
+/* 폰트 */
+@font-face {
+	font-family: 'MICEGothic Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'InfinitySans-RegularA1';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+</style>
 </head>
 <body>
 	<!--네비바-->
@@ -271,7 +282,8 @@
 						<div class="collapse navbar-collapse justify-content-end"
 							id="navbarNavDropdown">
 							<ul class="navbar-nav mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link" href="/board/toBoard">자유게시판</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/board/toBoard">자유게시판</a></li>
 								<c:if test="${empty loginSession}">
 									<li class="nav-item"><a class="nav-link"
 										href="/login/toLogin">로그인</a></li>
@@ -394,13 +406,13 @@
 		</div>
 	</header>
 
-    <div id="Wrapper">
-    	<div id="headWrapper" class="container">
-    		<img id="boardHead-img" src="/resources/images/board/head.png">
-    		<div id="head" class="row text-center align-items-end pb-2">
-	            <h1>모임 게시판</h1>
-	        </div>
-    	</div>
+	<div id="Wrapper">
+		<div id="headWrapper" class="container">
+			<img id="boardHead-img" src="/resources/images/board/head.png">
+			<div id="head" class="row text-center align-items-end pb-2">
+				<h1>모임 게시판</h1>
+			</div>
+		</div>
 
 		<div class="container contentWrapper" style="background-color: white;">
 			<!-- 컨텐츠 영역 -->
@@ -423,20 +435,25 @@
 
 					<div class="row mt-4 justify-content-end">
 						<div class="col-auto">
-				            <c:choose>
-				            	<c:when test="${loginSession.user_email eq leaderId}">
-				            		<button type="button" id="writeBtn" class="btn" style="background-color: #d2e3ec;" value="${pageMaker.cri.seq_group}">모임장 글쓰기</button>
-				            	</c:when>
-				            	<c:otherwise>
-				            		<button type="button" id="writeBtn" class="btn" style="background-color: #d2e3ec;" value="${pageMaker.cri.seq_group}">글쓰기</button>
-				            	</c:otherwise>
-				            </c:choose>
+							<c:choose>
+								<c:when test="${loginSession.user_email eq leaderId}">
+									<button type="button" id="writeBtn" class="btn"
+										style="background-color: #d2e3ec;"
+										value="${pageMaker.cri.seq_group}">모임장 글쓰기</button>
+								</c:when>
+								<c:otherwise>
+									<button type="button" id="writeBtn" class="btn"
+										style="background-color: #d2e3ec;"
+										value="${pageMaker.cri.seq_group}">글쓰기</button>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 
 					<!-- breadcrumb -->
 					<div class="row">
-						<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+						<nav style="-bs-breadcrumb-divider: '&gt;';"
+							aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="/">Home</a></li>
 								<li class="breadcrumb-item"><a href="#">커뮤니티</a></li>
@@ -446,119 +463,128 @@
 					</div>
 
 					<!-- 게시글 -->
-			        <div class="row mt-3" id="boardList">
-			            <div class="col">
-			                <table class="table table-hover text-center">
-			                    <thead>
-			                      <tr>
-			                        <th class="col-2">구분</th>
-			                        <th class="col-4">제목</th>
-			                        <th class="col-2">닉네임</th>
-			                        <th class="col-2">작성일</th>
-			                        <th class="col-2">조회</th>
-			                      </tr>
-			                    </thead>
-			                    <tbody>
-			                    	<c:choose>
-			                    		<c:when test="${list.size() == 0 && noticeList.size() == 0}">
-			                    			<tr>
-			                    				<td colspan="5">등록된 게시글이 없습니다.</td>
-			                    			</tr>
-			                    		</c:when>
-			                    		<c:otherwise>
-			                    			<c:forEach items="${noticeList}" var="notice">
-			                    				<tr>
-				                    					<td class="col-2">
-					                    					<i class="fa-solid fa-bullhorn"></i>
-				                    					</td>
-				                    					<td class="col-5 text-start">
-				                    						<a class="move" href="${notice.seq_group_board}">
-				                    							${notice.gboard_title}
-				                    						</a>
-				                    					</td>
-				                    					<td class="col-2">${notice.user_nickname}</td>
-				                    					<td class="col-2">${notice.written_date}</td>
-				                    					<td class="col-1">${notice.view_count}</td>
-				                    			</tr>
-		                   					</c:forEach>
-			                    			<c:forEach items="${list}" var="dto">
-			                    				<tr>
-			                    					<td class="col-2">${dto.gboard_category}</td>
-			                    					<td class="col-5 text-start">
-			                    						<a class="move" href="${dto.seq_group_board}">
-			                    							${dto.gboard_title}
-			                    						</a>
-			                    					</td>
-			                    					<td class="col-2">${dto.user_nickname}</td>
-			                    					<td class="col-2">${dto.written_date}</td>
-			                    					<td class="col-1">${dto.view_count}</td>
-			                    				</tr>
-			                    			</c:forEach>
-			                    		</c:otherwise>
-			                    	</c:choose>
-			                    </tbody>
+					<div class="row mt-3" id="boardList">
+						<div class="col">
+							<table class="table table-hover text-center">
+								<thead>
+									<tr>
+										<th class="col-2">구분</th>
+										<th class="col-4">제목</th>
+										<th class="col-2">닉네임</th>
+										<th class="col-2">작성일</th>
+										<th class="col-2">조회</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:choose>
+										<c:when test="${list.size() == 0 && noticeList.size() == 0}">
+											<tr>
+												<td colspan="5">등록된 게시글이 없습니다.</td>
+											</tr>
+										</c:when>
+										<c:otherwise>
+											<c:forEach items="${noticeList}" var="notice">
+												<tr>
+													<td class="col-2"><i class="fa-solid fa-bullhorn"></i>
+													</td>
+													<td class="col-5 text-start"><a class="move"
+														href="${notice.seq_group_board}">
+															${notice.gboard_title} </a></td>
+													<td class="col-2">${notice.user_nickname}</td>
+													<td class="col-2">${notice.written_date}</td>
+													<td class="col-1">${notice.view_count}</td>
+												</tr>
+											</c:forEach>
+											<c:forEach items="${list}" var="dto">
+												<tr>
+													<td class="col-2">${dto.gboard_category}</td>
+													<td class="col-5 text-start"><a class="move"
+														href="${dto.seq_group_board}"> ${dto.gboard_title} </a></td>
+													<td class="col-2">${dto.user_nickname}</td>
+													<td class="col-2">${dto.written_date}</td>
+													<td class="col-1">${dto.view_count}</td>
+												</tr>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+								</tbody>
 							</table>
-			            </div>
-			        </div>
+						</div>
+					</div>
 
-			        <!-- 페이징 -->
-			        <div class="row mt-4 pageInfo_wrap">
-			        	<div class="pageInfo_area">
-							<ul id="pageInfo" class="pageInfo pagination justify-content-center">
+					<!-- 페이징 -->
+					<div class="row mt-4 pageInfo_wrap">
+						<div class="pageInfo_area">
+							<ul id="pageInfo"
+								class="pageInfo pagination justify-content-center">
 								<!-- 이전 페이지 버튼 -->
 								<c:if test="${pageMaker.prev}">
-									<li class="pageInfo_btn previous page-item">
-										<a class="page-link" href="${pageMaker.startPage-1}">
-											<i class="fa-solid fa-angle-left"></i>
-										</a>
-									</li>
+									<li class="pageInfo_btn previous page-item"><a
+										class="page-link" href="${pageMaker.startPage-1}"> <i
+											class="fa-solid fa-angle-left"></i>
+									</a></li>
 								</c:if>
 
 								<!-- 각 번호 페이지 버튼 -->
-								<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-									<li class="pageInfo_btn page-item ${pageMaker.cri.pageNum == num ? 'active':''}">
+								<c:forEach var="num" begin="${pageMaker.startPage}"
+									end="${pageMaker.endPage}">
+									<li
+										class="pageInfo_btn page-item ${pageMaker.cri.pageNum == num ? 'active':''}">
 										<a class="page-link" href="${num}">${num}</a>
 									</li>
 								</c:forEach>
 
 								<!-- 다음 페이지 버튼 -->
 								<c:if test="${pageMaker.next}">
-				                    <li class="pageInfo_btn next page-item">
-				                    	<a class="page-link" href="${pageMaker.endPage + 1 }">
-				                    		<i class="fa-solid fa-angle-right"></i>
-				                    	</a>
-				                    </li>
-				                </c:if>
+									<li class="pageInfo_btn next page-item"><a
+										class="page-link" href="${pageMaker.endPage + 1 }"> <i
+											class="fa-solid fa-angle-right"></i>
+									</a></li>
+								</c:if>
 							</ul>
-			        	</div>
-			        </div>
-			        <form id="moveForm" method="get">
-			        	<input type="hidden" name="seq_group" value="${pageMaker.cri.seq_group}">
-			        	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-			        	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-						<input type="hidden" name="type" value="${pageMaker.cri.type}">
-						<input type="hidden" name="category" value="${pageMaker.cri.category}">
-			        </form>
+						</div>
+					</div>
+					<form id="moveForm" method="get">
+						<input type="hidden" name="seq_group"
+							value="${pageMaker.cri.seq_group}"> <input type="hidden"
+							name="pageNum" value="${pageMaker.cri.pageNum}"> <input
+							type="hidden" name="amount" value="${pageMaker.cri.amount}">
+						<input type="hidden" name="keyword"
+							value="${pageMaker.cri.keyword}"> <input type="hidden"
+							name="type" value="${pageMaker.cri.type}"> <input
+							type="hidden" name="category" value="${pageMaker.cri.category}">
+					</form>
 
-			        <!-- 검색 -->
+					<!-- 검색 -->
 					<div class="search_wrap">
 						<div class="search_area row mt-4 justify-content-center">
 							<div class="col-auto">
-								<select id="type" name="type" class="form-select" aria-label="유형">
-									<option value="TCW" <c:out value="${pageMaker.cri.type eq 'TCW' ? 'selected' : ''}"/>>전체</option>
-									<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
-									<option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : ''}"/>>내용</option>
-									<option value="W" <c:out value="${pageMaker.cri.type eq 'W' ? 'selected' : ''}"/>>작성자</option>
-									<option value="TC" <c:out value="${pageMaker.cri.type eq 'TC' ? 'selected' : ''}"/>>제목 + 내용</option>
-									<option value="TW" <c:out value="${pageMaker.cri.type eq 'TW' ? 'selected' : ''}"/>>제목 + 작성자</option>
+								<select id="type" name="type" class="form-select"
+									aria-label="유형">
+									<option value="TCW"
+										<c:out value="${pageMaker.cri.type eq 'TCW' ? 'selected' : ''}"/>>전체</option>
+									<option value="T"
+										<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
+									<option value="C"
+										<c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : ''}"/>>내용</option>
+									<option value="W"
+										<c:out value="${pageMaker.cri.type eq 'W' ? 'selected' : ''}"/>>작성자</option>
+									<option value="TC"
+										<c:out value="${pageMaker.cri.type eq 'TC' ? 'selected' : ''}"/>>제목
+										+ 내용</option>
+									<option value="TW"
+										<c:out value="${pageMaker.cri.type eq 'TW' ? 'selected' : ''}"/>>제목
+										+ 작성자</option>
 								</select>
 							</div>
 							<div class="col-5">
-								<input type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" class="form-control" placeholder="검색">
+								<input type="text" id="keyword" name="keyword"
+									value="${pageMaker.cri.keyword}" class="form-control"
+									placeholder="검색">
 							</div>
 							<div class="col-auto">
-								<button type="button" id="searchBtn" class="btn" style="background-color: #EEEEEE;">
+								<button type="button" id="searchBtn" class="btn"
+									style="background-color: #EEEEEE;">
 									<i class="fa-solid fa-magnifying-glass"></i>
 								</button>
 							</div>
@@ -567,16 +593,15 @@
 				</div>
 			</div>
 		</div>
-    	<div id="footWrapper" class="container">
-		    <img id="boardFoot-img" src="/resources/images/board/bottom.png">
-			<div id="foot" class="row">
-			</div>
+		<div id="footWrapper" class="container">
+			<img id="boardFoot-img" src="/resources/images/board/bottom.png">
+			<div id="foot" class="row"></div>
 		</div>
 
-    </div>
+	</div>
 
 	<!-- Footer-->
-	<div class="footerWrapper mt-5" style="border-top:1px solid #e0e3e8;">
+	<div class="footerWrapper mt-5" style="border-top: 1px solid #e0e3e8;">
 		<div class="container">
 			<footer class="footer">
 				<div class="row">
@@ -585,7 +610,8 @@
 					</div>
 					<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
 						<ul class="list-inline mb-2">
-							<li class="list-inline-item"><a href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
+							<li class="list-inline-item"><a
+								href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
 							<li class="list-inline-item">⋅</li>
 							<c:choose>
 								<c:when test="${not empty loginSession}">
@@ -606,16 +632,14 @@
 								</c:otherwise>
 							</c:choose>
 							<li class="list-inline-item">⋅</li>
-							<li class="list-inline-item">
-								<c:choose>
+							<li class="list-inline-item"><c:choose>
 									<c:when test="${not empty loginSession}">
 										<a href="/group/toCreateGroup">모임 만들기</a>
 									</c:when>
 									<c:otherwise>
 										<a href="/login/toLogin">모임 만들기</a>
 									</c:otherwise>
-								</c:choose>
-							</li>
+								</c:choose></li>
 							<li class="list-inline-item">⋅</li>
 							<li class="list-inline-item"><a href="/privacy"
 								style="color: red; font-weight: bold;">개인정보처리방침</a></li>
@@ -645,7 +669,7 @@
 		</div>
 	</div>
 
-    <script>
+	<script>
        // 공지사항 배경
        $(document).ready(function(){
           $(".fa-bullhorn").parents("tr").css("background-color", "#e9f2f7");
@@ -654,8 +678,11 @@
        // 페이징
        $(".move").on("click", function(e){
           e.preventDefault();
-
-          $("#moveForm").append("<input type='hidden' name='seq_group_board' value='" + $(this).attr("href")+"'>");
+          if($("#seq_gboardInput").length == 1){
+              $("#seq_gboardInput").remove();
+           }
+          
+          $("#moveForm").append("<input type='hidden' name='seq_group_board' id = 'seq_gboardInput' value='" + $(this).attr("href")+"'>");
           $("#moveForm").attr("action", "/Gboard/toDetailView");
           $("#moveForm").submit();
        });
@@ -694,11 +721,6 @@
          let type = $(".search_area select").val();
          let keyword = $(".search_area input[name='keyword']").val();
 
-         /* if(!type){
-            alert("검색 종류를 선택하세요.");
-            return false;
-         } */
-
          if(!keyword){
             alert("검색어를 입력하세요.");
             return false;
@@ -709,38 +731,6 @@
          $("#moveForm").find("input[name='pageNum']").val(1);
          $("#moveForm").submit();
       })
-
-      // 게시글 목록 ajax
-      /* function makeDynamicEl(data){
-         $("tbody").empty();
-         if(data.length == 0){ // 검색 결과 없음
-            let tr = $("<tr>");
-            let td = $("<td colspan=5>").append("검색 결과가 없습니다.");
-            tr.append(td);
-            tr.appendTo("tbody");
-         }else{ // 검색 결과 있음
-            for(let dto of data){
-               let tr = $("<tr>");
-               let td1 = $("<td>").addClass("col-2");
-               if(dto.board_category == '공지'){
-                  td1.append('<i class="fa-solid fa-bullhorn"></i>');
-               }else{
-                  td1.append(dto.board_category);
-               }
-               let td2 = $("<td>").addClass("col-5 text-start");
-               let a = $("<a>").attr("href", "/board/toDetailView?seq_board="+dto.seq_board).append(dto.board_title);
-               td2.append(a);
-               let td3 = $("<td>").addClass("col-2").append(dto.user_nickname);
-               let td4 = $("<td>").addClass("col-2").append(dto.board_date);
-               let td5 = $("<td>").addClass("col-1").append(dto.board_count);
-
-               tr.append(td1, td2, td3, td4, td5);
-               tr.appendTo("tbody");
-
-               $(".fa-bullhorn").parents("tr").css("backgroundColor", "pink");
-            }
-         }
-      } */
 
     </script>
 </body>

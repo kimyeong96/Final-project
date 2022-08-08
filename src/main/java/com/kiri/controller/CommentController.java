@@ -47,7 +47,6 @@ public class CommentController {
 	@RequestMapping(value = "/commentList")
 	@ResponseBody
 	public List<Board_CommentDTO> commentList(Integer seq_board) throws Exception{
-		System.out.println("seq_board : " + seq_board);
 		
 		List<Board_CommentDTO> list = service.selectAll(seq_board);
 		return list;
@@ -106,8 +105,7 @@ public class CommentController {
 	@RequestMapping(value = "/commentListG")
 	@ResponseBody
 	public List<Group_Board_CommentDTO> commentListG(Integer seq_group_board) throws Exception{
-		System.out.println("seq_group_board : " + seq_group_board);
-		
+
 		List<Group_Board_CommentDTO> list = service.groupSelectAll(seq_group_board);
 		return list;
 	}

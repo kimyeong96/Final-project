@@ -658,7 +658,7 @@ footer.footer {
 											<input type="text" class="form-control keyword"
 												id="partyLocation" placeholder="장소 검색"> <label
 												for="partyLocation" id="placeholderForSearch">&#128270;
-												장소를 알려주세요!</label>
+												장소를 입력하시고 엔터키를 눌러주세요!</label>
 										</div>
 
 										<div style="display: flex; justify-content: center">
@@ -882,7 +882,6 @@ footer.footer {
 					
 				// 일정 옮겼을 때 
 				eventDrop:function(events) {
-					console.log(events);
 					let seq_group = ${seq_group}; // 현재 모임의 일정 번호
 					let seq_group_cal = events.event.extendedProps.seq_group_cal; // 클릭한 일정의 번호 
 					let year = (events.event._instance.range.start.getFullYear()); //옮긴 달력의 날짜

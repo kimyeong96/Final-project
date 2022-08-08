@@ -5,28 +5,18 @@
 <html>
 <head>
 <!-- summernote -->
-<script type="text/javascript"
-	src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet"
-	href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
-<script type="text/javascript"
-	src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+<script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- include summernote css/js-->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <!-- swal -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
 <!-- Bootstrap icons-->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>공지 작성</title>
 <style>
@@ -59,7 +49,6 @@ label {
 	border-bottom-right-radius: 80px;
 	border: 3px solid black;
 }
-
 
 /* 눈누 폰트 */
 @font-face {
@@ -141,6 +130,8 @@ label {
 
 				<div class="row mt-4">
 					<textarea id="summernote" name="board_content"></textarea>
+					<sup>(<span id="nowByte">0</span>/2500bytes)
+					</sup>
 				</div>
 
 			</div>
@@ -169,7 +160,7 @@ label {
 				  maxHeight: 550, // 최대 높이
 				  focus: true, // 에디터 로딩후 포커스를 맞출지 여부
 				  lang: "ko-KR", // 한글 설정
-				  placeholder: '최대 1000자까지 작성 가능합니다.', //placeholder 설정
+				  placeholder: '최대 2500byte자까지 작성 가능합니다.', //placeholder 설정
 				  toolbar: [
 						// [groupName, [list of button]]
 						['fontname', ['fontname']], // 글꼴
@@ -200,7 +191,13 @@ label {
 						  for (var i = files.length - 1; i >= 0; i--) {
 							  uploadSummernoteImageFile(files[i], this);
 						  }
-					  }
+					  },onKeydown: function(e) {
+		                  fn_checkByte(this); // 글자수 바이트 체크
+		                },
+		            	onKeyup: function(e) {
+		                 fn_checkByte(this); // 글자수 바이트 체크
+		             },
+					  
 				  }
 			});
 			
@@ -265,6 +262,7 @@ label {
 		let imgArr = new Array();
 		// 작성 완료 버튼
 		$("#submitBtn").on("click", function(){
+			let groupInfoByteCnt = $("#nowByte").html();
 			
 			if($("#title").val() === ""){
 				Swal.fire({
@@ -291,6 +289,11 @@ label {
 				})
 				return;
 			}
+			
+			if(groupInfoByteCnt >= 2500) {
+		        Swal.fire('모임 내용은 2500byte를 넘어갈 수 없습니다.');
+		        return;
+		     }
 			
 			let content = $("#summernote").summernote("code");
 			let regImg = /(<img[^>]+src\s*=\s*[\"']?([^>\"']+)[\"']?[^>]*>)/g;
@@ -342,6 +345,44 @@ label {
 		$("#cancelBtn").on("click", function(){
 			location.href = "/board/toBoard";
 		})
+		
+		//textarea 바이트 수 체크하는 함수
+	   function fn_checkByte(obj){
+	       const maxByte = 2500; //최대 100바이트
+	       const text_val = obj.value; //입력한 문자
+	       const text_len = text_val.length; //입력한 문자수
+	       let totalByte=0;
+	
+	       for(let i=0; i<text_len; i++){
+	          const each_char = text_val.charAt(i);
+	           const uni_char = escape(each_char); //유니코드 형식으로 변환
+	           if(uni_char.length>4){
+	              // 한글 : 2Byte
+	               totalByte += 2;
+	           }else{
+	              // 영문,숫자,특수문자 : 1Byte
+	               totalByte += 1;
+	           }
+	       }
+	       if(totalByte>maxByte){
+	              document.getElementById("nowByte").innerText = totalByte;
+	               document.getElementById("nowByte").style.color = "red";
+	           }else{
+	              document.getElementById("nowByte").innerText = totalByte;
+	               document.getElementById("nowByte").style.color = "green";
+	           }
+	       }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</script>
 </body>
 </html>

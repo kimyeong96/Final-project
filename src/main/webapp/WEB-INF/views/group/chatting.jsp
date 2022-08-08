@@ -9,29 +9,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>채팅</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!--구글 폰트-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Open+Sans:ital,wght@1,300&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Open+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- AOS 라이브러리 불러오기-->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!-- 아이콘 -->
-<script src="https://kit.fontawesome.com/f9358a6ceb.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f9358a6ceb.js" crossorigin="anonymous"></script>
 <!-- swal -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
+
 <style>
 * {
 	box-sizing: border-box;
@@ -467,7 +460,7 @@ hr {
       // 웹소켓 객체 생성할때 반드시 서버의 ip 주소값은 실제 ip 주소를 이용
       // 포트번호 다르면 :포트번호/chat 39.120.220.2:11111
       var seq_group = $("#seq_group").val();
-      let ws = new WebSocket("ws://192.168.35.109/chat/"+seq_group);
+      let ws = new WebSocket("ws://192.168.20.21/chat/"+seq_group);
       let nickname = $("#nickname").val();
       //이모티콘 나오게 하기
          $(".emoticon").click(function(){
@@ -550,17 +543,18 @@ hr {
                 }
                 console.log("지금 들어온 사람들 닉네임: "+openNick);
                 let intersection = nickList.filter(x => openNick.includes(x));
-                if(seq[msg.openNickname.length-1]==seq_group){
+                /* if(seq[msg.openNickname.length-1]==seq_group){
                 	if(intersection.length!=openNick.length){
-                    	Swal.fire({
+                		alert("누군가의 닉네임이 변경되었어요! 새로고침을 해보세요!");
+	                	Swal.fire({
                     		  position: 'top-end',
                     		  icon: 'info',
                     		  title: '누군가의 닉네임이 변경되었어요! 새로고침을 해보세요!',
                     		  showConfirmButton: false,
                     		  timer: 3000
-                    	})
+                    	}) 
                     }
-                }
+                } */
                 for(let i=0; i<intersection.length; i++){
                     for(let j=0; j<nickList.length; j++){
                            if(intersection[i]==nickList[j]){
@@ -686,7 +680,7 @@ hr {
       
       //이모티콘 보내는 함수
       function sendEmoji(imgCls){
-         let url = 'http://192.168.35.109/';
+         let url = 'http://192.168.20.21/';
          let emojiSrc = $(imgCls).prop("src").indexOf(url)+url.length-1; // /resources 시작하는 index번호
          let realSrc = $(imgCls).prop("src").slice(emojiSrc);
          console.log(realSrc);

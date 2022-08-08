@@ -79,8 +79,6 @@ public class GroupCalendar {
 	@ResponseBody
 	@RequestMapping(value = "/calDelete")
 	public String calDelete(int seq_group_cal) throws Exception {
-		System.out.println("삭제 페이지 입니다");
-		System.out.println(seq_group_cal);
 		int rs = service.calDelete(seq_group_cal);
 		if (rs > 0) return "success";
 		else return "fail";
@@ -90,13 +88,12 @@ public class GroupCalendar {
 	@ResponseBody
 	@RequestMapping(value = "/calMove")
 	public String calMove(Group_CalendarDTO dto, int modifyDays) throws Exception {
-		SimpleDateFormat sdfYMDHms = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		SimpleDateFormat sdfYMD = new SimpleDateFormat("yyyy-MM-dd");
 		
 		String findTime = null; 
 		List<Group_CalendarDTO> list = service.findEndByGroupSeq(dto.getSeq_group_cal()); // 마지막 날짜 얻어오기 
 		for(Group_CalendarDTO endTime : list) {
-			findTime = endTime.getEnd();
+			findTime = endTime.getEnd(); // DB에서 날짜 가져오기 
 		}
 		findTime = findTime.substring(0, 10); // 마지막 날짜 00:00:00 자르기
 	
@@ -123,9 +120,9 @@ public class GroupCalendar {
 	@RequestMapping(value = "/calModify")
 	public int calModify(Group_CalendarDTO dto, String modifyTime) throws Exception {
 		// 수정 시간 판단
-		if(modifyTime.equals("00:00")) {
+		if(modifyTime.equals("00:00")) { // 시간이 변경 되지 않았을 때 
 			dto.setGroup_time(dto.getGroup_time());
-		}else {
+		}else { // 시간이 변경 되었을 때
 			dto.setGroup_time(modifyTime);
 		}
 		// 일정 수정

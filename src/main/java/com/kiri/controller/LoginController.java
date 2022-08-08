@@ -157,7 +157,6 @@ public class LoginController {
 	
 	@ExceptionHandler
 	public String toError(Exception e) {
-		System.out.println("예외 발생");
 		e.printStackTrace();
 		return "redirect:/login/toLogin";
 	}

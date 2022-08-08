@@ -1,353 +1,335 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>관리자-게시판관리</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <!--구글 폰트-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Open+Sans:ital,wght@1,300&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
-    <!-- AOS 라이브러리 불러오기-->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- 아이콘 -->
-    <script
-      src="https://kit.fontawesome.com/f9358a6ceb.js"
-      crossorigin="anonymous"
-    ></script>
-    <!--알림창-->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.min.js"></script>
-    <style>
-      * {
-        box-sizing: border-box;
-        font-family: "MICEGothic Bold";
-      }
-      .container{
-	   max-width: -webkit-fill-available;
-	   height:100%;
-	   padding : 0px;
-	}
-	body, html {
-	   height:1100px;
-	}
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>관리자-게시판관리</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<!--구글 폰트-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Open+Sans:ital,wght@1,300&display=swap" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<!-- AOS 라이브러리 불러오기-->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- 아이콘 -->
+<script src="https://kit.fontawesome.com/f9358a6ceb.js" crossorigin="anonymous"></script>
+<!--알림창-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<style>
+* {
+	box-sizing: border-box;
+	font-family: "MICEGothic Bold";
+}
 
+.container {
+	max-width: -webkit-fill-available;
+	height: 100%;
+	padding: 0px;
+}
 
-      /* 눈누 폰트 */
-      @font-face {
-        font-family: "BMJUA";
-        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff")
-          format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
+body, html {
+	height: 1100px;
+}
 
-      @font-face {
-        font-family: "MICEGothic Bold";
-        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
-          format("woff2");
-        font-weight: 700;
-        font-style: normal;
-      }
+/* 눈누 폰트 */
+@font-face {
+	font-family: "BMJUA";
+	src:
+		url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
 
-		   /*사이드바*/
-		.sidebar {
-			float: left;
-			width: 15%;
-			height: 1200px;
-			background-color: #4e78f5;
-		}
-		
-		.sidebar span {
-			font-family: 'BMJUA';
-		}
-		
-		.sidebar li {
-			list-style: none;
-			border-bottom: 3px solid rgba(255, 255, 255, 0.63);
-			text-align: center;
-		}
-		
-		.sidebar a:hover {
-			color: white;
-		}
-		
-		.logoHome span {
-			color: white;
-			font-size: x-large;
-			font-weight: 80px;
-		}
-		
-		#logoImg {
-			width: 70%;
-		}
-		
-		i {
-			margin-top: 15px;
-			margin-bottom: 15px;
-		}
-		
-		a {
-			text-decoration: none;
-			font-size: larger;
-			color: rgba(255, 255, 255, 0.683);
-		}
+@font-face {
+	font-family: "MICEGothic Bold";
+	src:
+		url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2")
+		format("woff2");
+	font-weight: 700;
+	font-style: normal;
+}
 
+/*사이드바*/
+.sidebar {
+	float: left;
+	width: 15%;
+	height: 1200px;
+	background-color: #4e78f5;
+}
 
-      /*네비바*/
-      .navbar {
-        float: right;
-        height: 104px;
-        width: 85%;
-        background-color: white;
-        position: relative;
-      }
+.sidebar span {
+	font-family: 'BMJUA';
+}
 
-      .user {
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        right: 20px;
-        background-color: white;
-        border: 1px solid gainsboro;
-      }
+.sidebar li {
+	list-style: none;
+	border-bottom: 3px solid rgba(255, 255, 255, 0.63);
+	text-align: center;
+}
 
-      .userName {
-        position: absolute;
-        right: 80px;
-      }
+.sidebar a:hover {
+	color: white;
+}
 
-      #user_img {
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-      }
+.logoHome span {
+	color: white;
+	font-size: x-large;
+	font-weight: 80px;
+}
 
-      .logOut {
-        position: absolute;
-        right: 19px;
-        top: 28px;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        background-color: gray;
-        display: none;
-      }
+#logoImg {
+	width: 70%;
+}
 
-      .logout {
-        position: absolute;
-        top: -7px;
-        right: 8px;
-        font-size: xx-large;
-        color: white;
-      }
+i {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
 
-      /*content*/
-      .contents {
-        background-color: rgb(224, 230, 243);
-        width: 100%;
-        height: 1200px;
-      }
+a {
+	text-decoration: none;
+	font-size: larger;
+	color: rgba(255, 255, 255, 0.683);
+}
 
-      /*회원관리 색 다르게*/
-      .boardMenu {
-        background-color: #a0e4f9ac;
-      }
+/*네비바*/
+.navbar {
+	float: right;
+	height: 104px;
+	width: 85%;
+	background-color: white;
+	position: relative;
+}
 
-      .memberMenu > a {
-        color: white;
-      }
+.user {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	right: 20px;
+	background-color: white;
+	border: 1px solid gainsboro;
+}
 
-      /*content안에*/
-      .title{
-		width:75%;
-		margin: auto;
-      }
-      .reportBox {
-        margin: auto;
-        width: 75%;
-        height: max-content;
-        max-height: 200px;
-        background-color: white;
-        overflow-y: scroll;
-      }
+.userName {
+	position: absolute;
+	right: 80px;
+}
 
-      .reportBox::-webkit-scrollbar {
-        display: none;
-      }
+#user_img {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
 
-      .searchBox {
-        margin: auto;
-        width: 75%;
-        height: 70px;
-        background-color: white;
-      }
+.logOut {
+	position: absolute;
+	right: 19px;
+	top: 28px;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	background-color: gray;
+	display: none;
+}
 
-      .resultBox {
-        margin: auto;
-        width: 75%;
-        height: max-content;
-        max-height: 550px;
-        background-color: white;
-      }
+.logout {
+	position: absolute;
+	top: -7px;
+	right: 8px;
+	font-size: xx-large;
+	color: white;
+}
 
-      .resultBox::-webkit-scrollbar {
-        display: none;
-      }
+/*content*/
+.contents {
+	background-color: rgb(224, 230, 243);
+	width: 100%;
+	height: 1200px;
+}
 
-      .resultBox span {
-        height: max-content;
-      }
+/*회원관리 색 다르게*/
+.boardMenu {
+	background-color: #a0e4f9ac;
+}
 
-      tbody tr {
-        border-top: 1px solid gainsboro;
-        color: rgb(103, 103, 103);
-        text-align: center;
-        height:35px;
-      }
+.memberMenu>a {
+	color: white;
+}
 
-      td {
-        font-size: 12px;
-      }
+/*content안에*/
+.title {
+	width: 75%;
+	margin: auto;
+}
 
-      td > a {
-        color: rgb(103, 103, 103);
-        font-size: 12px;
-      }
-    </style>
-  </head>
+.reportBox {
+	margin: auto;
+	width: 75%;
+	height: max-content;
+	max-height: 200px;
+	background-color: white;
+	overflow-y: scroll;
+}
 
-  <body>
-    <div class="container">
-      <div class="sidebar">
-        <ul class="p-2">
-          <li class="logoHome">
-            <a href="/admin/toAdmin">
-              <img src="/resources/images/adminLogo.png" id="logoImg" /><br />
-              <span>끼리끼리</span>
-            </a>
-          </li>
-          <li class="sidemenu">
-            <a href="/admin/toMember?curPage=1">
-              <i class="fa-solid fa-users-rectangle"></i><br />
-              <span>회원 관리</span>
-            </a>
-          </li>
-          <li class="sidemenu boardMenu">
-            <a href="/admin/toBoard?curPage=1">
-              <i class="fa-solid fa-table"></i><br />
-              <span>게시물 관리</span>
-            </a>
-          </li>
-          <li class="sidemenu">
-            <a href="/admin/toGroupAdmin?curPage=1">
-              <i class="fa-solid fa-house-user"></i><br />
-              <span>모임 관리</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="navbar">
-        <div class="userName">| &nbsp&nbsp admin</div>
-        <div class="user">
-          <img src="/resources/images/해삐루피.png" id="user_img" />
-        </div>
-        <div class="logOut">
-          <i class="logout fa-solid fa-arrow-right-from-bracket"></i>
-        </div>
-      </div>
-      <div class="contents">
-        <div class="row title mt-2">
-          <div class="col mt-4">
-            <h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue">
-              게시물 관리
-            </h4>
-          </div>
-        </div>
-        <form id="searchForm" onSubmit="return false;">
-	        <div class="row searchBox">
-	          <div class="d-flex align-items-center m-auto w-75">
-	            <select name="boardNameCategory" class="form-select title w-25 me-3">
-	              <option value="normal">일반</option>
-	              <option value="meeting">모임</option>
-	              <option value="notice">공지</option>
-	            </select>
-	            <select id="category" name="category" class="form-select w-25 me-3">
-	              <option value="board_all" selected>ALL</option>
-	              <option value="board_category">CATEGORY</option>
-	              <option value="board_title">TITLE</option>
-	            </select>
-	            <input class="form-control keyword me-2" name="keyword" id="searchKeyword" type="text" placeholder="검색" aria-label="Search"/>
-	            <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
-	          </div>
-	        </div>
-        </form>
-        <div class="row mt-3" style="font-size:15px;width:82%;">
-        	<div class="col-md-12 d-flex justify-content-end" style="align-items: center;">
-	        	<i class="fa-solid fa-book me-2"></i>
-	        	<a class="notice" style="text-decoration:none; color:black; cursor:pointer;"><span style="padding-right:30px;">Notice</span></a>        	
-        	</div>
-        </div>
-        <div class="row resultBox mt-3">
-          <table>
-            <thead style="background-color: gainsboro; text-align: center;">
-              <tr>
-                <th scope="col" class='col-1'>유형</th>
-				<th scope="col" class='col-5'>제목</th>
-				<th scope="col" class='col-3'>작성일</th>
-				<th scope="col" class='col-1'>조회수</th>
-				<th scope="col" class='col-2'>삭제</th>
-              </tr>
-            </thead>
-            <tbody id="tbody">
-              <c:choose>
-                <c:when test="${list.size() == 0}">
-                  <tr>
-                    <td colspan="5">등록된 게시물이 없습니다.</td>
-                  </tr>
-                </c:when>
-                <c:otherwise>
-                  <c:forEach items="${list}" var="dto">  
-                    <tr class="tr">
-	                    <td>${dto.board_category}</td>
-						<td><a href="/board/toDetailView?seq_board=${dto.seq_board}" onclick="window.open(this.href, '_blank', 'width=1000, height=800'); return false;">${dto.board_title}</a></td>
-						<td>${dto.board_date}</td>
-						<td>${dto.board_count}</td>
-						<td id="icon"><span class="text-center boardDelete" style="cursor:pointer;"
-							id="boardDelete"><i class="fa-solid fa-trash"></i></span></td>
-						<td class="d-none" id="seq_board">${dto.seq_board}</td>
-                    </tr>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
-            </tbody>
-          </table>
-        </div>
+.reportBox::-webkit-scrollbar {
+	display: none;
+}
 
-   	<!-- 검색전 pagination -->    
+.searchBox {
+	margin: auto;
+	width: 75%;
+	height: 70px;
+	background-color: white;
+}
+
+.resultBox {
+	margin: auto;
+	width: 75%;
+	height: max-content;
+	max-height: 550px;
+	background-color: white;
+}
+
+.resultBox::-webkit-scrollbar {
+	display: none;
+}
+
+.resultBox span {
+	height: max-content;
+}
+
+tbody tr {
+	border-top: 1px solid gainsboro;
+	color: rgb(103, 103, 103);
+	text-align: center;
+	height: 35px;
+}
+
+td {
+	font-size: 12px;
+}
+
+td>a {
+	color: rgb(103, 103, 103);
+	font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="sidebar">
+			<ul class="p-2">
+				<li class="logoHome"><a href="/admin/toAdmin"> <img
+						src="/resources/images/adminLogo.png" id="logoImg" /><br /> <span>끼리끼리</span>
+				</a></li>
+				<li class="sidemenu"><a href="/admin/toMember?curPage=1"> <i
+						class="fa-solid fa-users-rectangle"></i><br /> <span>회원 관리</span>
+				</a></li>
+				<li class="sidemenu boardMenu"><a
+					href="/admin/toBoard?curPage=1"> <i class="fa-solid fa-table"></i><br />
+						<span>게시물 관리</span>
+				</a></li>
+				<li class="sidemenu"><a href="/admin/toGroupAdmin?curPage=1">
+						<i class="fa-solid fa-house-user"></i><br /> <span>모임 관리</span>
+				</a></li>
+			</ul>
+		</div>
+		<div class="navbar">
+			<div class="userName">| &nbsp&nbsp admin</div>
+			<div class="user">
+				<img src="/resources/images/해삐루피.png" id="user_img" />
+			</div>
+			<div class="logOut">
+				<i class="logout fa-solid fa-arrow-right-from-bracket"></i>
+			</div>
+		</div>
+		<div class="contents">
+			<div class="row title mt-2">
+				<div class="col mt-4">
+					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue">
+						게시물 관리</h4>
+				</div>
+			</div>
+			<form id="searchForm" onSubmit="return false;">
+				<div class="row searchBox">
+					<div class="d-flex align-items-center m-auto w-75">
+						<select name="boardNameCategory"
+							class="form-select title w-25 me-3">
+							<option value="normal">일반 게시판</option>
+							<option value="meeting">모임 게시판</option>
+							<option value="notice">공지</option>
+						</select> <select id="category" name="category"
+							class="form-select w-25 me-3">
+							<option value="board_all" selected>전체</option>
+							<option value="board_category">카테고리</option>
+							<option value="board_title">제목</option>
+						</select> <input class="form-control keyword me-2" name="keyword"
+							id="searchKeyword" type="text" placeholder="검색"
+							aria-label="Search" />
+						<button class="btn btn-outline-primary" type="button"
+							id="searchBtn">Search</button>
+					</div>
+				</div>
+			</form>
+			<div class="row mt-3" style="font-size: 15px; width: 82%;">
+				<div class="col-md-12 d-flex justify-content-end"
+					style="align-items: center;">
+					<i class="fa-solid fa-book me-2"></i> <a class="notice"
+						style="text-decoration: none; color: black; cursor: pointer;"><span
+						style="padding-right: 30px;">Notice</span></a>
+				</div>
+			</div>
+			<div class="row resultBox mt-3">
+				<table>
+					<thead style="background-color: gainsboro; text-align: center;">
+						<tr>
+							<th scope="col" class='col-1'>유형</th>
+							<th scope="col" class='col-5'>제목</th>
+							<th scope="col" class='col-3'>작성일</th>
+							<th scope="col" class='col-1'>조회수</th>
+							<th scope="col" class='col-2'>삭제</th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						<c:choose>
+							<c:when test="${list.size() == 0}">
+								<tr>
+									<td colspan="5">등록된 게시물이 없습니다.</td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${list}" var="dto">
+									<tr class="tr">
+										<td>${dto.board_category}</td>
+										<td><a
+											href="/board/toDetailView?seq_board=${dto.seq_board}"
+											onclick="window.open(this.href, '_blank', 'width=1000, height=800'); return false;">${dto.board_title}</a></td>
+										<td>${dto.board_date}</td>
+										<td>${dto.board_count}</td>
+										<td id="icon"><span class="text-center boardDelete"
+											style="cursor: pointer;" id="boardDelete"><i
+												class="fa-solid fa-trash"></i></span></td>
+										<td class="d-none" id="seq_board">${dto.seq_board}</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- 검색전 pagination -->
 			<div class="pagination mt-4 justify-content-center" id="page">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
@@ -368,10 +350,10 @@
 						</c:if>
 					</ul>
 				</nav>
-			</div> 
-     	 </div>
-    </div>
-    <script>
+			</div>
+		</div>
+	</div>
+	<script>
 	//로그아웃 부분
     $(".user").mouseenter(function () {
         $(".logOut").css({ "display": "block", "z-index": "99" });
@@ -481,7 +463,6 @@
           data: data,
           dataType: "json",
           success: function (data) {
-            console.log(data.length);
             makeDynamicEl(data, curPage,type ,keyword);
           },
           error: function (e) {
@@ -663,7 +644,6 @@
 			target.on("click", function(e) {
 				e.preventDefault();
 				let category = $("#category option:selected").val();
-				console.log(category)
 				$.ajax({
 					url,
 					type:"get",
@@ -694,7 +674,6 @@
 	/* 게시글 삭제 */
 
 	function boardDelete(target, url, dataType){
-		console.log(target);
 		let seq_board = +$(target).parent().next().text();
 		Swal.fire({
 		  title: '정말 삭제하시겠습니까?',
@@ -738,5 +717,5 @@
 	});
 
     </script>
-  </body>
+</body>
 </html>

@@ -5,9 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-   rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <!-- AOS 라이브러리 불러오기-->
@@ -16,17 +14,13 @@
 <!-- 아이콘 -->
 <script src="https://kit.fontawesome.com/f9358a6ceb.js" crossorigin="anonymous"></script>
 <!-- Bootstrap icons-->
-<link
-   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-   rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
 <!-- 깃허브 alert -->
 <!-- swal -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
 <title>모임멤버</title>
 <style>
-
-
 
 @font-face {
     font-family: 'MICEGothic Bold';
@@ -588,7 +582,7 @@ footer.footer {
                            icon:'success',
                            title: '주최자 위임이 완료되었습니다!',
                            html: ' <b></b>' + '초뒤에 페이지가 이동됩니다.',
-                           timer: 3000,
+                           timer: 1500,
                            timerProgressBar: true,
                            didOpen: () => {
                              Swal.showLoading()
@@ -660,7 +654,7 @@ footer.footer {
                         })
                         setTimeout(function() {
                                 window.location.href = "";
-                            },3000);
+                            },1500);
                   },error : function(e){
                      console.log(e);
                   }

@@ -1,6 +1,5 @@
 package com.kiri.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +45,7 @@ public class UserController {
 		return "/user/viewAllGroupList";
 	}
 
-	// 카테고리별 지역별 그룹 리스트 보여주기
+	// 카테고리별,지역별 그룹 리스트 보여주기
 	@RequestMapping(value = "/toUserSelectedGroupList")
 	public String userViewList(Tbl_GroupDTO tbl_group_dto, Model model) throws Exception {
 		if(tbl_group_dto.getGroup_category() != null) {
@@ -100,13 +99,14 @@ public class UserController {
 		@ResponseBody
 		@RequestMapping(value = "/insertreport")
 		public String insertReport(ReportDTO ReportDTO) throws Exception {
-			String rs = report_service.insertReport(ReportDTO);
+			String rs = null;
+			int selectRs =  report_service.selectReport(ReportDTO);
+			if(selectRs > 0) {
+				rs = "noMore"; // 현재 로그인되어있는 사람이 해당인원을 이미 신고했을 때 		
+			}else {
+				rs = report_service.insertReport(ReportDTO);
+			}
 			return rs;
 		}	
 
-		
-		
-		
-		
-		
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>관리자-메인</title>
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -44,12 +44,12 @@ body, html {
 
 /* 눈누 폰트 */
 @font-face {
-   font-family: 'BMJUA';
-   src:
-      url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff')
-      format('woff');
-   font-weight: normal;
-   font-style: normal;
+	font-family: 'BMJUA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
@@ -70,13 +70,13 @@ body, html {
 }
 
 .sidebar span {
-   font-family: 'BMJUA';
+	font-family: 'BMJUA';
 }
 
 .sidebar li {
-   list-style: none;
-   border-bottom: 3px solid rgba(255, 255, 255, 0.63);
-   text-align: center;
+	list-style: none;
+	border-bottom: 3px solid rgba(255, 255, 255, 0.63);
+	text-align: center;
 }
 
 .sidebar a:hover {
@@ -84,9 +84,9 @@ body, html {
 }
 
 .logoHome span {
-   color: white;
-   font-size: x-large;
-   font-weight: 80px;
+	color: white;
+	font-size: x-large;
+	font-weight: 80px;
 }
 
 #logoImg {
@@ -94,14 +94,14 @@ body, html {
 }
 
 i {
-   margin-top: 15px;
-   margin-bottom: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 a {
-   text-decoration: none;
-   font-size: larger;
-   color: rgba(255, 255, 255, 0.683);
+	text-decoration: none;
+	font-size: larger;
+	color: rgba(255, 255, 255, 0.683);
 }
 
 @media ( max-width : 991px ) {
@@ -122,7 +122,6 @@ a {
 	}
 }
 
-
 /*네비바*/
 .navbar {
 	float: right;
@@ -133,50 +132,50 @@ a {
 }
 
 .user {
-   border-radius: 50%;
-   width: 50px;
-   height: 50px;
-   position: absolute;
-   right: 20px;
-   background-color: white;
-   border: 1px solid gainsboro;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	right: 20px;
+	background-color: white;
+	border: 1px solid gainsboro;
 }
 
 .userName {
-   position: absolute;
-   right: 80px;
+	position: absolute;
+	right: 80px;
 }
 
 #user_img {
-   border-radius: 50%;
-   width: 50px;
-   height: 50px;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
 }
 
 .logOut {
-   position: absolute;
-   right: 19px;
-   top: 28px;
-   border-radius: 50%;
-   width: 50px;
-   height: 50px;
-   background-color: gray;
-   display: none;
+	position: absolute;
+	right: 19px;
+	top: 28px;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	background-color: gray;
+	display: none;
 }
 
 .logout {
-   position: absolute;
-   top: -7px;
-   right: 8px;
-   font-size: xx-large;
-   color: white;
+	position: absolute;
+	top: -7px;
+	right: 8px;
+	font-size: xx-large;
+	color: white;
 }
 
 /*content*/
 .contents {
-   background-color: rgb(224, 230, 243);
-   width: 100%;
-   height: 100%;
+	background-color: rgb(224, 230, 243);
+	width: 100%;
+	height: 100%;
 }
 
 .chart-container {
@@ -382,8 +381,7 @@ a {
 						</div>
 						<div style="height: 360px;"
 							class="d-flex justify-content-center align-items-center mt-3">
-							<canvas id="donutChart1"
-								style="height: 200; width: 500"></canvas>
+							<canvas id="donutChart1" style="height: 200; width: 500"></canvas>
 						</div>
 					</div>
 				</div>
