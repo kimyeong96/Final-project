@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -246,19 +245,13 @@ a {
 	<div class="container">
 		<div class="sidebar">
 			<ul class="p-2">
-				<li class="logoHome sidemenu"><a href="/admin/toAdmin"> <img
-						src="/resources/images/adminLogo.png" id="logoImg"><br>
-						<span>끼리끼리</span>
+				<li class="logoHome sidemenu"><a href="/admin/toAdmin"> <img src="/resources/images/adminLogo.png" id="logoImg"><br> <span>끼리끼리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toMember?curPage=1"> <i
-						class="fa-solid fa-users-rectangle"></i><br> <span>회원
-							관리</span>
+				<li class="sidemenu"><a href="/admin/toMember?curPage=1"> <i class="fa-solid fa-users-rectangle"></i><br> <span>회원 관리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toBoard?curPage=1"> <i
-						class="fa-solid fa-table"></i><br> <span>게시물 관리</span>
+				<li class="sidemenu"><a href="/admin/toBoard?curPage=1"> <i class="fa-solid fa-table"></i><br> <span>게시물 관리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toGroupAdmin?curPage=1">
-						<i class="fa-solid fa-house-user"></i><br> <span>모임 관리</span>
+				<li class="sidemenu"><a href="/admin/toGroupAdmin?curPage=1"> <i class="fa-solid fa-house-user"></i><br> <span>모임 관리</span>
 				</a></li>
 			</ul>
 		</div>
@@ -279,13 +272,11 @@ a {
 			<!-- 카드 -->
 			<div class="row mt-2">
 				<div class="col-xl-3 col-md-3 mb-4">
-					<div class="card shadow h-100 py-2"
-						style="border-left: 4px solid #f8696d;">
+					<div class="card shadow h-100 py-2" style="border-left: 4px solid #f8696d;">
 						<div class="card-body">
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
-									<div class="text-xs font-weight-bold text-uppercase mb-1"
-										style="color: #f8696d;">회원수</div>
+									<div class="text-xs font-weight-bold text-uppercase mb-1" style="color: #f8696d;">회원수</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">${cntMember}명</div>
 								</div>
 								<div class="col-auto">
@@ -296,13 +287,11 @@ a {
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-3 mb-4">
-					<div class="card border-left-success shadow h-100 py-2"
-						style="border-left: 4px solid #fa588a;">
+					<div class="card border-left-success shadow h-100 py-2" style="border-left: 4px solid #fa588a;">
 						<div class="card-body">
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
-									<div class="text-xs font-weight-bold text-uppercase mb-1"
-										style="color: #fa588a;">모임수</div>
+									<div class="text-xs font-weight-bold text-uppercase mb-1" style="color: #fa588a;">모임수</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">${cntGroupCnt}개</div>
 								</div>
 								<div class="col-auto">
@@ -313,13 +302,11 @@ a {
 					</div>
 				</div>
 				<div class="col-xl-3 col-md-3 mb-4">
-					<div class="card border-left-success shadow h-100 py-2"
-						style="border-left: 4px solid #a74cf1;">
+					<div class="card border-left-success shadow h-100 py-2" style="border-left: 4px solid #a74cf1;">
 						<div class="card-body">
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
-									<div class="text-xs font-weight-bold text-uppercase mb-1"
-										style="color: #a74cf1;">게시글 수</div>
+									<div class="text-xs font-weight-bold text-uppercase mb-1" style="color: #a74cf1;">게시글 수</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">${totalBoardCnt}개</div>
 								</div>
 								<div class="col-auto">
@@ -331,13 +318,11 @@ a {
 				</div>
 				<!-- Pending Requests Card Example -->
 				<div class="col-xl-3 col-md-3 mb-4">
-					<div class="card border-left-warning shadow h-100 py-2"
-						style="border-left: 4px solid #7774e7;">
+					<div class="card border-left-warning shadow h-100 py-2" style="border-left: 4px solid #7774e7;">
 						<div class="card-body">
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
-									<div class="text-xs font-weight-bold text-uppercase mb-1"
-										style="color: #7774e7;">일정수</div>
+									<div class="text-xs font-weight-bold text-uppercase mb-1" style="color: #7774e7;">일정수</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">${cntGroupCal}개</div>
 								</div>
 								<div class="col-auto">
@@ -379,8 +364,7 @@ a {
 						<div class="card-header py-2">
 							<h6 class="m-0 font-weight-bold text-primary">모임별 일정수</h6>
 						</div>
-						<div style="height: 360px;"
-							class="d-flex justify-content-center align-items-center mt-3">
+						<div style="height: 360px;" class="d-flex justify-content-center align-items-center mt-3">
 							<canvas id="donutChart1" style="height: 200; width: 500"></canvas>
 						</div>
 					</div>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
@@ -235,14 +234,10 @@ hr {
 </head>
 <body>
 	<div class="container chatting">
-		<input type="text" class="d-none" id="nickname"
-			value="${user_nickname }"> <input type="text" class="d-none"
-			id="seq_group" value="${seq_group }">
+		<input type="text" class="d-none" id="nickname" value="${user_nickname }"> <input type="text" class="d-none" id="seq_group" value="${seq_group }">
 		<div class="row title text-center pt-1">
 			<div class="col-12">
-				<span
-					style="font-size: 32px; color: navy; font-family: 'KOTRAHOPE';">${tgList[0].group_title}</span>
-				<span style="font-size: 30px; font-family: 'KOTRAHOPE';">&nbsp;채팅</span>
+				<span style="font-size: 32px; color: navy; font-family: 'KOTRAHOPE';">${tgList[0].group_title}</span> <span style="font-size: 30px; font-family: 'KOTRAHOPE';">&nbsp;채팅</span>
 			</div>
 		</div>
 		<div class="row contentBox">
@@ -258,8 +253,7 @@ hr {
 											<img src="/resources/images/profile.jpg" id="profile_img">
 										</c:if>
 										<c:if test="${profileList[status.index] ne null}">
-											<img src="/profile/${profileList[status.index]}"
-												id="profile_img">
+											<img src="/profile/${profileList[status.index]}" id="profile_img">
 										</c:if>
 									</div>
 								</td>
@@ -283,8 +277,7 @@ hr {
 									<c:set var="str" value="${gcList.message }" />
 									<c:if test="${fn:contains(str, '/resources/')}">
 										<div class="msgBox">
-											<span><img style="pointer-events: none;"
-												class="emojiImg" src="${gcList.message }"></span>
+											<span><img style="pointer-events: none;" class="emojiImg" src="${gcList.message }"></span>
 										</div>
 									</c:if>
 									<c:if test="${not fn:contains(str, '/resources/')}">
@@ -303,8 +296,7 @@ hr {
 									<c:set var="str" value="${gcList.message }" />
 									<c:if test="${fn:contains(str, '/resources/')}">
 										<div class="msgBox">
-											<span><img style="pointer-events: none;"
-												class="emojiImg" src="${gcList.message }"></span>
+											<span><img style="pointer-events: none;" class="emojiImg" src="${gcList.message }"></span>
 										</div>
 									</c:if>
 									<c:if test="${not fn:contains(str, '/resources/')}">
@@ -321,14 +313,12 @@ hr {
 					<div class="row">
 						<div class="col-2 pe-0">
 							<button type="button" id="rupi" class="selectBtn">
-								<img src="/resources/images/루피아이콘.png"
-									style="width: 25px; border-radius: 5px;">
+								<img src="/resources/images/루피아이콘.png" style="width: 25px; border-radius: 5px;">
 							</button>
 						</div>
 						<div class="col-2 ps-0">
 							<button type="button" id="ogu" class="selectBtn">
-								<img src="/resources/images/아기오구아이콘.png"
-									style="width: 25px; height: 25px;">
+								<img src="/resources/images/아기오구아이콘.png" style="width: 25px; height: 25px;">
 							</button>
 						</div>
 						<div class="col-10"></div>
@@ -439,15 +429,10 @@ hr {
 						</div>
 					</div>
 				</div>
-				<div
-					class="inputmsg d-flex justify-content-center align-items-center">
-					<input type="text" id="message" class="form-control w-75 mt-2"
-						autofocus>
-					<button type="button"
-						class="btn btn-outline-primary d-flex align-items-center mt-2 ms-4 h-75"
-						id="send">send</button>
-					<button type="button"
-						class="btn d-flex align-items-center emoticon ms-3 mt-2">
+				<div class="inputmsg d-flex justify-content-center align-items-center">
+					<input type="text" id="message" class="form-control w-75 mt-2" autofocus>
+					<button type="button" class="btn btn-outline-primary d-flex align-items-center mt-2 ms-4 h-75" id="send">send</button>
+					<button type="button" class="btn d-flex align-items-center emoticon ms-3 mt-2">
 						<i class="fa-regular fa-face-smile"></i>
 					</button>
 				</div>
@@ -460,7 +445,7 @@ hr {
       // 웹소켓 객체 생성할때 반드시 서버의 ip 주소값은 실제 ip 주소를 이용
       // 포트번호 다르면 :포트번호/chat 39.120.220.2:11111
       var seq_group = $("#seq_group").val();
-      let ws = new WebSocket("ws://192.168.20.21/chat/"+seq_group);
+      let ws = new WebSocket("ws://http://localhost:8080/chat/"+seq_group);
       let nickname = $("#nickname").val();
       //이모티콘 나오게 하기
          $(".emoticon").click(function(){
@@ -680,7 +665,7 @@ hr {
       
       //이모티콘 보내는 함수
       function sendEmoji(imgCls){
-         let url = 'http://192.168.20.21/';
+         let url = 'http://localhost:8080/';
          let emojiSrc = $(imgCls).prop("src").indexOf(url)+url.length-1; // /resources 시작하는 index번호
          let realSrc = $(imgCls).prop("src").slice(emojiSrc);
          console.log(realSrc);

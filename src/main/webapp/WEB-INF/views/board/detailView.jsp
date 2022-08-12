@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
@@ -252,12 +251,10 @@ footer.footer {
 </head>
 <body>
 	<!--네비바-->
-	<header class="mb-3 border-bottom"
-		style="box-shadow: 2px 1px 6px 1px #bfbfbf;">
+	<header class="mb-3 border-bottom" style="box-shadow: 2px 1px 6px 1px #bfbfbf;">
 		<div class="container">
 			<!-- 접혔을 때 nav -->
-			<nav id="navibar" class="navbar navbar-expand-md navbar-light"
-				aria-label="Main navigation">
+			<nav id="navibar" class="navbar navbar-expand-md navbar-light" aria-label="Main navigation">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-10">
@@ -269,40 +266,26 @@ footer.footer {
 						</div>
 						<!-- toggle button -->
 						<div class="col-2 d-flex align-items-center">
-							<button class="navbar-toggler" type="button"
-								data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-								aria-controls="navbarNavDropdown" aria-expanded="false"
-								aria-label="Toggle navigation">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
 						</div>
 						<!-- 메뉴 -->
-						<div class="collapse navbar-collapse justify-content-end"
-							id="navbarNavDropdown">
+						<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
 							<ul class="navbar-nav mb-2 mb-lg-0">
-								<li class="nav-item"><a class="nav-link"
-									href="/board/toBoard">자유게시판</a></li>
+								<li class="nav-item"><a class="nav-link" href="/board/toBoard">자유게시판</a></li>
 								<c:if test="${empty loginSession}">
-									<li class="nav-item"><a class="nav-link"
-										href="/login/toLogin">로그인</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="/signup/toSignupAgree">회원가입</a></li>
+									<li class="nav-item"><a class="nav-link" href="/login/toLogin">로그인</a></li>
+									<li class="nav-item"><a class="nav-link" href="/signup/toSignupAgree">회원가입</a></li>
 								</c:if>
-								<c:if
-									test="${not empty loginSession && loginSession.user_email eq 'admin'}">
-									<li class="nav-item"><a class="nav-link"
-										href="/mem/myPage">마이페이지</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="/admin/toAdmin">관리자페이지 이동</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="/login/toLogout">로그아웃</a></li>
+								<c:if test="${not empty loginSession && loginSession.user_email eq 'admin'}">
+									<li class="nav-item"><a class="nav-link" href="/mem/myPage">마이페이지</a></li>
+									<li class="nav-item"><a class="nav-link" href="/admin/toAdmin">관리자페이지 이동</a></li>
+									<li class="nav-item"><a class="nav-link" href="/login/toLogout">로그아웃</a></li>
 								</c:if>
-								<c:if
-									test="${not empty loginSession && loginSession.user_email ne 'admin'}">
-									<li class="nav-item"><a class="nav-link"
-										href="/mem/myPage">마이페이지</a></li>
-									<li class="nav-item"><a class="nav-link"
-										href="/login/toLogout">로그아웃</a></li>
+								<c:if test="${not empty loginSession && loginSession.user_email ne 'admin'}">
+									<li class="nav-item"><a class="nav-link" href="/mem/myPage">마이페이지</a></li>
+									<li class="nav-item"><a class="nav-link" href="/login/toLogout">로그아웃</a></li>
 								</c:if>
 							</ul>
 						</div>
@@ -311,20 +294,17 @@ footer.footer {
 				</div>
 			</nav>
 			<!-- 펼쳐졌을 때 nav -->
-			<nav id="menu" class="navbar navbar-expand-md w-100 navbar-light"
-				aria-label="Main navigation">
+			<nav id="menu" class="navbar navbar-expand-md w-100 navbar-light" aria-label="Main navigation">
 				<div class="row w-100 align-items-center">
 					<div class="col-5 d-flex justify-content-center">
 						<ul class="navbar-nav mb-2 mb-lg-0">
-							<li class="nav-item"><a class="nav-link mx-2"
-								href="/board/toBoard" style="font-size: 18px;">자유 게시판</a></li>
+							<li class="nav-item"><a class="nav-link mx-2" href="/board/toBoard" style="font-size: 18px;">자유 게시판</a></li>
 						</ul>
 					</div>
 
 					<!-- logo -->
 					<div class="col-2">
-						<a href="/" id="navLogo" class="mb-2 mb-lg-0"> <img
-							id="logoImgs" src="/resources/images/kiri.jpg">
+						<a href="/" id="navLogo" class="mb-2 mb-lg-0"> <img id="logoImgs" src="/resources/images/kiri.jpg">
 
 						</a>
 					</div>
@@ -334,61 +314,41 @@ footer.footer {
 							<div class="col-auto">
 								<ul class="navbar-nav mb-2 mb-lg-0 me-2">
 									<c:if test="${empty loginSession}">
-										<li class="nav-item"><a class="nav-link"
-											href="/login/toLogin">로그인</a></li>
-										<li class="nav-item"><a class="nav-link"
-											href="/signup/toSignupAgree">회원가입</a></li>
+										<li class="nav-item"><a class="nav-link" href="/login/toLogin">로그인</a></li>
+										<li class="nav-item"><a class="nav-link" href="/signup/toSignupAgree">회원가입</a></li>
 									</c:if>
 								</ul>
 							</div>
 							<div class="col-auto user">
-								<c:if
-									test="${not empty loginSession && loginSession.user_email eq 'admin'}">
+								<c:if test="${not empty loginSession && loginSession.user_email eq 'admin'}">
 									<div class="dropdown text-end">
-										<a href="/"
-											class="d-block link-dark text-decoration-none dropdown-toggle"
-											id="dropdownUser1" data-bs-toggle="dropdown"
-											aria-expanded="false"> <img
-											src="/resources/images/profile.jpg" alt="mdo" width="32"
-											height="32" class="rounded-circle">
+										<a href="/" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <img src="/resources/images/profile.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
 										</a>
-										<ul class="dropdown-menu text-small"
-											aria-labelledby="dropdownUser1">
+										<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 											<li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
 											<li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a></li>
 											<li><hr class="dropdown-divider"></li>
-											<li><a class="dropdown-item" href="/admin/toAdmin">관리자
-													페이지이동</a></li>
+											<li><a class="dropdown-item" href="/admin/toAdmin">관리자 페이지이동</a></li>
 											<li><a class="dropdown-item" href="/login/toLogout">로그아웃</a></li>
 										</ul>
 									</div>
 								</c:if>
-								<c:if
-									test="${not empty loginSession && loginSession.user_email ne 'admin'}">
+								<c:if test="${not empty loginSession && loginSession.user_email ne 'admin'}">
 									<div class="dropdown text-end">
-										<a href="/"
-											class="d-block link-dark text-decoration-none dropdown-toggle"
-											id="dropdownUser1" data-bs-toggle="dropdown"
-											aria-expanded="false"> <c:if
-												test="${loginSession.user_image eq null}">
-												<img src="/resources/images/profile.jpg" alt="mdo"
-													width="40" height="40" class="rounded-circle">
+										<a href="/" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <c:if test="${loginSession.user_image eq null}">
+												<img src="/resources/images/profile.jpg" alt="mdo" width="40" height="40" class="rounded-circle">
 											</c:if> <c:if test="${loginSession.user_image ne null}">
-												<img src="/profile/${loginSession.user_image }" alt="mdo"
-													width="40" height="40" class="rounded-circle">
+												<img src="/profile/${loginSession.user_image }" alt="mdo" width="40" height="40" class="rounded-circle">
 											</c:if>
 										</a>
-										<ul class="dropdown-menu text-small"
-											aria-labelledby="dropdownUser1">
+										<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 											<li><a class="dropdown-item" href="/mem/myPage">마이페이지</a></li>
-											<li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a>
-											</li>
+											<li><a class="dropdown-item" href="/group/toCreateGroup">모임생성</a></li>
 											<li>
 												<hr class="dropdown-divider" style="margin: 0px;">
 											</li>
 											<c:if test="${loginType ne 'kakao'}">
-												<li><a class="dropdown-item mt-2"
-													href="/login/toLogout">로그아웃</a></li>
+												<li><a class="dropdown-item mt-2" href="/login/toLogout">로그아웃</a></li>
 											</c:if>
 											<c:if test="${loginType eq 'kakao'}">
 												<li><a class="dropdown-item mt-2" href="${kakaoLogout}">로그아웃</a></li>
@@ -416,10 +376,7 @@ footer.footer {
 
 		<div class="row mt-4 justify-content-between align-items-center">
 			<div class="col-auto" id="board-head-col">
-				<i class="fa-regular fa-clock"></i> <span class="me-3">${detail.boardDTO.board_date}</span>
-				<i class="fa-regular fa-font-awesome"></i> <span class="me-3">${detail.boardDTO.board_count}</span>
-				<i class="fa-regular fa-comment-dots"></i> <span class="me-3">${detail.commentCnt}</span>
-				<i class="fa-regular fa-heart"></i> <span>${like.likeHit}</span>
+				<i class="fa-regular fa-clock"></i> <span class="me-3">${detail.boardDTO.board_date}</span> <i class="fa-regular fa-font-awesome"></i> <span class="me-3">${detail.boardDTO.board_count}</span> <i class="fa-regular fa-comment-dots"></i> <span class="me-3">${detail.commentCnt}</span> <i class="fa-regular fa-heart"></i> <span>${like.likeHit}</span>
 			</div>
 			<div class="col-auto d-flex justify-content-end">
 				<div class="fw-bold fs-4 me-2">작성자</div>
@@ -445,10 +402,8 @@ footer.footer {
 						<%-- 좋아요 안누름 --%>
 						<c:when test="${like.likeCheck == 0}">
 							<div class="col-12 text-center">
-								<button class="likeBtn" id="likeBefore"
-									value="${detail.boardDTO.seq_board}">
-									<img src="/resources/images/board/likeText.png" alt="좋아요"><br>
-									<img src="/resources/images/board/like.png" alt="좋아요">
+								<button class="likeBtn" id="likeBefore" value="${detail.boardDTO.seq_board}">
+									<img src="/resources/images/board/likeText.png" alt="좋아요"><br> <img src="/resources/images/board/like.png" alt="좋아요">
 								</button>
 							</div>
 							<span class="text-center">게시글에 좋아요를 눌러보세요!</span>
@@ -456,10 +411,8 @@ footer.footer {
 						<%-- 좋아요 누름 --%>
 						<c:otherwise>
 							<div class="col-12 text-center">
-								<button class="likeBtn" id="likeAfter"
-									value="${detail.boardDTO.seq_board}">
-									<img src="/resources/images/board/notLikeText.png" alt="좋아요"><br>
-									<img src="/resources/images/board/notLike.png" alt="좋아요취소">
+								<button class="likeBtn" id="likeAfter" value="${detail.boardDTO.seq_board}">
+									<img src="/resources/images/board/notLikeText.png" alt="좋아요"><br> <img src="/resources/images/board/notLike.png" alt="좋아요취소">
 								</button>
 							</div>
 							<span class="text-center">좋아요를 취소할 수 있어요.</span>
@@ -470,10 +423,8 @@ footer.footer {
 				<%-- 로그인 x일 때 --%>
 				<c:otherwise>
 					<div class="col-auto">
-						<button class="likeBtn" id="like-notLoginBtn"
-							value="${detail.boardDTO.seq_board}">
-							<img src="/resources/images/board/likeText.png" alt="좋아요"><br>
-							<img src="/resources/images/board/like.png" alt="좋아요">
+						<button class="likeBtn" id="like-notLoginBtn" value="${detail.boardDTO.seq_board}">
+							<img src="/resources/images/board/likeText.png" alt="좋아요"><br> <img src="/resources/images/board/like.png" alt="좋아요">
 						</button>
 					</div>
 					<span class="text-center">로그인 후 좋아요를 눌러보세요!</span>
@@ -495,8 +446,7 @@ footer.footer {
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${detail.commentList}" var="comment">
-							<div class="row align-items-center py-3"
-								style="border-bottom: 3px solid white;">
+							<div class="row align-items-center py-3" style="border-bottom: 3px solid white;">
 								<!-- 프로필 이미지 -->
 								<div class="col-2 d-flex justify-content-center">
 									<div class="profileBox">
@@ -522,19 +472,16 @@ footer.footer {
 										<c:if test="${comment.user_email eq loginSession.user_email}">
 											<%-- 수정/삭제 --%>
 											<div class="col-auto defaultComment">
-												<button type="button" class="mod-commentBtn me-2"
-													value="${comment.seq_comment}">
+												<button type="button" class="mod-commentBtn me-2" value="${comment.seq_comment}">
 													<i class="fa-solid fa-eraser"></i>
 												</button>
-												<button type="button" class="del-commentBtn"
-													value="${comment.seq_comment}">
+												<button type="button" class="del-commentBtn" value="${comment.seq_comment}">
 													<i class="fa-solid fa-trash-can"></i>
 												</button>
 											</div>
 											<%-- 완료/취소 --%>
 											<div class="col-auto afterComment d-none">
-												<button type="button" class="mod-completeBtn"
-													value="${comment.seq_comment}">
+												<button type="button" class="mod-completeBtn" value="${comment.seq_comment}">
 													<i class="fa-solid fa-circle-check"></i>
 												</button>
 												<button type="button" class="mod-cancelBtn me-2">
@@ -545,9 +492,7 @@ footer.footer {
 									</div>
 									<div class="row">
 										<div class="col-12">
-											<textarea class="form-control comment"
-												style="resize: none; background-color: transparent;"
-												readonly>${comment.comment_content}</textarea>
+											<textarea class="form-control comment" style="resize: none; background-color: transparent;" readonly>${comment.comment_content}</textarea>
 										</div>
 									</div>
 								</div>
@@ -561,18 +506,14 @@ footer.footer {
 
 		<!-- 댓글 등록 -->
 		<form id="commentForm" action="/comment/write" method="post">
-			<div class="row mt-4 p-0 py-3"
-				style="background-color: #f5fafc; border-radius: 10px">
-				<input class="d-none" id="seq_board" name="seq_board"
-					value="${detail.boardDTO.seq_board}">
+			<div class="row mt-4 p-0 py-3" style="background-color: #f5fafc; border-radius: 10px">
+				<input class="d-none" id="seq_board" name="seq_board" value="${detail.boardDTO.seq_board}">
 				<div class="col-10">
 					<!-- <input class="form-control" type="text" style="height: 60px" placeholder="댓글을 입력하세요."> -->
-					<textarea id="inputComment" name="comment_content"
-						style="resize: none;" class="form-control" placeholder="댓글을 입력하세요"></textarea>
+					<textarea id="inputComment" name="comment_content" style="resize: none;" class="form-control" placeholder="댓글을 입력하세요"></textarea>
 				</div>
 				<div class="col-2">
-					<button type="button" id="write-commentBtn" class="btn w-100 h-100"
-						style="background-color: #d2e3ec;">등록</button>
+					<button type="button" id="write-commentBtn" class="btn w-100 h-100" style="background-color: #d2e3ec;">등록</button>
 				</div>
 			</div>
 		</form>
@@ -582,26 +523,18 @@ footer.footer {
 		<div class="row mt-4 justify-content-center">
 			<c:if test="${loginSession.user_email eq detail.boardDTO.user_email}">
 				<div class="col-auto">
-					<button type="button" id="modifyBtn" class="btn"
-						style="background-color: #d2e3ec;">수정</button>
+					<button type="button" id="modifyBtn" class="btn" style="background-color: #d2e3ec;">수정</button>
 				</div>
 				<div class="col-auto">
-					<button type="button" id="deleteBtn" class="btn"
-						style="background-color: #fce2e1;">삭제</button>
+					<button type="button" id="deleteBtn" class="btn" style="background-color: #fce2e1;">삭제</button>
 				</div>
 			</c:if>
 			<div class="col-auto">
-				<button type="button" id="toListBtn" class="btn"
-					style="background-color: #cfe4d8">목록으로</button>
+				<button type="button" id="toListBtn" class="btn" style="background-color: #cfe4d8">목록으로</button>
 			</div>
 		</div>
 		<form id="infoForm" method="get">
-			<input type="hidden" id="seq_board" name="seq_board"
-				value="${detail.boardDTO.seq_board}"> <input type="hidden"
-				name="pageNum" value='<c:out value="${cri.pageNum}"/>'> <input
-				type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="type" value="${cri.type}"> <input
-				type="hidden" name="keyword" value="${cri.keyword}">
+			<input type="hidden" id="seq_board" name="seq_board" value="${detail.boardDTO.seq_board}"> <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'> <input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'> <input type="hidden" name="type" value="${cri.type}"> <input type="hidden" name="keyword" value="${cri.keyword}">
 		</form>
 	</div>
 
@@ -615,8 +548,7 @@ footer.footer {
 					</div>
 					<div class="col-lg-6 h-100 text-center text-lg-start my-auto">
 						<ul class="list-inline mb-2">
-							<li class="list-inline-item"><a
-								href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
+							<li class="list-inline-item"><a href="/board/toBoard?pageNum=1&amount=10&keyword=&type=&category=공지">공지사항</a></li>
 							<li class="list-inline-item">⋅</li>
 							<c:choose>
 								<c:when test="${not empty loginSession}">
@@ -630,8 +562,7 @@ footer.footer {
 									</c:if>
 								</c:when>
 								<c:otherwise>
-									<li class="list-inline-item"><a
-										href="/signup/toSignupAgree">회원가입</a></li>
+									<li class="list-inline-item"><a href="/signup/toSignupAgree">회원가입</a></li>
 									<li class="list-inline-item">⋅</li>
 									<li class="list-inline-item"><a href="/login/toLogin">로그인</a></li>
 								</c:otherwise>
@@ -646,27 +577,17 @@ footer.footer {
 									</c:otherwise>
 								</c:choose></li>
 							<li class="list-inline-item">⋅</li>
-							<li class="list-inline-item"><a href="/privacy"
-								style="color: red; font-weight: bold;">개인정보처리방침</a></li>
+							<li class="list-inline-item"><a href="/privacy" style="color: red; font-weight: bold;">개인정보처리방침</a></li>
 						</ul>
-						<p class="text-muted small mb-4 mb-lg-0">끼리끼리(주) 대표 : 이호준 |
-							개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
-						<p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로
-							57 이레빌딩</p>
-						<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website
-							2022. All Rights Reserved.</p>
+						<p class="text-muted small mb-4 mb-lg-0">끼리끼리(주) 대표 : 이호준 | 개인정보관리책임자 : 김영완 | 사업자등록번호 : 22-02-22</p>
+						<p class="text-muted small mb-4 mb-lg-0">주소 : 서울특별시 영등포구 선유동2로 57 이레빌딩</p>
+						<p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
 					</div>
 					<div class="col-lg-3 h-100 text-center text-lg-start my-auto">
 						<ul class="list-inline mb-0">
-							<li class="list-inline-item me-4"><a
-								href="https://ko-kr.facebook.com"><i
-									class="bi-facebook fs-3"></i></a></li>
-							<li class="list-inline-item me-4"><a
-								href="https://twitter.com/?lang=ko"><i
-									class="bi-twitter fs-3"></i></a></li>
-							<li class="list-inline-item"><a
-								href="https://www.instagram.com/"><i
-									class="bi-instagram fs-3"></i></a></li>
+							<li class="list-inline-item me-4"><a href="https://ko-kr.facebook.com"><i class="bi-facebook fs-3"></i></a></li>
+							<li class="list-inline-item me-4"><a href="https://twitter.com/?lang=ko"><i class="bi-twitter fs-3"></i></a></li>
+							<li class="list-inline-item"><a href="https://www.instagram.com/"><i class="bi-instagram fs-3"></i></a></li>
 						</ul>
 					</div>
 				</div>

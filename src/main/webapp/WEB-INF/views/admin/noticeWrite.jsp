@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,8 +109,7 @@ label {
 						<c:choose>
 							<%-- 관리자 계정이라면 공지 쓰기 --%>
 							<c:when test="${loginType eq 'admin'}">
-								<select name="board_category" class="form-select selectBox"
-									aria-label="유형">
+								<select name="board_category" class="form-select selectBox" aria-label="유형">
 									<option selected value="공지">공지</option>
 								</select>
 							</c:when>
@@ -122,9 +120,7 @@ label {
 						<label class="form-label fs-5">제목</label>
 					</div>
 					<div class="col-8">
-						<input type="text" id="title" name="board_title"
-							class="form-control" placeholder="제목을 입력하세요. (최대 18자)"
-							maxlength="18">
+						<input type="text" id="title" name="board_title" class="form-control" placeholder="제목을 입력하세요. (최대 18자)" maxlength="18">
 					</div>
 				</div>
 
@@ -136,14 +132,12 @@ label {
 
 			</div>
 
-			<div class="row my-4 justify-content-center align-items-center"
-				id="bottom">
+			<div class="row my-4 justify-content-center align-items-center" id="bottom">
 				<div class="col-auto">
 					<button type="button" id="cancelBtn" class="btn btn-light">취소</button>
 				</div>
 				<div class="col-auto">
-					<button type="button" id="submitBtn" class="btn"
-						style="background-color: #e6f6ff;">작성 완료</button>
+					<button type="button" id="submitBtn" class="btn" style="background-color: #e6f6ff;">작성 완료</button>
 				</div>
 			</div>
 		</form>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -214,21 +213,13 @@ td>a {
 	<div class="container">
 		<div class="sidebar">
 			<ul class="p-2">
-				<li class="logoHome sidemenu"><a href="/admin/toAdmin"> <img
-						src="/resources/images/adminLogo.png" id="logoImg"><br>
-						<span>끼리끼리</span>
+				<li class="logoHome sidemenu"><a href="/admin/toAdmin"> <img src="/resources/images/adminLogo.png" id="logoImg"><br> <span>끼리끼리</span>
 				</a></li>
-				<li class="sidemenu memberMenu"><a
-					href="/admin/toMember?curPage=1"> <i
-						class="fa-solid fa-users-rectangle"></i><br> <span>회원
-							관리</span>
+				<li class="sidemenu memberMenu"><a href="/admin/toMember?curPage=1"> <i class="fa-solid fa-users-rectangle"></i><br> <span>회원 관리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toBoard?curPage=1"> <i
-						class="fa-solid fa-table"></i><br> <span>게시물 관리</span>
+				<li class="sidemenu"><a href="/admin/toBoard?curPage=1"> <i class="fa-solid fa-table"></i><br> <span>게시물 관리</span>
 				</a></li>
-				<li class="sidemenu groupMenu"><a
-					href="/admin/toGroupAdmin?curPage=1"> <i
-						class="fa-solid fa-house-user"></i><br> <span>모임 관리</span>
+				<li class="sidemenu groupMenu"><a href="/admin/toGroupAdmin?curPage=1"> <i class="fa-solid fa-house-user"></i><br> <span>모임 관리</span>
 				</a></li>
 			</ul>
 		</div>
@@ -244,9 +235,7 @@ td>a {
 		<div class="contents">
 			<div class="row title mt-2">
 				<div class="col mt-4">
-					<h4
-						style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue; margin-left: 75px;">
-						모임 관리</h4>
+					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue; margin-left: 75px;">모임 관리</h4>
 				</div>
 			</div>
 			<div class="row searchBox">
@@ -255,16 +244,12 @@ td>a {
 						<option value="all" selected>전체</option>
 						<option value="group_title">모임명</option>
 						<option value="group_category">카테고리</option>
-					</select> <input class="form-control me-2" name="searchKeyword"
-						id="searchKeyword" type="search" placeholder="모임 검색"
-						aria-label="Search">
-					<button class="btn btn-outline-primary" type="button"
-						id="searchBtn">Search</button>
+					</select> <input class="form-control me-2" name="searchKeyword" id="searchKeyword" type="search" placeholder="모임 검색" aria-label="Search">
+					<button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
 				</div>
 			</div>
 			<div class="row resultBox mt-3">
-				<span style="font-size: 20px;">총 모임<span id="groupCnt"
-					style="color: navy">${groupCnt}</span>개
+				<span style="font-size: 20px;">총 모임<span id="groupCnt" style="color: navy">${groupCnt}</span>개
 				</span>
 				<table class="table table-bordered">
 					<thead style="text-align: center; background-color: gainsboro;">
@@ -288,14 +273,11 @@ td>a {
 								<c:forEach items="${groupList}" var="groupList">
 									<tr>
 										<td>${groupList.user_email}</td>
-										<td><a
-											href="/group/toGroupDetail?seq_group=${groupList.seq_group}">${groupList.group_title}</a></td>
+										<td><a href="/group/toGroupDetail?seq_group=${groupList.seq_group}">${groupList.group_title}</a></td>
 										<td>${groupList.group_category}</td>
 										<td>${groupList.group_people}</td>
 										<td>${groupList.group_site}</td>
-										<td><a
-											href="/admin/toDeleteGroup?seq_group=${groupList.seq_group}"><i
-												class="fa-solid fa-trash"></i></a></td>
+										<td><a href="/admin/toDeleteGroup?seq_group=${groupList.seq_group}"><i class="fa-solid fa-trash"></i></a></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -309,19 +291,13 @@ td>a {
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
 						<c:if test="${naviMap.needPrev eq true}">
-							<li class="page-item"><a class="page-link"
-								href="/admin/toGroupAdmin?curPage=${naviMap.startNavi-1}"><i
-									class="fa-solid fa-angle-left"></i></a></li>
+							<li class="page-item"><a class="page-link" href="/admin/toGroupAdmin?curPage=${naviMap.startNavi-1}"><i class="fa-solid fa-angle-left"></i></a></li>
 						</c:if>
-						<c:forEach var="pageNum" begin="${naviMap.startNavi}"
-							end="${naviMap.endNavi }">
-							<li class="page-item"><a class="page-link"
-								href="/admin/toGroupAdmin?curPage=${pageNum }">${pageNum }</a></li>
+						<c:forEach var="pageNum" begin="${naviMap.startNavi}" end="${naviMap.endNavi }">
+							<li class="page-item"><a class="page-link" href="/admin/toGroupAdmin?curPage=${pageNum }">${pageNum }</a></li>
 						</c:forEach>
 						<c:if test="${GroupNaviMap.needNext eq true}">
-							<li class="page-item"><a class="page-link"
-								href="/admin/toGroupAdmin?curPage=${naviMap.endNavi+1}"><i
-									class="fa-solid fa-angle-right"></i></a></li>
+							<li class="page-item"><a class="page-link" href="/admin/toGroupAdmin?curPage=${naviMap.endNavi+1}"><i class="fa-solid fa-angle-right"></i></a></li>
 						</c:if>
 					</ul>
 				</nav>

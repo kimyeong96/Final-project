@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
@@ -59,102 +58,80 @@
 				<h1 style="color: navy;">회원 상세 정보</h1>
 			</div>
 			<div class="row id pt-4 p-2 pb-3">
-				<div
-					class="col-4 d-flex ps-5 align-items-center justify-content-start">
+				<div class="col-4 d-flex ps-5 align-items-center justify-content-start">
 					<label>이름</label>
 				</div>
 				<div class="col-8 d-flex justify-content-center">
-					<input type="text" name="user_name" class="form-control w-75"
-						id="user_name" value="${memList.user_name}" readonly>
+					<input type="text" name="user_name" class="form-control w-75" id="user_name" value="${memList.user_name}" readonly>
 				</div>
 			</div>
 			<div class="row id p-2 pb-3">
-				<div
-					class="col-4 d-flex ps-5 align-items-center justify-content-start">
+				<div class="col-4 d-flex ps-5 align-items-center justify-content-start">
 					<label>생년월일</label>
 				</div>
 				<div class="col-8 d-flex justify-content-center">
-					<input type="text" name="user_bd" class="form-control w-75"
-						id="user_bd" value="${memList.user_bd}" readonly>
+					<input type="text" name="user_bd" class="form-control w-75" id="user_bd" value="${memList.user_bd}" readonly>
 				</div>
 			</div>
 			<div class="row email p-2 pb-3">
-				<div
-					class="col-4 d-flex ps-5 align-items-center justify-content-start">
+				<div class="col-4 d-flex ps-5 align-items-center justify-content-start">
 					<label>닉네임</label>
 				</div>
 				<div class="col-8 d-flex justify-content-center">
-					<input type="text" name="user_nickname" class="form-control w-75"
-						id="user_nickname" value="${memList.user_nickname}" readonly>
+					<input type="text" name="user_nickname" class="form-control w-75" id="user_nickname" value="${memList.user_nickname}" readonly>
 				</div>
 			</div>
 			<div class="row email p-2 pb-3">
-				<div
-					class="col-4 d-flex ps-5 align-items-center justify-content-start">
+				<div class="col-4 d-flex ps-5 align-items-center justify-content-start">
 					<label>이메일</label>
 				</div>
 				<div class="col-8 d-flex justify-content-center">
-					<input type="text" name="user_email" class="form-control w-75"
-						id="user_email" value="${memList.user_email}" readonly>
+					<input type="text" name="user_email" class="form-control w-75" id="user_email" value="${memList.user_email}" readonly>
 				</div>
 			</div>
 			<div class="row phone p-2 pb-3">
-				<div
-					class="col-4 d-flex ps-5 align-items-center justify-content-start">
+				<div class="col-4 d-flex ps-5 align-items-center justify-content-start">
 					<label>휴대폰번호</label>
 				</div>
 				<div class="col-8 d-flex justify-content-center">
-					<input type="text" name="user_phone" class="form-control w-75"
-						id="user_phone" value="${memList.user_phone}" readonly>
+					<input type="text" name="user_phone" class="form-control w-75" id="user_phone" value="${memList.user_phone}" readonly>
 				</div>
 			</div>
 			<div class="row gender p-2 pb-3">
-				<div
-					class="col-4 d-flex ps-5 align-items-center justify-content-start">
+				<div class="col-4 d-flex ps-5 align-items-center justify-content-start">
 					<label>성별</label>
 				</div>
 				<div class="col-8 d-flex justify-content-center">
 					<c:if test="${memList.user_gender eq '여' }">
-						<label class="me-4"><input type="radio" class="me-2"
-							name="user_gender" value="남" onclick="return(false);">남</label>
-						<label class="me-4"><input type="radio" class="me-2"
-							name="user_gender" value="여" onclick="return(false);" checked>여</label>
+						<label class="me-4"><input type="radio" class="me-2" name="user_gender" value="남" onclick="return(false);">남</label>
+						<label class="me-4"><input type="radio" class="me-2" name="user_gender" value="여" onclick="return(false);" checked>여</label>
 					</c:if>
 					<c:if test="${memList.user_gender eq '남' }">
-						<label class="me-4"><input type="radio" class="me-2"
-							name="user_gender" value="남" onclick="return(false);" checked>남</label>
-						<label class="me-4"><input type="radio" class="me-2"
-							name="user_gender" value="여" onclick="return(false);">여</label>
+						<label class="me-4"><input type="radio" class="me-2" name="user_gender" value="남" onclick="return(false);" checked>남</label>
+						<label class="me-4"><input type="radio" class="me-2" name="user_gender" value="여" onclick="return(false);">여</label>
 					</c:if>
 				</div>
 			</div>
 			<form id="updateForm">
 				<div class="row blacklist p-2 pb-3">
-					<input type="text" class="d-none" name="user_email"
-						value="${memList.user_email }">
-					<div
-						class="col-4 d-flex ps-5 align-items-center justify-content-start">
+					<input type="text" class="d-none" name="user_email" value="${memList.user_email }">
+					<div class="col-4 d-flex ps-5 align-items-center justify-content-start">
 						<label>블랙리스트</label>
 					</div>
 					<div class="col-8 d-flex justify-content-center">
 						<c:if test="${memList.user_blacklist eq 'Y' }">
-							<label class="me-4"><input type="radio" class="me-2"
-								name="user_blacklist" value="Y" checked>등록</label>
-							<label class="me-4"><input type="radio" class="me-2"
-								name="user_blacklist" value="N">제거</label>
+							<label class="me-4"><input type="radio" class="me-2" name="user_blacklist" value="Y" checked>등록</label>
+							<label class="me-4"><input type="radio" class="me-2" name="user_blacklist" value="N">제거</label>
 						</c:if>
 						<c:if test="${memList.user_blacklist eq 'N' }">
-							<label class="me-4"><input type="radio" class="me-2"
-								name="user_blacklist" value="Y">등록</label>
-							<label class="me-4"><input type="radio" class="me-2"
-								name="user_blacklist" value="N" checked>제거</label>
+							<label class="me-4"><input type="radio" class="me-2" name="user_blacklist" value="Y">등록</label>
+							<label class="me-4"><input type="radio" class="me-2" name="user_blacklist" value="N" checked>제거</label>
 						</c:if>
 					</div>
 
 				</div>
 				<div class="row btnBox p-2 pb-4 d-flex justify-content-center">
-					<button type="button" id="submitBtn"
-						class="btn btn-outline-primary w-50">수정 완료</button>
+					<button type="button" id="submitBtn" class="btn btn-outline-primary w-50">수정 완료</button>
 				</div>
 			</form>
 		</div>

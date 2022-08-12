@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -48,10 +47,10 @@
 	font-style: normal;
 }
 
-.container{
-   max-width: -webkit-fill-available;
-   height:100%;
-   padding : 0px;
+.container {
+	max-width: -webkit-fill-available;
+	height: 100%;
+	padding: 0px;
 }
 
 /*사이드바*/
@@ -163,14 +162,15 @@ a {
 }
 
 /*content안에*/
-.title{
-	width:75%;
+.title {
+	width: 75%;
 	margin: auto;
 }
+
 .reportBox {
 	margin: auto;
 	width: 75%;
-	height : max-content;
+	height: max-content;
 	max-height: 200px;
 	background-color: white;
 	overflow-y: scroll;
@@ -191,7 +191,7 @@ a {
 	margin: auto;
 	width: 75%;
 	height: max-content;
-	max-height : 550px;
+	max-height: 550px;
 	background-color: white;
 }
 
@@ -209,15 +209,14 @@ tbody tr {
 	text-align: center;
 }
 
-td{
-	font-size : 12px;
+td {
+	font-size: 12px;
 }
 
 td>a {
 	color: rgb(103, 103, 103);
 	font-size: 12px;
 }
-
 </style>
 </head>
 
@@ -225,20 +224,13 @@ td>a {
 	<div class="container">
 		<div class="sidebar">
 			<ul class="p-2">
-				<li class="logoHome"><a href="/admin/toAdmin"> <img
-						src="/resources/images/adminLogo.png" id="logoImg"><br>
-						<span>끼리끼리</span>
+				<li class="logoHome"><a href="/admin/toAdmin"> <img src="/resources/images/adminLogo.png" id="logoImg"><br> <span>끼리끼리</span>
 				</a></li>
-				<li class="sidemenu memberMenu"><a
-					href="/admin/toMember?curPage=1"> <i
-						class="fa-solid fa-users-rectangle"></i><br> <span>회원
-							관리</span>
+				<li class="sidemenu memberMenu"><a href="/admin/toMember?curPage=1"> <i class="fa-solid fa-users-rectangle"></i><br> <span>회원 관리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toBoard?curPage=1"> <i
-						class="fa-solid fa-table"></i><br> <span>게시물 관리</span>
+				<li class="sidemenu"><a href="/admin/toBoard?curPage=1"> <i class="fa-solid fa-table"></i><br> <span>게시물 관리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toGroupAdmin?curPage=1"> <i
-						class="fa-solid fa-house-user"></i><br> <span>모임 관리</span>
+				<li class="sidemenu"><a href="/admin/toGroupAdmin?curPage=1"> <i class="fa-solid fa-house-user"></i><br> <span>모임 관리</span>
 				</a></li>
 			</ul>
 		</div>
@@ -254,14 +246,11 @@ td>a {
 		<div class="contents">
 			<div class="row title">
 				<div class="col d-flex mt-4">
-					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue;">회원
-						신고 관리</h4>
+					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue;">회원 신고 관리</h4>
 				</div>
 				<div class="col d-flex me-3 justify-content-end align-items-center">
-					<button type="button" class="btn btn-primary" id="submitBtn">블랙리스트
-						등록</button>
-					<button type="button" class="btn btn-secondary ms-1" id="deleteBtn">신고
-						삭제</button>
+					<button type="button" class="btn btn-primary" id="submitBtn">블랙리스트 등록</button>
+					<button type="button" class="btn btn-secondary ms-1" id="deleteBtn">신고 삭제</button>
 				</div>
 			</div>
 			<div class="row reportBox">
@@ -270,8 +259,7 @@ td>a {
 				<table style="margin-bottom: auto">
 					<thead style="background-color: gainsboro; text-align: center;">
 						<tr>
-							<td><input class="form-check-input ms-2 me-1"
-								type="checkbox" id="checkAll"></td>
+							<td><input class="form-check-input ms-2 me-1" type="checkbox" id="checkAll"></td>
 							<td>신고자</td>
 							<td>피신고자</td>
 							<td>신고 사유</td>
@@ -287,13 +275,11 @@ td>a {
 							<c:otherwise>
 								<c:forEach items="${reportList }" var="dto">
 									<tr>
-										<td><input class="form-check-input ms-2 me-1 check"
-											type="checkbox" name="seq_report"
-											value="${dto.seq_report }"></td>
+										<td><input class="form-check-input ms-2 me-1 check" type="checkbox" name="seq_report" value="${dto.seq_report }"></td>
 										<td>${dto.report_send }</td>
 										<td>${dto.report_receive }</td>
 										<td>${dto.report_reason }</td>
-										<td class = "receive_email d-none">${dto.receive_email}</td>
+										<td class="receive_email d-none">${dto.receive_email}</td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -303,8 +289,7 @@ td>a {
 			</div>
 			<div class="row title mt-2">
 				<div class="col mt-4">
-					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue;">사용자
-						관리</h4>
+					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue;">사용자 관리</h4>
 				</div>
 			</div>
 			<div class="row searchBox">
@@ -314,11 +299,8 @@ td>a {
 						<option value="user_email">Email</option>
 						<option value="user_nickname">NICKNAME</option>
 						<option value="user_phone">PHONE</option>
-					</select> <input class="form-control me-2" name="searchKeyword"
-						id="searchKeyword" type="search" placeholder="회원 검색"
-						aria-label="Search">
-					<button class="btn btn-outline-primary" type="button"
-						id="searchBtn">Search</button>
+					</select> <input class="form-control me-2" name="searchKeyword" id="searchKeyword" type="search" placeholder="회원 검색" aria-label="Search">
+					<button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
 				</div>
 			</div>
 			<div class="row resultBox mt-3">
@@ -344,10 +326,7 @@ td>a {
 							<c:otherwise>
 								<c:forEach items="${list}" var="dto">
 									<tr>
-										<td><a
-											href="/admin/toDetailMem?user_email=${dto.user_email}"
-											onclick="window.open(this.href, '_blank', 'width=600, height=1000'); return false;">
-											${dto.user_email }</a></td>
+										<td><a href="/admin/toDetailMem?user_email=${dto.user_email}" onclick="window.open(this.href, '_blank', 'width=600, height=1000'); return false;"> ${dto.user_email }</a></td>
 										<td>${dto.user_nickname }</td>
 										<td>${dto.user_phone }</td>
 										<td>${dto.user_gender }</td>
@@ -370,17 +349,13 @@ td>a {
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
 						<c:if test="${naviMap.needPrev eq true}">
-							<li class="page-item"><a class="page-link pageArrow"
-								href="/admin/toMember?curPage=${naviMap.startNavi-1}"><</a></li>
+							<li class="page-item"><a class="page-link pageArrow" href="/admin/toMember?curPage=${naviMap.startNavi-1}"><</a></li>
 						</c:if>
-						<c:forEach var="pageNum" begin="${naviMap.startNavi}"
-							end="${naviMap.endNavi }">
-							<li class="page-item"><a class="page-link"
-								href="/admin/toMember?curPage=${pageNum }">${pageNum }</a></li>
+						<c:forEach var="pageNum" begin="${naviMap.startNavi}" end="${naviMap.endNavi }">
+							<li class="page-item"><a class="page-link" href="/admin/toMember?curPage=${pageNum }">${pageNum }</a></li>
 						</c:forEach>
 						<c:if test="${naviMap.needNext eq true}">
-							<li class="page-item"><a class="page-link pageArrow"
-								href="/admin/toMember?curPage=${naviMap.endNavi+1}">></i></a></li>
+							<li class="page-item"><a class="page-link pageArrow" href="/admin/toMember?curPage=${naviMap.endNavi+1}">></i></a></li>
 						</c:if>
 					</ul>
 				</nav>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -230,18 +229,13 @@ td>a {
 	<div class="container">
 		<div class="sidebar">
 			<ul class="p-2">
-				<li class="logoHome"><a href="/admin/toAdmin"> <img
-						src="/resources/images/adminLogo.png" id="logoImg" /><br /> <span>끼리끼리</span>
+				<li class="logoHome"><a href="/admin/toAdmin"> <img src="/resources/images/adminLogo.png" id="logoImg" /><br /> <span>끼리끼리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toMember?curPage=1"> <i
-						class="fa-solid fa-users-rectangle"></i><br /> <span>회원 관리</span>
+				<li class="sidemenu"><a href="/admin/toMember?curPage=1"> <i class="fa-solid fa-users-rectangle"></i><br /> <span>회원 관리</span>
 				</a></li>
-				<li class="sidemenu boardMenu"><a
-					href="/admin/toBoard?curPage=1"> <i class="fa-solid fa-table"></i><br />
-						<span>게시물 관리</span>
+				<li class="sidemenu boardMenu"><a href="/admin/toBoard?curPage=1"> <i class="fa-solid fa-table"></i><br /> <span>게시물 관리</span>
 				</a></li>
-				<li class="sidemenu"><a href="/admin/toGroupAdmin?curPage=1">
-						<i class="fa-solid fa-house-user"></i><br /> <span>모임 관리</span>
+				<li class="sidemenu"><a href="/admin/toGroupAdmin?curPage=1"> <i class="fa-solid fa-house-user"></i><br /> <span>모임 관리</span>
 				</a></li>
 			</ul>
 		</div>
@@ -257,37 +251,28 @@ td>a {
 		<div class="contents">
 			<div class="row title mt-2">
 				<div class="col mt-4">
-					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue">
-						게시물 관리</h4>
+					<h4 style="color: darkblue; text-shadow: 1px 1px 1px dodgerblue">게시물 관리</h4>
 				</div>
 			</div>
 			<form id="searchForm" onSubmit="return false;">
 				<div class="row searchBox">
 					<div class="d-flex align-items-center m-auto w-75">
-						<select name="boardNameCategory"
-							class="form-select title w-25 me-3">
+						<select name="boardNameCategory" class="form-select title w-25 me-3">
 							<option value="normal">일반 게시판</option>
 							<option value="meeting">모임 게시판</option>
 							<option value="notice">공지</option>
-						</select> <select id="category" name="category"
-							class="form-select w-25 me-3">
+						</select> <select id="category" name="category" class="form-select w-25 me-3">
 							<option value="board_all" selected>전체</option>
 							<option value="board_category">카테고리</option>
 							<option value="board_title">제목</option>
-						</select> <input class="form-control keyword me-2" name="keyword"
-							id="searchKeyword" type="text" placeholder="검색"
-							aria-label="Search" />
-						<button class="btn btn-outline-primary" type="button"
-							id="searchBtn">Search</button>
+						</select> <input class="form-control keyword me-2" name="keyword" id="searchKeyword" type="text" placeholder="검색" aria-label="Search" />
+						<button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
 					</div>
 				</div>
 			</form>
 			<div class="row mt-3" style="font-size: 15px; width: 82%;">
-				<div class="col-md-12 d-flex justify-content-end"
-					style="align-items: center;">
-					<i class="fa-solid fa-book me-2"></i> <a class="notice"
-						style="text-decoration: none; color: black; cursor: pointer;"><span
-						style="padding-right: 30px;">Notice</span></a>
+				<div class="col-md-12 d-flex justify-content-end" style="align-items: center;">
+					<i class="fa-solid fa-book me-2"></i> <a class="notice" style="text-decoration: none; color: black; cursor: pointer;"><span style="padding-right: 30px;">Notice</span></a>
 				</div>
 			</div>
 			<div class="row resultBox mt-3">
@@ -312,14 +297,10 @@ td>a {
 								<c:forEach items="${list}" var="dto">
 									<tr class="tr">
 										<td>${dto.board_category}</td>
-										<td><a
-											href="/board/toDetailView?seq_board=${dto.seq_board}"
-											onclick="window.open(this.href, '_blank', 'width=1000, height=800'); return false;">${dto.board_title}</a></td>
+										<td><a href="/board/toDetailView?seq_board=${dto.seq_board}" onclick="window.open(this.href, '_blank', 'width=1000, height=800'); return false;">${dto.board_title}</a></td>
 										<td>${dto.board_date}</td>
 										<td>${dto.board_count}</td>
-										<td id="icon"><span class="text-center boardDelete"
-											style="cursor: pointer;" id="boardDelete"><i
-												class="fa-solid fa-trash"></i></span></td>
+										<td id="icon"><span class="text-center boardDelete" style="cursor: pointer;" id="boardDelete"><i class="fa-solid fa-trash"></i></span></td>
 										<td class="d-none" id="seq_board">${dto.seq_board}</td>
 									</tr>
 								</c:forEach>
@@ -334,19 +315,13 @@ td>a {
 				<nav aria-label="Page navigation example">
 					<ul class="pagination">
 						<c:if test="${naviMap.needPrev eq true}">
-							<li class="page-item"><a class="page-link"
-								href="/admin/toBoard?curPage=${naviMap.startNavi-1}"><i
-									class="fa-solid fa-angle-left"></i></a></li>
+							<li class="page-item"><a class="page-link" href="/admin/toBoard?curPage=${naviMap.startNavi-1}"><i class="fa-solid fa-angle-left"></i></a></li>
 						</c:if>
-						<c:forEach var="pageNum" begin="${naviMap.startNavi}"
-							end="${naviMap.endNavi}">
-							<li class="page-item"><a class="page-link"
-								href="/admin/toBoard?curPage=${pageNum}">${pageNum}</a></li>
+						<c:forEach var="pageNum" begin="${naviMap.startNavi}" end="${naviMap.endNavi}">
+							<li class="page-item"><a class="page-link" href="/admin/toBoard?curPage=${pageNum}">${pageNum}</a></li>
 						</c:forEach>
 						<c:if test="${naviMap.needNext eq true}">
-							<li class="page-item"><a class="page-link"
-								href="/admin/toBoard?curPage=${naviMap.endNavi+1}"><i
-									class="fa-solid fa-angle-right"></i></a></li>
+							<li class="page-item"><a class="page-link" href="/admin/toBoard?curPage=${naviMap.endNavi+1}"><i class="fa-solid fa-angle-right"></i></a></li>
 						</c:if>
 					</ul>
 				</nav>
